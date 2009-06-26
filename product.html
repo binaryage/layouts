@@ -1,23 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>{{ page.title }}</title>
-    <link href="http://github.com/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/shared/css/github.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/shared/css/screen.css" media="screen" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div id="main">
       <div id="header" class="basic">
         <div class="site">
           <div class="logo">
-            <a href="/"><img src="/images/logo.png" alt="{{ page.title }}" title="{{ page.title }}"/></a>
+            <a href="/"><img src="/shared/img/logo.png" alt="{{ page.title }}" title="{{ page.title }}"/></a>
           </div>
           <div class="download">
             <a href="{{ page.download }}" title="Download {{ page.version }}">
-              <img src="/images/download.png"/>{{ page.version }}
+              <img src="/shared/img/download.png"/>{{ page.version }}
             </a>
           </div>
         </div>
@@ -41,26 +41,29 @@
           </div>
         </div>
         <div class="github-icon">
-          <a href="{{ page.repo }}"><img title="GitHub - social code hosting" src="/images/github.png" alt="GitHub logo"/></a>
+          <a href="{{ page.repo }}"><img title="GitHub - social code hosting" src="/shared/img/github.png" alt="GitHub logo"/></a>
         </div>
         <div class="binary-age">
           <div>
             Produced in <a href="http://www.binaryage.com">BinaryAge</a><br/>
-            <a href="http://www.binaryage.com"><img class="binaryage-logo" src="/images/binaryage-small.png" title="Binary Age" alt="BinaryAge logo"/></a>
+            <a href="http://www.binaryage.com"><img class="binaryage-logo" src="/shared/img/binaryage-small.png" title="Binary Age" alt="BinaryAge logo"/></a>
           </div>
         </div>
       </div>
     </div>
     <a href="{{ page.repo }}"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>    
     <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-    try {
-    var pageTracker = _gat._getTracker("UA-8404259-1");
-    pageTracker._setDomainName(".binaryage.com");
-    pageTracker._trackPageview();
-    } catch(err) {}</script>    
+    if (!document.location.host.match(/^localhost/)) {
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-8404259-1");
+            pageTracker._setDomainName(".binaryage.com");
+            pageTracker._trackPageview();
+        } catch(err) {}        
+    }
+    </script>    
   </body>
 </html>
