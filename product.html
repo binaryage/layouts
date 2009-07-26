@@ -11,9 +11,11 @@ donatetitle: Contribute
 	<div class="download">
 	    <div class="download-box" style="width:{{page.downloadboxwidth}}">
 		    <div class="download-button"><a href="{{page.download}}">{{page.downloadtitle}}</a></div>
+			{% if page.donate %}
 		    <div class="donate-button"><a href="{{page.donate}}">{{page.donatetitle}}</a>
 			</div>
 			<div id="love-icon"></div>
+			{% endif %}
 	    </div>          
 	    <div class="release-notes">
 		    <a href="{{page.subdownloadlink}}">{{page.subdownload}}</a>
