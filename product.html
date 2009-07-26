@@ -1,68 +1,86 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-    "http://www.w3.org/TR/html4/strict.dtd">
+---
+layout: default
+donatetitle: Contribute
+---
+<div class="main-left span-12">
+	<div class="logo">
+	  	<img src="{{ page.icon }}" width="32" height="32"/>
+		<h1>{{ page.title }}</h1>
+		<h2>{{ page.subtitle}}</h2>
+	</div>
+	<div class="download">
+	    <div class="download-box" style="width:{{page.downloadboxwidth}}">
+		    <div class="download-button"><a href="{{page.download}}">{{page.downloadtitle}}</a></div>
+		    <div class="donate-button"><a href="{{page.donate}}">{{page.donatetitle}}</a>
+			</div>
+			<div id="love-icon"></div>
+	    </div>          
+	    <div class="release-notes">
+		    <a href="{{page.subdownloadlink}}">{{page.subdownload}}</a>
+	    </div>
+		<div id="download-icon"></div>
+	</div>
+</div>
+<div class="span-12 last">
+	<div class="main-screenshot">
+		<img src="{{page.mainshot}}" rel="#overlay">
+	</div>
+</div>
+<div class="overlay" id="overlay"></div>
+<style type="text/css" media="screen">
+div.overlay {
+  	background-image:url({{page.mainshotfull}});
+	width:880px;
+	height:680px;		
+	display:none;
+}
+</style>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <title>{{ page.title }}</title>
-    <link href="/shared/css/github.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="/shared/css/screen.css" media="screen" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <div id="main">
-      <div id="header" class="basic">
-        <div class="site">
-          <div class="logo">
-            <a href="/"><img src="{{ page.logo }}" alt="{{ page.title }}" title="{{ page.title }}"/></a>
-          </div>
-          <div class="download">
-            <a href="{{ page.download }}" title="Download {{ page.version }}">
-              <img src="/shared/img/download.png"/>{{ page.version }}
-            </a>
-          </div>
-        </div>
-      </div>
-      <div id="content" class="site">
-          <div class="wikistyle">
-              {{ content }}
-          </div>
-      </div>
-      <div class="push"></div>
-    </div>
-    <div id="footer">
-      <div class="site">
-        <div class="info">
-          <div class="links">
-            <a href="http://blog.binaryage.com">Blog</a> |
-            <a href="http://twitter.com/binaryage">Twitter</a> |
-            <a href="{{ page.support }}">Support</a> |
-            <a href="{{ page.repo }}">Source Code</a>
-          </div>
-          <div>
-            Check out more <a href="http://www.binaryage.com">tools for web developers</a>
-          </div>
-        </div>
-        <div class="github-icon">
-          <a href="{{ page.repo }}"><img title="GitHub - social code hosting" src="/shared/img/github.png" alt="GitHub logo"/></a>
-        </div>
-        <div class="binary-age">
-          <div>
-            Produced in <a href="http://www.binaryage.com">BinaryAge</a><br/>
-            <a href="http://www.binaryage.com"><img class="binaryage-logo" src="/shared/img/binaryage-small.png" title="Binary Age" alt="BinaryAge logo"/></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a href="{{ page.repo }}"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>    
-    <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-    try {
-    var pageTracker = _gat._getTracker("UA-8404259-1");
-    pageTracker._setDomainName(".binaryage.com");
-    pageTracker._trackPageview();
-    } catch(err) {}</script>
-  </body>
-</html>
+<script type="text/javascript" charset="utf-8">
+	$(function() {
+		$("img[rel]").overlay();
+	});
+</script>
+<div class="clear main-spacer">
+	
+</div>
+
+{{ content }}
+
+<ul class="tabs"> 
+</ul> 
+
+<div class="panes"> 
+</div>
+
+<script type="text/javascript" charset="utf-8">
+$(function() { 
+	$('.main-left').append($('.advertisement'));
+	var panes = $('.panes');
+	var tabs = $('.tabs');
+	var cur;
+	var items = $('#site .container > *');
+	items.each(function(i) {
+		var el = $(this);
+		var tag = el.attr('tagName');
+		if (tag=='SCRIPT') return;
+		if (tag=='NOSCRIPT') return;
+		if (tag=='STYLE') return;
+		if (el.hasClass('panes') || el.hasClass('tabs')) return;
+		if (el.attr('tagName')=='H2') {
+			var li = $('<li/>');
+			var a = $('<a/>').attr('href', '#'+el.html().toLowerCase()).html(el.html());
+			li.append(a);
+			tabs.append(li);
+			cur = $('<div/>').addClass('wikistyle').addClass(el.html().toLowerCase());
+			panes.append(cur);
+			cur.append(el);
+		} else {
+			if (cur) {
+				cur.append(el);
+			}
+		}
+	});
+    $("ul.tabs").tabs("div.panes > div", {history: true}); 
+});	
+</script>
