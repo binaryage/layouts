@@ -28,13 +28,19 @@ donatetitle: Contribute
 		<img src="{{page.mainshot}}" rel="#overlay">
 	</div>
 </div>
+
 <div class="overlay" id="overlay"></div>
 <style type="text/css" media="screen">
 div.overlay {
   	background-image:url({{page.mainshotfull}});
-	width:880px;
-	height:680px;		
+	width:{{page.overlaysx}};
+	height:{{page.overlaysy}};		
 	display:none;
+}
+
+div.overlay div.close {
+	right:{{page.overlaycx}};
+	top:{{page.overlaycy}};
 }
 </style>
 
