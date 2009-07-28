@@ -76,13 +76,16 @@ $(function() {
 		if (tag=='STYLE') return;
 		if (el.hasClass('panes') || el.hasClass('tabs')) return;
 		if (el.attr('tagName')=='H2') {
+			var name = el.html();
+			var id = name.toLowerCase();
 			var li = $('<li/>');
-			var a = $('<a/>').attr('href', '#'+el.html().toLowerCase()).html(el.html());
+			var a = $('<a/>').attr('href', '#'+id).html(name);
 			li.append(a);
 			tabs.append(li);
-			cur = $('<div/>').addClass('wikistyle').addClass(el.html().toLowerCase());
+			cur = $('<div/>').addClass('wikistyle').addClass(id);
 			panes.append(cur);
-			cur.append(el);
+			el.remove();
+			cur.append($("<h2/>").html(name));
 		} else {
 			if (cur) {
 				cur.append(el);
