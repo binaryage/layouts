@@ -63,7 +63,8 @@ div.overlay div.close {
 
 <script type="text/javascript" charset="utf-8">
 $(function() { 
-	$('.main-left').append($('.advertisement'));
+	var advertisement = $('.advertisement');
+	$('.main-left').append(advertisement);
 	var panes = $('.panes');
 	var tabs = $('.tabs');
 	var cur;
@@ -93,5 +94,9 @@ $(function() {
 		}
 	});
     $("ul.tabs").tabs("div.panes > div", {history: true}); 
+
+	setTimeout(function() {
+		advertisement.fadeIn(1000);
+	}, 4000);
 });	
 </script>
