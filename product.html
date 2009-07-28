@@ -23,12 +23,24 @@ donatetitle: Contribute
 		<div id="download-icon"></div>
 	</div>
 </div>
-<div class="span-12 last">
+<div class="main-right span-12 last">
+	{% if page.mainshot %}
 	<div class="main-screenshot">
 		<img src="{{page.mainshot}}" rel="#overlay">
 	</div>
+	{% endif %}
+	{{ page.mainright }}
 </div>
 
+{% if page.mainrightshift %}
+<style type="text/css" media="screen">
+	.main-right {
+		margin-top: {{ page.mainrightshift }};
+	}
+</style>
+{% endif %}
+
+{% if page.mainshotfull %}
 <div class="overlay" id="overlay"></div>
 <style type="text/css" media="screen">
 div.overlay {
@@ -36,6 +48,10 @@ div.overlay {
 	width:{{page.overlaysx}};
 	height:{{page.overlaysy}};		
 	display:none;
+}
+
+.main-screenshot {
+    cursor: pointer;
 }
 
 div.overlay div.close {
@@ -49,9 +65,9 @@ div.overlay div.close {
 		$("img[rel]").overlay();
 	});
 </script>
-<div class="clear main-spacer">
-	
-</div>
+{% endif %}
+
+<div class="clear main-spacer"></div>
 
 {{ content }}
 
