@@ -36,27 +36,26 @@
       </div>
       <div id="footer">
         <div class="container">
-          <div class="github-icon">
-            <a href="{{ page.repo }}"><img title="GitHub - social code hosting" src="/shared/img/github.png" alt="GitHub logo"/></a>
-          </div>
-          <div class="binary-age">
-             <a href="http://www.binaryage.com"><img class="binaryage-logo" src="/shared/img/binaryage-small.png" title="Binary Age" alt="BinaryAge logo"/></a>
-          </div>
-          <div class="info">
-            <div class="links">
-              <!-- <a href="http://blog.binaryage.com">Blog</a> | -->
-              <a href="http://twitter.com/binaryage">Twitter</a>
+           <div class="logos">
+	          <div class="github-icon">
+	            <a href="{{ page.repo }}"><img title="GitHub - social code hosting" src="/shared/img/github.png" alt="GitHub logo"/></a>
+	          </div>
+	          <div class="binary-age">
+	             <a href="http://www.binaryage.com"><img class="binaryage-logo" src="/shared/img/binaryage-small.png" title="Binary Age" alt="BinaryAge logo"/></a>
+	          </div>
+			</div>
+           <div class="copyright">
+             <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="/shared/img/byccnd.png" /></a>
+           </div>
+           <div class="links">
+             <a href="http://twitter.com/binaryage">Twitter</a>
 			{% if page.support %}
-              | <a href="{{ page.support }}">Support</a>
+	             | <a href="{{ page.support }}">Support</a>
 			{% endif %}
 			{% if page.repo %}
-              | <a href="{{ page.repo }}">Source Code</a>
+	             | <a href="{{ page.repo }}">Source Code</a>
 			{% endif %}
-            </div>
-            <div class="copyright">
-              <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="/shared/img/byccnd.png" /></a> &copy; Antonin Hildebrand
-            </div>
-          </div>
+           </div>
         </div>
       </div>
     </div>
