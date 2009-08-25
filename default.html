@@ -5,14 +5,14 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>{{ page.title }}</title>
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="/shared/css/screen.css" type="text/css" media="screen, projection">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/shared/css/screen.css" type="text/css" media="screen, projection">
     <link rel="stylesheet" href="/shared/css/print.css" type="text/css" media="print">    
     <!--[if lt IE 8]><link rel="stylesheet" href="/shared/css/ie.css" type="text/css" media="screen, projection"><![endif]-->
     <link rel="stylesheet" href="/shared/css/site.css" type="text/css">
-	<script src="/shared/js/jquery.tools.min.js"></script>
-	<script src="/shared/js/jquery.mousewheel.js"></script>
+    <script src="/shared/js/jquery.tools.min.js"></script>
+    <script src="/shared/js/jquery.mousewheel.js"></script>
   </head>
   <body>
     <div id="main">
@@ -20,11 +20,11 @@
         <div class="container">
             <div class="header-left span-8">
                 <a href="http://www.binaryage.com" title="Binary Age - tools for developers"><div class="header-logo"></div></a>
-				<a href="http://twitter.com/binaryage"><div class="twitter" title="Follow us on Twitter"></div></a>
+                <a href="http://twitter.com/binaryage"><div class="twitter" title="Follow us on Twitter"></div></a>
             </div>
             <div class="header-menu-wrapper span-16 last">
                 <ul class="header-menu">
-                    <li><a href="http://www.binaryage.com">about</a></li>
+                    <!-- <li><a href="http://www.binaryage.com">about</a></li> -->
                     <li><a href="http://www.binaryage.com">products</a></li>
                     <!-- <li><a href="http://blog.binaryage.com">blog</a></li> -->
                 </ul>
@@ -39,24 +39,26 @@
       <div id="footer">
         <div class="container">
            <div class="logos">
-	          <div class="github-icon">
-	            <a href="{{ page.repo }}"><img title="GitHub - social code hosting" src="/shared/img/github.png" alt="GitHub logo"/></a>
-	          </div>
-	          <div class="binary-age">
-	             <a href="http://www.binaryage.com"><img class="binaryage-logo" src="/shared/img/binaryage-small.png" title="Binary Age" alt="BinaryAge logo"/></a>
-	          </div>
-			</div>
+              <div class="github-icon">
+              {% if page.repo %}
+                <a href="{{ page.repo }}"><img title="GitHub - social code hosting" src="/shared/img/github.png" alt="GitHub logo"/></a>
+              {% endif %}
+              </div>
+              <div class="binary-age">
+                 <a href="http://www.binaryage.com"><img class="binaryage-logo" src="/shared/img/binaryage-small.png" title="Binary Age" alt="BinaryAge logo"/></a>
+              </div>
+            </div>
            <div class="copyright">
              <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="/shared/img/byccnd.png" /></a>
            </div>
            <div class="links">
              <a href="http://twitter.com/binaryage">Twitter</a>
-			{% if page.support %}
-	             | <a href="{{ page.support }}">Support</a>
-			{% endif %}
-			{% if page.repo %}
-	             | <a href="{{ page.repo }}">Source Code</a>
-			{% endif %}
+            {% if page.support %}
+                 | <a href="{{ page.support }}">Support</a>
+            {% endif %}
+            {% if page.repo %}
+                 | <a href="{{ page.repo }}">Source Code</a>
+            {% endif %}
            </div>
         </div>
       </div>
@@ -64,16 +66,17 @@
 {% if page.repo %}
     <a href="{{ page.repo }}"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>    
 {% endif %}
+    <a href="http://webexpo.cz/en/?r=binaryage" title="WebExpo 2009 conference 16.-18.10.2009" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="http://webexpo.cz/media/press/webexpo09-badge-attendee-150-en.png" width="150" height="150" alt="WebExpo 2009" border="0" /></a>
     <script type="text/javascript">
-	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
     </script>
     <script type="text/javascript">
-	    try {
-	    var pageTracker = _gat._getTracker("UA-8404259-1");
-	    pageTracker._setDomainName(".binaryage.com");
-	    pageTracker._trackPageview();
-	    } catch(err) {}
+        try {
+        var pageTracker = _gat._getTracker("UA-8404259-1");
+        pageTracker._setDomainName(".binaryage.com");
+        pageTracker._trackPageview();
+        } catch(err) {}
     </script>
   </body>
 </html>
