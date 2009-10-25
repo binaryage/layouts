@@ -9,6 +9,7 @@ menu: products
         <h1>{{ page.title }}</h1>
         <h2>{{ page.subtitle}}</h2>
     </div>
+    {% if page.download %}
     <div class="download">
         <div class="download-box" style="width:{{page.downloadboxwidth}}">
             <div class="download-button"><a href="{{page.download}}">{{page.downloadtitle}}</a></div>
@@ -23,6 +24,7 @@ menu: products
         </div>
         <div id="download-icon"></div>
     </div>
+    {% endif %}
 </div>
 <div class="main-right span-12 last">
     {% if page.mainshot %}
@@ -112,8 +114,6 @@ $(function() {
     });
     $("ul.tabs").tabs("div.panes > div", {history: true}); 
 
-    setTimeout(function() {
-        advertisement.fadeIn(1000);
-    }, 4000);
+    advertisement.show();
 }); 
 </script>
