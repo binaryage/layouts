@@ -4,12 +4,18 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>{{ page.title }}</title>
+    <link href="http://feeds.feedburner.com/binaryage-blog" type="application/atom+xml" rel="alternate" title="Blog from BinaryAge" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/shared/css/screen.css" type="text/css" media="screen, projection">
     <link rel="stylesheet" href="/shared/css/print.css" type="text/css" media="print">    
     <!--[if lt IE 8]><link rel="stylesheet" href="/shared/css/ie.css" type="text/css" media="screen, projection"><![endif]-->
     <link rel="stylesheet" href="/shared/css/site.css" type="text/css">
+    {% if page.styles %}
+        {% for s in page.styles %}
+            <link rel="stylesheet" href="{{ s }}.css" type="text/css">
+        {% endfor %}
+    {% endif %}
     <script src="/shared/js/jquery.tools.min.js"></script>
     <script src="/shared/js/jquery.mousewheel.js"></script>
   </head>
@@ -18,14 +24,14 @@
       <div id="header">
         <div class="container">
             <div class="header-left span-9">
-                <a href="/" title="Binary Age - tools for developers"><div class="header-logo"></div></a>
+                <a href="http://binaryage.com" title="Binary Age - tools for developers"><div class="header-logo"></div></a>
                 <a href="http://twitter.com/binaryage"><div class="twitter" title="Follow us on Twitter"></div></a>
             </div>
             <div class="header-menu-wrapper span-15 last">
                 <ul class="header-menu {{ page.menu }}">
-                    <li><a class="menu-item-services" href="/services">services</a></li>
-                    <li><a class="menu-item-products" href="/">products</a></li>
-                    <li><a class="menu-item-blog" href="/blog">blog</a></li>
+                    <!-- <li><a class="menu-item-services" href="http://binaryage.com/services">services</a></li> -->
+                    <li><a class="menu-item-products" href="http://binaryage.com">products</a></li>
+                    <li><a class="menu-item-blog" href="http://blog.binaryage.com">blog</a></li>
                 </ul>
             </div>
         </div>

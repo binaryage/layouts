@@ -4,40 +4,40 @@ donatetitle: Contribute
 menu: products
 ---
 <div class="main-left span-12">
-	<div class="logo">
-	  	<img src="{{ page.icon }}" width="32" height="32"/>
-		<h1>{{ page.title }}</h1>
-		<h2>{{ page.subtitle}}</h2>
-	</div>
-	<div class="download">
-	    <div class="download-box" style="width:{{page.downloadboxwidth}}">
-		    <div class="download-button"><a href="{{page.download}}">{{page.downloadtitle}}</a></div>
-			{% if page.donate %}
-		    <div class="donate-button"><a href="{{page.donate}}">{{page.donatetitle}}</a>
-			</div>
-			<div id="love-icon"></div>
-			{% endif %}
-	    </div>          
-	    <div class="release-notes">
-		    <a href="{{page.subdownloadlink}}">{{page.subdownload}}</a>
-	    </div>
-		<div id="download-icon"></div>
-	</div>
+    <div class="logo">
+        <img src="{{ page.icon }}" width="32" height="32"/>
+        <h1>{{ page.title }}</h1>
+        <h2>{{ page.subtitle}}</h2>
+    </div>
+    <div class="download">
+        <div class="download-box" style="width:{{page.downloadboxwidth}}">
+            <div class="download-button"><a href="{{page.download}}">{{page.downloadtitle}}</a></div>
+            {% if page.donate %}
+            <div class="donate-button"><a href="{{page.donate}}">{{page.donatetitle}}</a>
+            </div>
+            <div id="love-icon"></div>
+            {% endif %}
+        </div>          
+        <div class="release-notes">
+            <a href="{{page.subdownloadlink}}">{{page.subdownload}}</a>
+        </div>
+        <div id="download-icon"></div>
+    </div>
 </div>
 <div class="main-right span-12 last">
-	{% if page.mainshot %}
-	<div class="main-screenshot">
-		<img src="{{page.mainshot}}" rel="#overlay">
-	</div>
-	{% endif %}
-	{{ page.mainright }}
+    {% if page.mainshot %}
+    <div class="main-screenshot">
+        <img src="{{page.mainshot}}" rel="#overlay">
+    </div>
+    {% endif %}
+    {{ page.mainright }}
 </div>
 
 {% if page.mainrightshift %}
 <style type="text/css" media="screen">
-	.main-right {
-		margin-top: {{ page.mainrightshift }};
-	}
+    .main-right {
+        margin-top: {{ page.mainrightshift }};
+    }
 </style>
 {% endif %}
 
@@ -45,10 +45,10 @@ menu: products
 <div class="overlay" id="overlay"></div>
 <style type="text/css" media="screen">
 div.overlay {
-  	background-image:url({{page.mainshotfull}});
-	width:{{page.overlaysx}};
-	height:{{page.overlaysy}};		
-	display:none;
+    background-image:url({{page.mainshotfull}});
+    width:{{page.overlaysx}};
+    height:{{page.overlaysy}};      
+    display:none;
 }
 
 .main-screenshot {
@@ -56,15 +56,15 @@ div.overlay {
 }
 
 div.overlay div.close {
-	right:{{page.overlaycx}};
-	top:{{page.overlaycy}};
+    right:{{page.overlaycx}};
+    top:{{page.overlaycy}};
 }
 </style>
 
 <script type="text/javascript" charset="utf-8">
-	$(function() {
-		$("img[rel]").overlay();
-	});
+    $(function() {
+        $("img[rel]").overlay();
+    });
 </script>
 {% endif %}
 
@@ -80,40 +80,40 @@ div.overlay div.close {
 
 <script type="text/javascript" charset="utf-8">
 $(function() { 
-	var advertisement = $('.advertisement');
-	$('.main-left').append(advertisement);
-	var panes = $('.panes');
-	var tabs = $('.tabs');
-	var cur;
-	var items = $('#site .container > *');
-	items.each(function(i) {
-		var el = $(this);
-		var tag = el.attr('tagName');
-		if (tag=='SCRIPT') return;
-		if (tag=='NOSCRIPT') return;
-		if (tag=='STYLE') return;
-		if (el.hasClass('panes') || el.hasClass('tabs')) return;
-		if (el.attr('tagName')=='H2') {
-			var name = el.html();
-			var id = name.toLowerCase();
-			var li = $('<li/>');
-			var a = $('<a/>').attr('href', '#'+id).html(name);
-			li.append(a);
-			tabs.append(li);
-			cur = $('<div/>').addClass('wikistyle').addClass(id);
-			panes.append(cur);
-			el.remove();
-			cur.append($("<h2/>").html(name));
-		} else {
-			if (cur) {
-				cur.append(el);
-			}
-		}
-	});
+    var advertisement = $('.advertisement');
+    $('.main-left').append(advertisement);
+    var panes = $('.panes');
+    var tabs = $('.tabs');
+    var cur;
+    var items = $('#site .container > *');
+    items.each(function(i) {
+        var el = $(this);
+        var tag = el.attr('tagName');
+        if (tag=='SCRIPT') return;
+        if (tag=='NOSCRIPT') return;
+        if (tag=='STYLE') return;
+        if (el.hasClass('panes') || el.hasClass('tabs')) return;
+        if (el.attr('tagName')=='H2') {
+            var name = el.html();
+            var id = name.toLowerCase();
+            var li = $('<li/>');
+            var a = $('<a/>').attr('href', '#'+id).html(name);
+            li.append(a);
+            tabs.append(li);
+            cur = $('<div/>').addClass('wikistyle').addClass(id);
+            panes.append(cur);
+            el.remove();
+            cur.append($("<h2/>").html(name));
+        } else {
+            if (cur) {
+                cur.append(el);
+            }
+        }
+    });
     $("ul.tabs").tabs("div.panes > div", {history: true}); 
 
-	setTimeout(function() {
-		advertisement.fadeIn(1000);
-	}, 4000);
-});	
+    setTimeout(function() {
+        advertisement.fadeIn(1000);
+    }, 4000);
+}); 
 </script>
