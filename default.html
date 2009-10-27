@@ -58,8 +58,9 @@
            </div>
            <div class="links">
              <a href="http://twitter.com/binaryage">Twitter</a>
+             | <a href="http://getsatisfaction.com/binaryage">Get Satisfaction</a>
             {% if page.support %}
-                 | <a href="{{ page.support }}">Support</a>
+                 | <a href="{{ page.support }}">Issues</a>
             {% endif %}
             {% if page.repo %}
                  | <a href="{{ page.repo }}">Source Code</a>
@@ -73,16 +74,24 @@
     <a href="{{ page.repo }}"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>    
 {% endif %}
 
+{% if page.satisfaction %}
+    <script type="text/javascript" charset="utf-8">
+      var is_ssl = ("https:" == document.location.protocol);
+      var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+      document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+{% endif %}
+
     <script type="text/javascript">
-        // var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-        // document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
     </script>
     <script type="text/javascript">
-        // try {
-        // var pageTracker = _gat._getTracker("UA-8404259-1");
-        // pageTracker._setDomainName(".binaryage.com");
-        // pageTracker._trackPageview();
-        // } catch(err) {}
+        try {
+        var pageTracker = _gat._getTracker("UA-8404259-1");
+        pageTracker._setDomainName(".binaryage.com");
+        pageTracker._trackPageview();
+        } catch(err) {}
     </script>
   </body>
 </html>
