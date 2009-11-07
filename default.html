@@ -18,6 +18,11 @@
     {% endif %}
     <script src="/shared/js/jquery.tools.min.js"></script>
     <script src="/shared/js/jquery.mousewheel.js"></script>
+    {% if page.scripts %}
+        {% for s in page.scripts %}
+            <script src="{{ s }}"></script>
+        {% endfor %}
+    {% endif %}
   </head>
   <body>
     <div id="main">
