@@ -10,9 +10,9 @@ satisfaction: 1
         <h1>{% if page.product_title %}{{ page.product_title }}{% else %}{{ page.title}}{% endif %}</h1>
         <h2>{{ page.subtitle}}</h2>
     </div>
-    {% if page.download %}
     <div class="download">
         <div class="download-row">
+            {% if page.download %}
             <div class="download-box" {% if page.downloadboxwidth %}style="width:{{page.downloadboxwidth}}"{% endif %}>
                 <div id="download-icon"></div>
                 <div class="download-button"><a href="{{page.download}}">{{page.downloadtitle}}</a></div>
@@ -21,6 +21,7 @@ satisfaction: 1
                 <div id="love-icon"></div>
                 {% endif %}
             </div>
+            {% endif %}
             {% if page.retweet %}
             <div class="retweet">
                 <script type="text/javascript">tweetmeme_source = 'binaryage';</script>
@@ -34,11 +35,12 @@ satisfaction: 1
             {% endif %}
             <div class="clear"></div>
         </div>
+        {% if page.subdownload %}
         <div class="release-notes">
             <a href="{{page.subdownloadlink}}">{{page.subdownload}}</a>
         </div>
+        {% endif %}
     </div>
-    {% endif %}
 </div>
 <div class="main-right span-12 last">
     {% if page.mainshot %}
