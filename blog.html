@@ -2,16 +2,47 @@
 layout: default
 menu: blog
 styles: [/shared/css/syntax]
+products: [
+{title: "TotalFinder", url: "http://totalfinder.binaryage.com", info: "Finder.app upgrade"},
+{title: "Visor", url: "http://visor.binaryage.com", info: "System-wide Terminal.app"},
+{title: "FireRainbow", url: "http://firerainbow.binaryage.com", info: "Syntax highlighting for Firebug"},
+{title: "FireQuery", url: "http://firequery.binaryage.com", info: "jQuery development in Firebug"},
+{title: "FireLogger", url: "http://firelogger.binaryage.com", info: "realtime logging into Firebug"},
+{title: "DryDrop", url: "http://drydrop.binaryage.com", info: "GitHub + App Engine"},
+{title: "XRefresh", url: "http://xrefresh.binaryage.com", info: "refresh browser by saving"}
+]
 ---
 <div id="blog">
     <div class="span-18 blog-main">
         {{content}}
     </div>
-    <!-- <div class="span-6 last blog-side">
+    <div class="span-6 last blog-side">
         <div class="blog-side-inner">
-            The best bits from BinaryAge.
+            <div class="blog-side-about">
+                Developers deserve better tools!
+            </div>
+            <div class="subscribe">
+                <p><a href="http://feeds.feedburner.com/binaryage-blog" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/binaryage-blog" rel="alternate" type="application/rss+xml">Subscribe</a></p>
+            </div>
+            <div class="blog-side-products">
+                {% for product in page.products %}
+                <div class="blog-side-product">
+                    <a href="{{product.url}}">
+                    <img src="/shared/img/{{product.title|downcase}}-icon.png" width="32" height="32"/>
+                    <div>
+                        <div class="blog-side-product-title">{{product.title}}</div>
+                        <div class="blog-side-product-info">{{product.info}}</div>
+                    </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="stats">
+                <p><a href="http://feeds.feedburner.com/binaryage-blog"><img src="http://feeds.feedburner.com/~fc/binaryage-blog?bg=dddddd&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+            </div>
         </div>
-    </div> -->
+    </div>
 </div>
 <script type="text/javascript">
 //<![CDATA[
