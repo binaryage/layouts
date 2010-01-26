@@ -25,20 +25,8 @@ page_name: blog
     <span class="separator-wrapper"><span class="separator-label">Comments</span></span>
 </div>
 <div id="comments">
-    <script>
-        var disqus_url = document.location+"";
-        // The problem here is that you return a 200 response for the following URLs,
-        // 
-        //   http://blog.binaryage.com/totalfinder-with-tabs
-        //   http://blog.binaryage.com/totalfinder-with-tabs/
-        // 
-        // Note the subtle / at the end.  To fix this you can provide DISQUS with
-        // a canonical URL with a little Javascript, see disqus_url here:
-        // http://disqus.com/docs/embed/  But I'd recommend you redirect the /
-        // URL to the one without a / (or vice versa) because it's always best
-        // (for SEO, etc) to only offer content from one URL.
-        while (disqus_url[disqus_url.length-1]=='/') disqus_url = disqus_url.substring(0, disqus_url.length-1); // fix 
+    <script type="text/javascript" charset="utf-8">
+      var disqus_url = "http://blog.binaryage.com{{page.url}}";
     </script>
-    
     <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/binaryage/embed.js"></script><noscript><a href="http://disqus.com/forums/binaryage/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
