@@ -37,7 +37,11 @@ satisfaction: 1
         </div>
         {% if page.subdownload %}
         <div class="release-notes">
+            {% if page.subdownloadlink %}
             <a href="{{page.subdownloadlink}}">{{page.subdownload}}</a>
+            {% else %}
+            {{page.subdownload}}
+            {% endif %}
         </div>
         {% endif %}
     </div>
@@ -88,7 +92,9 @@ div.overlay div.close {
 
 <div class="clear main-spacer"></div>
 
+<div class="main-content-here" style="display:none">
 {{ content }}
+</div>
 
 <ul class="tabs"> 
 </ul> 
@@ -103,7 +109,7 @@ $(function() {
     var panes = $('.panes');
     var tabs = $('.tabs');
     var cur;
-    var items = $('#site .container > *');
+    var items = $('#site .main-content-here > *');
     items.each(function(i) {
         var el = $(this);
         var tag = el.attr('tagName');
