@@ -1,9 +1,20 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-    "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+---
+---
+<!DOCTYPE html>
+<html>
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <title>{{ page.title }}</title>
+    <title>{{page.title}}</title>
+    {% if page.meta_title %}
+    <meta name="title" content="{{page.title}}" />
+    {% endif %}
+    {% if page.meta_description %}
+    <meta name="description" content="{{page.meta_description}}" />
+    {% endif %}
+    {% if page.meta_image %}
+    <link rel="image_src" href="{{page.meta_image}}" />
+    {% endif %}
+    <meta name="google-site-verification" content="N_xzdr6ymSUQFhAEvQg7f-sp1JAeJCdW2JuaRg-da0w" />
     <link href="http://www.google.com/profiles/antonin.hildebrand" rel="me" type="text/html" />
     <link href="http://feeds.feedburner.com/binaryage-blog" type="application/atom+xml" rel="alternate" title="The ideas from BinaryAge" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -14,73 +25,97 @@
     <link rel="stylesheet" href="/shared/css/site.css" type="text/css">
     {% if page.styles %}
         {% for s in page.styles %}
-            <link rel="stylesheet" href="{{ s }}.css" type="text/css">
+            <link rel="stylesheet" href="{{s}}.css" type="text/css">
         {% endfor %}
     {% endif %}
+    <script src="/shared/js/jquery.js"></script>
     <script src="/shared/js/jquery.tools.min.js"></script>
-    <script src="/shared/js/jquery.mousewheel.js"></script>
+    <script src="/shared/js/jquery.hashchange.js"></script>
+    <script src="/shared/js/cufon.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/shared/fonts/bitlow_400.font.js" type="text/javascript"></script>
     {% if page.scripts %}
         {% for s in page.scripts %}
-            <script src="{{ s }}"></script>
+            <script src="{{s}}"></script>
         {% endfor %}
     {% endif %}
   </head>
   <body>
-    <div id="main">
-      <div id="header">
-        <div class="container">
-            <div class="header-left span-9">
+    <div id="header">
+        <div class="container header-bar">
+            <div class="span-7">
                 <a href="http://binaryage.com" title="Binary Age - tools for developers"><div class="header-logo"></div></a>
-                <a href="http://twitter.com/binaryage"><div class="twitter" title="Follow us on Twitter"></div></a>
             </div>
-            <div class="header-menu-wrapper span-15 last">
-                <ul class="header-menu {{ page.menu }}">
-                    <li><a class="menu-item-about" href="http://binaryage.com/about">about</a></li>
-                    <li><a class="menu-item-products" href="http://binaryage.com">products</a></li>
-                    <li><a class="menu-item-blog" href="http://blog.binaryage.com">blog</a></li>
+            <div class="span-17 last">
+                <ul class="header-menu {{page.menu}}">
+                    <li><a class="menu-item-about" href="http://binaryage.com/about"><span>about</span></a></li>
+                    <li><a class="menu-item-blog" href="http://blog.binaryage.com"><span>blog</span></a></li>
+                    <li><a class="menu-item-products" href="http://binaryage.com"><span>products</span></a></li>
+                    <li><a class="menu-item-store disabled" href=""><span>store</span></a></li>
                 </ul>
+                <div class="opening-soon">opening soon</div>
             </div>
         </div>
-      </div>
-      <div id="site">
-          <div class="container">
-              {{ content }}
-          </div>
-      </div>
-      <div id="footer">
-        <div class="container">
-           <div class="logos">
-              <div class="github-icon">
+        <script type="text/javascript">
+            Cufon.replace('.header-menu span', {
+                textShadow: '#eee 0px 1px'
+            });
+        </script>
+    </div>
+    <script type="text/javascript"> Cufon.now(); </script>
+    <div id="main">
+      {{content}}
+      <div class="clear"></div>
+    </div>
+    <div id="footer">
+      <div class="container">
+          <div class="footer-separator"></div>
+          <div class="footerbox">
+             <div class="logos">
+                <div class="raist-cz">
+                  <a href="http://raist.cz"><div class="footer-logo raist-logo" title="Raist.cz - webdesign"></div></a>
+                </div>
+                {% if page.repo %}
+                <div class="github-icon">
+                  <a href="{{page.repo}}"><div class="footer-logo github-logo" title="GitHub - social code hosting"></div></a>
+                </div>
+                {% else %}
+                <div class="github-icon">
+                  <a href="http://github.com/darwin"><div class="footer-logo github-logo" title="GitHub - social code hosting"></div></a>
+                </div>
+                {% endif %}
+                <div class="binary-age">
+                   <a href="http://www.binaryage.com"><div class="footer-logo binaryage-logo" title="BinaryAge - tools for power users"></div></a>
+                </div>
+              </div>
+             <div class="copyright">
+               <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="/shared/img/byccnd.png" /></a>
+             </div>
+             <div class="footer-links">
+               <a href="http://binaryage.com">products</a> | 
+               <!-- <a href="http://store.binaryage.com">store</a> |  -->
+               <a href="http://blog.binaryage.com">blog</a> | 
+               <!-- <a href="http://binaryage.com/mediakit">mediakit</a> |  -->
+               <a href="http://getsatisfaction.com/binaryage">support</a>
               {% if page.repo %}
-                <a href="{{ page.repo }}"><img title="GitHub - social code hosting" src="/shared/img/github.png" alt="GitHub logo"/></a>
+                   | <a href="{{page.repo}}">source code</a>
               {% endif %}
-              </div>
-              <div class="binary-age">
-                 <a href="http://www.binaryage.com"><img class="binaryage-logo" src="/shared/img/binaryage-small.png" title="Binary Age" alt="BinaryAge logo"/></a>
-              </div>
-            </div>
-           <div class="copyright">
-             <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="/shared/img/byccnd.png" /></a>
-           </div>
-           <div class="links">
-             <a href="http://blog.binaryage.com">Blog</a>
-             | <a href="http://twitter.com/binaryage">Twitter</a>
-             | <a href="http://getsatisfaction.com/binaryage">Get Satisfaction</a>
-            {% if page.support %}
-                 | <a href="{{ page.support }}">Issues</a>
-            {% endif %}
-            {% if page.repo %}
-                 | <a href="{{ page.repo }}">Source Code</a>
-            {% endif %}
-           </div>
-        </div>
-      </div>
+             </div>
+          </div>
+       </div>
+       <script type="text/javascript">
+           Cufon.replace('.footer-links');
+       </script>
     </div>
     
 {% if page.repo %}
-    <a href="{{ page.repo }}"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>    
+    <a href="{{page.repo}}"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>    
 {% endif %}
-
+    <script type="text/javascript" charset="utf-8">
+        if ((document.location+"").match(/showgrid/)) {
+            $('.container').addClass('showgrid');
+        }
+    </script>
+    
 {% if page.satisfaction %}
     <script type="text/javascript" charset="utf-8">
       var is_ssl = ("https:" == document.location.protocol);
@@ -99,16 +134,30 @@
     </script>
 {% endif %}
 
-    <script type="text/javascript">
-        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-        try {
-        var pageTracker = _gat._getTracker("UA-8404259-1");
-        pageTracker._setDomainName(".binaryage.com");
-        pageTracker._trackPageview();
-        } catch(err) {}
-    </script>
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+    var pageTracker = _gat._getTracker("UA-8404259-1");
+    pageTracker._setDomainName(".binaryage.com");
+    pageTracker._trackPageview();
+    } catch(err) {}
+</script>
+{% if page.disqus %}
+<script type="text/javascript">
+(function() {
+    var links = document.getElementsByTagName('a');
+    var query = '?';
+    for(var i = 0; i < links.length; i++) {
+        if(links[i].href.indexOf('#disqus_thread') >= 0) {
+            query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+        }
+    }
+    document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/binaryage/get_num_replies.js' + query + '"></' + 'script>');
+})();
+</script>
+{% endif %}
   </body>
 </html>

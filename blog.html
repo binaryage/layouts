@@ -12,54 +12,43 @@ products: [
 {title: "XRefresh", url: "http://xrefresh.binaryage.com", info: "Refresh a browser on save"}
 ]
 ---
-<div id="blog">
-    <div class="span-18 blog-main">
-        {{content}}
-    </div>
-    <div class="span-6 last blog-side">
-        <div class="blog-side-inner">
-            <div class="blog-side-about">
-                The developers deserve a better tools!
-                <a href="http://binaryage.com/about"><br>About BinaryAge</a>
+<div id="main-blog">
+    <div class="container background-highlight">
+        <div id="blog">
+            <div class="span-17 append-1 blog-main">
+                {{content}}
             </div>
-            <div class="subscribe">
-                <p><a href="http://feeds.feedburner.com/binaryage-blog" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/binaryage-blog" rel="alternate" type="application/rss+xml">Subscribe</a></p>
-            </div>
-            <div class="blog-side-products">
-                {% for product in page.products %}
-                <div class="blog-side-product">
-                    <a href="{{product.url}}">
-                    <img src="/shared/img/{{product.title|downcase}}-icon.png" width="32" height="32"/>
-                    <div>
-                        <div class="blog-side-product-title">{{product.title}}</div>
-                        <div class="blog-side-product-info">{{product.info}}</div>
-                    </div>
-                    </a>
+            <div class="span-6 last blog-side">
+                <div class="blog-side-box blog-side-about">
+                    <a href="http://binaryage.com/about"><div class="blog-side-icon blog-ba-icon"/></div></a>
+                    <div class="blog-side-praise">developers need<br/>a better tools!</div>
                 </div>
-                {% endfor %}
-            </div>
+                <div class="blog-side-box blog-side-subscribe">
+                    <a href="http://feeds.feedburner.com/binaryage-blog" rel="alternate" type="application/rss+xml"><div class="blog-side-icon blog-rss-icon"/></div></a>
+                    <a href="http://feeds.feedburner.com/binaryage-blog" rel="alternate" type="application/rss+xml">Subscribe</a>
+                    <div class="subscribe-button">
+                        <a href="http://feeds.feedburner.com/binaryage-blog"><img src="http://feeds.feedburner.com/~fc/binaryage-blog?bg=dddddd&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+                    </div>
+                </div>
+                <div class="blog-side-box blog-side-products">
+                    {% for product in page.products %}
+                    <div class="blog-side-product">
+                        <a href="{{product.url}}"><img src="/shared/img/icons/{{product.title|downcase}}-64.png" width="32" height="32"/><div class="blog-side-product-title">{{product.title}}</div><div class="blog-side-product-info">{{product.info}}</div></a>
+                    </div>
+                    {% endfor %}
+                </div>
 
-            <div class="stats">
-                <p><a href="http://feeds.feedburner.com/binaryage-blog"><img src="http://feeds.feedburner.com/~fc/binaryage-blog?bg=dddddd&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
-            </div>
-            
-            <div class="back-to-archive">
-                <a href="/">All Articles</a>
+                <div class="blog-side-box blog-side-archive">
+                    <a href="/">List of Articles</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<script type="text/javascript">
-//<![CDATA[
-(function() {
-    var links = document.getElementsByTagName('a');
-    var query = '?';
-    for(var i = 0; i < links.length; i++) {
-        if(links[i].href.indexOf('#disqus_thread') >= 0) {
-            query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-        }
-    }
-    document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/binaryage/get_num_replies.js' + query + '"></' + 'script>');
-})();
-//]]>
+
+<script>
+Cufon.replace('.blog-side-praise');
+Cufon.replace('.blog-side-product a', {
+    hover: { color: "#F8941C"}
+});
 </script>

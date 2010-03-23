@@ -1,115 +1,127 @@
 ---
 layout: default
-donatetitle: Contribute
 menu: products
 satisfaction: 1
 ---
-<div class="main-left span-12">
-    <div class="logo">
-        <img src="{{ page.icon }}" width="32" height="32"/>
-        <h1>{% if page.product_title %}{{ page.product_title }}{% else %}{{ page.title}}{% endif %}</h1>
-        <h2>{{ page.subtitle}}</h2>
-    </div>
-    <div class="download">
-        <div class="download-row">
-            {% if page.download %}
-            <div class="download-box" {% if page.downloadboxwidth %}style="width:{{page.downloadboxwidth}}"{% endif %}>
-                <div id="download-icon"></div>
-                <div class="download-button"><a href="{{page.download}}">{{page.downloadtitle}}</a></div>
-                {% if page.donate %}
-                <div class="donate-button"><a href="{{page.donate}}">{{page.donatetitle}}</a></div>
-                <div id="love-icon"></div>
+<div id="main-product">
+    <div class="container background-highlight">
+        <div class="main-product-left span-12">
+            <div class="product-logo-box">
+                <div class="gallery-icon-highlight"></div>
+                <img class="product-icon" src="/shared/img/icons/{{page.product_title|downcase}}-64.png">
+                <div class="product-tagline">
+                    <h1 class="product-title">{{page.product_title}}</h1>
+                    {% if page.product_badge %}
+                    <div class="product-badge badge-{{page.product_title|downcase}}">{{page.product_badge}}</div>
+                    {% endif %}
+                    <h2 class="product-subtitle">{{page.product_subtitle}}</h2>
+                </div>
+            </div>
+            <div class="product-buttons-box">
+                <div class="product-buttons">
+                    {% if page.download %}
+                    <a href="{{page.download}}">
+                        <div class="product-button-download"><div>{{page.downloadtitle}}</div></div>
+                    </a>
+                    {% endif %}
+                    {% if page.buy %}
+                    <!-- <a href="{{page.buy}}"> -->
+                        <div class="product-button-buy"><div>{{page.buytitle}}</div></div>
+                    <!-- </a> -->
+                    {% endif %}
+                    <div class="clear"></div>
+                </div>
+                <div class="product-note-box">
+                    {% if page.note %}
+                        <div class="product-note">{{page.note}}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="product-actions-box">
+                {% if page.retweet %}
+                <div class="retweet">
+                    <script type="text/javascript">tweetmeme_source = "binaryage";</script>
+                    <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
+                </div>
+                {% endif %}
+                {% if page.facebook %}
+                <div class="facebook">
+                    <script>
+                        $(function() {
+                            $(".facebook").html('<a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript">< /script>');
+                        });
+                    </script>
+                </div>
+                {% endif %}
+                <div class="clear"></div>
+            </div>
+            <div class="product-advert-box">
+                {% if page.advert %}
+                    <div class="product-advert">{{page.advert}}</div>
                 {% endif %}
             </div>
-            {% endif %}
-            {% if page.retweet %}
-            <div class="retweet">
-                <script type="text/javascript">tweetmeme_source = 'binaryage';</script>
-                <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
-            </div>
-            {% endif %}
-            {% if page.facebook %}
-            <div class="facebook">
-                <a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
-            </div>
-            {% endif %}
-            <div class="clear"></div>
         </div>
-        {% if page.subdownload %}
-        <div class="release-notes">
-            {% if page.subdownloadlink %}
-            <a href="{{page.subdownloadlink}}">{{page.subdownload}}</a>
+        <div class="main-product-right span-12 last">
+            <div class="product-separator">
+            </div>
+            <div class="main-screenshot">
+                {% for shot in page.shots %}
+                <div id="screenshot-box-{{forloop.index}}" class="screenshot-box" {% if forloop.index0 > 0 %}style="display:none"{% endif %}>
+                    {% if shot.type == 'xxx' %}
+                    
+                    {% else %}
+                    <a href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}"><img src="{{site.url}}{{shot.full}}"/></a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            {% if page.nothumbs %}
             {% else %}
-            {{page.subdownload}}
+            <div class="product-thumbs-box">
+                <a class="prevPage browse left"></a>
+                <div class="product-thumbs-scrollable"> 
+                    <div class="product-thumbs-items">
+                        {% for shot in page.shots %}
+                        <img src="{{site.url}}{{shot.thumb}}" rel="#screenshot-box-{{forloop.index}}"/>
+                        {% endfor %}
+                    </div>
+                </div>
+                <a class="nextPage browse right"></a>
+            </div>
             {% endif %}
         </div>
-        {% endif %}
     </div>
 </div>
-<div class="main-right span-12 last">
-    {% if page.mainshot %}
-    <div class="main-screenshot">
-        <img src="{{page.mainshot}}" rel="#overlay">
-    </div>
-    {% endif %}
-    {{ page.mainright }}
-</div>
 
-{% if page.mainrightshift %}
-<style type="text/css" media="screen">
-    .main-right {
-        margin-top: {{ page.mainrightshift }};
-    }
-</style>
-{% endif %}
-
-{% if page.mainshotfull %}
-<div class="overlay" id="overlay"></div>
-<style type="text/css" media="screen">
-div.overlay {
-    background-image:url({{page.mainshotfull}});
-    width:{{page.overlaysx}};
-    height:{{page.overlaysy}};      
-    display:none;
-}
-
-.main-screenshot {
-    cursor: pointer;
-}
-
-div.overlay div.close {
-    right:{{page.overlaycx}};
-    top:{{page.overlaycy}};
-}
-</style>
-
-<script type="text/javascript" charset="utf-8">
-    $(function() {
-        $("img[rel]").overlay();
-    });
+<script>
+Cufon.replace('.product-title');
+Cufon.replace('.product-subtitle');
+Cufon.replace('.product-button-download');
+Cufon.replace('.product-button-buy');
 </script>
-{% endif %}
 
-<div class="clear main-spacer"></div>
-
-<div class="main-content-here" style="display:none">
-{{ content }}
+<div id="main-tabs">
+    <div class="container">
+        <ul class="tabs"> 
+        </ul> 
+        <div class="panes"> 
+        </div>
+    </div>
 </div>
 
-<ul class="tabs"> 
-</ul> 
-
-<div class="panes"> 
+<div class="main-content-here">
+    {{ content }}
 </div>
+<script>
+    $('.main-content-here').hide();
+</script>
 
-<script type="text/javascript" charset="utf-8">
+<script>
 $(function() { 
-    var moreBox = $('.more-box');
-    $('.main-left').append(moreBox);
     var panes = $('.panes');
     var tabs = $('.tabs');
     var cur;
-    var items = $('#site .main-content-here > *');
+    var items = $('.main-content-here > *');
     items.each(function(i) {
         var el = $(this);
         var tag = el.attr('tagName');
@@ -121,7 +133,7 @@ $(function() {
             var name = el.html();
             var id = name.toLowerCase();
             var li = $('<li/>');
-            var a = $('<a/>').attr('href', '#'+id).html(name);
+            var a = $('<a class=\"tbx\"/>').attr('href', '#'+id).html(name.toUpperCase());
             li.append(a);
             tabs.append(li);
             cur = $('<div/>').addClass('wikistyle').addClass(id);
@@ -134,6 +146,47 @@ $(function() {
             }
         }
     });
-    $("ul.tabs").tabs("div.panes > div", {history: true}); 
-}); 
+    $("ul.tabs").tabs("div.panes > div").history();
+    Cufon.replace('.tbx');
+});
+</script>
+
+<script>
+    $(function() {
+        $(".product-thumbs-scrollable").scrollable({
+            size: 5
+        });
+
+        $(".product-thumbs-items img").click(function() {
+            var img = $(this);
+            var box = $(img.attr('rel'));
+            $('.screenshot-box:visible').fadeOut();
+            box.fadeIn();
+        }).filter(":first").click(); // when page loads simulate a "click" on the first image
+    });
+</script>
+
+<div class="simple_overlay" id="overlay-gallery"> 
+    <a class="overlay-prev">prev</a> 
+    <a class="overlay-next">next</a> 
+    <div class="overlay-info"></div>
+    <img class="overlay-progress" src="{{site.url}}/shared/img/twitter-loader.gif" /> 
+</div>
+
+<script>
+(function() {
+    $('.overlayable').overlay({
+        expose: '#f1f1f1',
+        target: '#overlay-gallery'
+    }).gallery({
+        disabledClass: 'disabled-overlay',
+        prev: '.overlay-prev',
+        next: '.overlay-next',
+        info: '.overlay-info',
+        progress: '.overlay-progress',
+        opacity: 1,
+        speed: 200, 
+        template: '[${index}/${total}] ${title}'
+    });
+})();
 </script>
