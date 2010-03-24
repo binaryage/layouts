@@ -39,32 +39,26 @@ satisfaction: 1
             </div>
             <div class="product-actions-box">
                 {% if page.retweet %}
+                <script type="text/javascript">tweetmeme_source = "binaryage";</script>
                 <div class="retweet">
-                    <script type="text/javascript">tweetmeme_source = "binaryage";</script>
-                    <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
                 </div>
+                <script>
+                $(".retweet").writeCapture().html('<scr'+'ipt type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></scr'+'ipt>')
+                </script>
                 {% endif %}
                 {% if page.facebook %}
                 <div class="facebook">
-                    <script>
-                        $(function() {
-                            $(".facebook").html('<a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript">< /script>');
-                        });
-                    </script>
                 </div>
+                <script>
+                    $(".facebook").writeCapture().html('<a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php">Share</a><scr'+'ipt src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></scr'+'ipt>');
+                </script>
                 {% endif %}
                 {% if page.usethis %}
                 <div class="usethis">
-                    <script>
-                        // $(function() {
-                        //     // nasty script!
-                        //     document.write = function(s) {
-                        //         $('.usethis').html(s);
-                        //     };
-                        //     $(".facebook").html('<script type="text/javascript" src="http://osx.iusethis.com/app/include/{{page.usethis}}/8">< /script>');
-                        // });
-                    </script>
                 </div>
+                <script>
+                    $('.usethis').writeCapture().html('<scr'+'ipt type="text/javascript" src="http://osx.iusethis.com/app/include/{{page.usethis}}/8"></scr'+'ipt>');
+                </script>
                 {% endif %}
                 <div class="clear"></div>
             </div>
