@@ -53,6 +53,19 @@ satisfaction: 1
                     </script>
                 </div>
                 {% endif %}
+                {% if page.usethis %}
+                <div class="usethis">
+                    <script>
+                        // $(function() {
+                        //     // nasty script!
+                        //     document.write = function(s) {
+                        //         $('.usethis').html(s);
+                        //     };
+                        //     $(".facebook").html('<script type="text/javascript" src="http://osx.iusethis.com/app/include/{{page.usethis}}/8">< /script>');
+                        // });
+                    </script>
+                </div>
+                {% endif %}
                 <div class="clear"></div>
             </div>
             <div class="product-advert-box">
