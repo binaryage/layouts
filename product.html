@@ -20,12 +20,12 @@ satisfaction: 1
             <div class="product-buttons-box">
                 <div class="product-buttons">
                     {% if page.download %}
-                    <a href="{{page.download}}">
+                    <a href="{{page.download}}" class="product-button-download-a">
                         <div class="product-button-download"><div>{{page.downloadtitle}}</div></div>
                     </a>
                     {% endif %}
                     {% if page.buy %}
-                    <!-- <a href="{{page.buy}}"> -->
+                    <!-- <a href="{{page.buy}}" class="product-button-buy-a"> -->
                         <div class="product-button-buy"><div>{{page.buytitle}}</div></div>
                     <!-- </a> -->
                     {% endif %}
@@ -103,7 +103,9 @@ satisfaction: 1
 <script>
 Cufon.replace('.product-title');
 Cufon.replace('.product-subtitle');
-Cufon.replace('.product-button-download');
+Cufon.replace('.product-button-download-a', {
+    hover: { color: "#F8941C"}    
+});
 Cufon.replace('.product-button-buy');
 </script>
 
@@ -116,12 +118,9 @@ Cufon.replace('.product-button-buy');
     </div>
 </div>
 
-<div class="main-content-here">
+<div class="main-content-here" style="display:none">
     {{ content }}
 </div>
-<script>
-    $('.main-content-here').hide();
-</script>
 
 <script>
 $(function() { 
