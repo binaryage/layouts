@@ -166,8 +166,10 @@ $(function() {
 
         $(".product-thumbs-items img").click(function() {
             var img = $(this);
+            var visible = $('.screenshot-box:visible');
             var box = $(img.attr('rel'));
-            $('.screenshot-box:visible').fadeOut();
+            if (box[0] === visible[0]) return; // optimization to not fade when clicked same image or during initial load
+            visible.fadeOut();
             box.fadeIn();
         }).filter(":first").click(); // when page loads simulate a "click" on the first image
     });
