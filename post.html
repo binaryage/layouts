@@ -28,8 +28,9 @@ Cufon.replace('.download-link', {
 (function() {
     var postContent = $('.post-content');
     var images = $('.blog-image', postContent).add('.blog-image-full', postContent).add('.blog-image-border', postContent).add('.blog-image-full-border', postContent);
+    if (!images.length) return;
+    
     var anchors = [];
-
     images.each(function() {
         var el = $(this);
         var wrapper = $('<a/>').attr('href', el.attr('src'));
@@ -51,7 +52,6 @@ Cufon.replace('.download-link', {
         speed: 200, 
         template: '[${index}/${total}] ${title}'
     });
-    
 })();
 </script>
 
