@@ -1,6 +1,5 @@
 ---
 layout: default
-menu: products
 satisfaction: 1
 ---
 <div id="main-product">
@@ -16,6 +15,41 @@ satisfaction: 1
                     {% endif %}
                     <h2 class="product-subtitle">{{page.product_subtitle}}</h2>
                 </div>
+            </div>
+            <div class="product-actions-box">
+                {% if page.usethis %}
+                <div class="usethis">
+                </div>
+                <script>
+                    $('.usethis').writeCapture().html('<scr'+'ipt type="text/javascript" src="http://osx.iusethis.com/app/include/{{page.usethis}}/8"></scr'+'ipt>');
+                </script>
+                {% endif %}
+                {% if page.buzz %}
+                <div class="buzz">
+                </div>
+                <script>
+                $(".buzz").writeCapture().html('<a title="Post on Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="normal-count" data-url="{{page.ogmeta.url}}" data-imageurl="{{page.ogmeta.image}}"></a><scr'+'ipt type="text/javascript" src="http://www.google.com/buzz/api/button.js"></scr'+'ipt>')
+                </script>
+                {% endif %}
+                {% if page.retweet %}
+                <script type="text/javascript">tweetmeme_source = "binaryage";</script>
+                <div class="retweet">
+                </div>
+                <script>
+                $(".retweet").writeCapture().html('<scr'+'ipt type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></scr'+'ipt>')
+                </script>
+                {% endif %}
+                {% if page.facebook and false %}
+                <div class="facebook">
+                </div>
+                <script>
+                    $(".facebook").writeCapture().html('<a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php">Share</a><scr'+'ipt src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></scr'+'ipt>');
+                </script>
+                {% endif %}
+                <div class="clear"></div>
+            </div>
+            <div class="facebook-like-box">
+                <fb:like href="http://totalfinder.binaryage.com" layout="standard" show_faces="true" width="300" action="like" font="arial" colorscheme="light"></fb:like>
             </div>
             <div class="product-buttons-box">
                 <div class="product-buttons">
@@ -37,40 +71,15 @@ satisfaction: 1
                     {% endif %}
                 </div>
             </div>
-            <div class="product-actions-box">
-                {% if page.retweet %}
-                <script type="text/javascript">tweetmeme_source = "binaryage";</script>
-                <div class="retweet">
-                </div>
-                <script>
-                $(".retweet").writeCapture().html('<scr'+'ipt type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></scr'+'ipt>')
-                </script>
-                {% endif %}
-                {% if page.facebook %}
-                <div class="facebook">
-                </div>
-                <script>
-                    $(".facebook").writeCapture().html('<a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php">Share</a><scr'+'ipt src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></scr'+'ipt>');
-                </script>
-                {% endif %}
-                {% if page.usethis %}
-                <div class="usethis">
-                </div>
-                <script>
-                    $('.usethis').writeCapture().html('<scr'+'ipt type="text/javascript" src="http://osx.iusethis.com/app/include/{{page.usethis}}/8"></scr'+'ipt>');
-                </script>
-                {% endif %}
-                <div class="clear"></div>
-            </div>
+            {% if false %}
             <div class="product-advert-box">
                 {% if page.advert %}
                     <div class="product-advert">{{page.advert}}</div>
                 {% endif %}
             </div>
+            {% endif %}
         </div>
         <div class="main-product-right span-12 last">
-            <div class="product-separator">
-            </div>
             <div class="main-screenshot">
                 {% for shot in page.shots %}
                 <div id="screenshot-box-{{forloop.index}}" class="screenshot-box" {% if forloop.index0 > 0 %}style="display:none"{% endif %}>
@@ -82,20 +91,6 @@ satisfaction: 1
                 </div>
                 {% endfor %}
             </div>
-            {% if page.nothumbs %}
-            {% else %}
-            <div class="product-thumbs-box">
-                <a class="prevPage browse left"></a>
-                <div class="product-thumbs-scrollable"> 
-                    <div class="product-thumbs-items">
-                        {% for shot in page.shots %}
-                        <img src="{{site.url}}{{shot.thumb}}" rel="#screenshot-box-{{forloop.index}}"/>
-                        {% endfor %}
-                    </div>
-                </div>
-                <a class="nextPage browse right"></a>
-            </div>
-            {% endif %}
         </div>
     </div>
 </div>
@@ -196,5 +191,8 @@ $(function() {
         speed: 200, 
         template: '[${index}/${total}] ${title}'
     });
+    setTimeout(function() {
+        $('.usethis').fadeIn('slow');
+    }, 3000);
 })();
 </script>

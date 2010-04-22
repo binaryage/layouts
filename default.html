@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:og="http://opengraphprotocol.org/schema/"
+      xmlns:fb="http://developers.facebook.com/schema/">
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>{{page.title}}</title>
@@ -13,6 +14,32 @@
     <link rel="image_src" href="{{page.meta_image}}" />
     {% endif %}
     <meta name="google-site-verification" content="N_xzdr6ymSUQFhAEvQg7f-sp1JAeJCdW2JuaRg-da0w" />
+
+    <meta property="fb:admins" content="antonin.hildebrand" />
+    {% if page.ogmeta %}
+        {% if page.ogmeta.email %}
+            <meta property="og:email" content="{{page.ogmeta.email}}" />
+        {% endif %}
+        {% if page.ogmeta.description %}
+            <meta property="og:description" content="{{page.ogmeta.description}}" />
+        {% endif %}
+        {% if page.ogmeta.site_name %}
+            <meta property="og:site_name" content="{{page.ogmeta.site_name}}" />
+        {% endif %}
+        {% if page.ogmeta.type %}
+            <meta property="og:type" content="{{page.ogmeta.type}}" />
+        {% endif %}
+        {% if page.ogmeta.title %}
+            <meta property="og:title" content="{{page.ogmeta.title}}" />
+        {% endif %}
+        {% if page.ogmeta.url %}
+            <meta property="og:url" content="{{page.ogmeta.url}}" />
+        {% endif %}
+        {% if page.ogmeta.image %}
+            <meta property="og:image" content="{{page.ogmeta.image}}" />
+        {% endif %}
+    {% endif %}
+
     <link href="http://www.google.com/profiles/antonin.hildebrand" rel="me" type="text/html" />
     <link href="http://feeds.feedburner.com/binaryage-blog" type="application/atom+xml" rel="alternate" title="The ideas from BinaryAge" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -79,7 +106,7 @@
                 </div>
               </div>
              <div class="copyright">
-               <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="/shared/img/byccnd.png" /></a>
+               <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/us/"><img title="Web site license" alt="Creative Commons License" style="border-width:0" src="/shared/img/byccnd.png" /></a>
              </div>
              <div class="footer-links">
                <a href="http://binaryage.com">products</a> | 
@@ -94,7 +121,9 @@
           </div>
        </div>
        <script type="text/javascript">
-           Cufon.replace('.footer-links');
+           Cufon.replace('.footer-links', {
+               hover: { color: "#000"}
+           });
        </script>
     </div>
     
@@ -110,6 +139,21 @@
     </script>
 {% endif %}
     
+{% if page.fbsdk %}
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({appId: '332451499524', status: true, cookie: true, xfbml: true});
+  };
+  (function() {
+    var e = document.createElement('script'); e.async = true;
+    e.src = document.location.protocol +
+      '//connect.facebook.net/en_US/all.js';
+    document.getElementById('fb-root').appendChild(e);
+  }());
+</script>
+{% endif %}
+
 {% if page.satisfaction %}
     <script type="text/javascript" charset="utf-8">
       var is_ssl = ("https:" == document.location.protocol);
@@ -121,7 +165,7 @@
       var feedback_widget_options = {};
       feedback_widget_options.display = "overlay";  
       feedback_widget_options.company = "binaryage";
-      feedback_widget_options.placement = "right";
+      feedback_widget_options.placement = "left";
       feedback_widget_options.color = "#656565";
       feedback_widget_options.style = "idea";
       var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
