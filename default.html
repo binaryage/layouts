@@ -190,6 +190,7 @@
 {% endif %}
 
 {% if page.disqus %}
+    <div id="disqus-wrapper"></div>
     <script type="text/javascript">
     (function() {
         var links = document.getElementsByTagName('a');
@@ -199,7 +200,7 @@
                 query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
             }
         }
-        document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/binaryage/get_num_replies.js' + query + '"></' + 'script>');
+        $('#disqus-wrapper').html('<scr'+'ipt charset="utf-8" type="text/javascript" src="http://disqus.com/forums/binaryage/get_num_replies.js' + query + '"></scr'+'ipt>');
     })();
     </script>
 {% endif %}
