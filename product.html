@@ -21,14 +21,14 @@ satisfaction: 1
                 <div class="usethis">
                 </div>
                 <script>
-                    $('.usethis').writeCapture().html('<scr'+'ipt type="text/javascript" src="http://osx.iusethis.com/app/include/{{page.usethis}}/8"></scr'+'ipt>');
+                    $('.usethis').html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://osx.iusethis.com/app/include/{{page.usethis}}/8"></scr'+'ipt>'));
                 </script>
                 {% endif %}
                 {% if page.buzz %}
                 <div class="buzz">
                 </div>
                 <script>
-                $(".buzz").writeCapture().html('<a title="Post on Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="normal-count" data-url="{{page.ogmeta.url}}" data-imageurl="{{page.ogmeta.image}}"></a><scr'+'ipt type="text/javascript" src="http://www.google.com/buzz/api/button.js"></scr'+'ipt>')
+                    $(".buzz").html(writeCapture.sanitize('<a title="Post on Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="normal-count" data-url="{{page.ogmeta.url}}" data-imageurl="{{page.ogmeta.image}}"></a><scr'+'ipt type="text/javascript" src="http://www.google.com/buzz/api/button.js"></scr'+'ipt>'));
                 </script>
                 {% endif %}
                 {% if page.retweet %}
@@ -36,14 +36,14 @@ satisfaction: 1
                 <div class="retweet">
                 </div>
                 <script>
-                $(".retweet").writeCapture().html('<scr'+'ipt type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></scr'+'ipt>')
+                    $(".retweet").html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></scr'+'ipt>'));
                 </script>
                 {% endif %}
                 {% if page.facebook and false %}
                 <div class="facebook">
                 </div>
                 <script>
-                    $(".facebook").writeCapture().html('<a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php">Share</a><scr'+'ipt src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></scr'+'ipt>');
+                    $(".facebook").html(writeCapture.sanitize('<a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php">Share</a><scr'+'ipt src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></scr'+'ipt>'));
                 </script>
                 {% endif %}
                 <div class="clear"></div>
