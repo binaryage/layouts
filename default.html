@@ -115,7 +115,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript"> Cufon.now(); </script>
     <div id="main">
       {{content}}
       <div class="clear"></div>
@@ -477,6 +476,23 @@
         });
     });
     
+    </script>
+    <script>
+    // localhost debug
+    $(function() {
+        var host = document.location.host;
+        if (host.substring(host.length-3)=='org') {
+            console.info('replacing all binaryage.com links to binaryage.org ...');
+            $('a').each(function() {
+                var el = $(this);
+                var href = el.attr('href');
+                if (href && href.match('binaryage.com')) {
+                    href = href.replace('binaryage.com', 'binaryage.org');
+                    el.attr('href', href);
+                }
+            });
+        }
+    });
     </script>
     
   </body>
