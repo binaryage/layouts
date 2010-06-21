@@ -4,9 +4,8 @@ satisfaction: 1
 ---
 <div id="main-product">
     <div class="container background-highlight">
-        <div class="main-product-left span-12">
+        <div class="main-product-left span-12" style="padding-top:{{page.leftshift}}">
             <div class="product-logo-box">
-                <div class="gallery-icon-highlight"></div>
                 <img class="product-icon" src="/shared/img/icons/{{page.product_title|downcase}}-64.png">
                 <div class="product-tagline">
                     <h1 class="product-title">{{page.product_title}}</h1>
@@ -16,50 +15,12 @@ satisfaction: 1
                     <h2 class="product-subtitle">{{page.product_subtitle}}</h2>
                 </div>
             </div>
-            <div class="product-actions-box">
-                {% if page.usethis %}
-                <div class="usethis">
-                </div>
-                <script>
-                    $('.usethis').html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://osx.iusethis.com/app/include/{{page.usethis}}/8"></scr'+'ipt>'));
-                </script>
-                {% endif %}
-                {% if page.retweet %}
-                <script type="text/javascript">tweetmeme_source = "binaryage";</script>
-                <div class="retweet">
-                </div>
-                <script>
-                    $(".retweet").html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></scr'+'ipt>'));
-                </script>
-                {% endif %}
-                {% if page.facebook %}
-                <div class="facebook">
-                    <fb:share-button class="url" href="{{page.ogmeta.url}}/" type="box_count"></fb:share-button>
-                </div>
-                {% endif %}
-                {% if page.buzz %}
-                <div class="buzz">
-                </div>
-                <script>
-                    $(".buzz").html(writeCapture.sanitize('<a title="Post on Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="normal-count" data-url="{{page.ogmeta.url}}" data-imageurl="{{page.ogmeta.image}}"></a><scr'+'ipt type="text/javascript" src="http://www.google.com/buzz/api/button.js"></scr'+'ipt>'));
-                </script>
-                {% endif %}
-                <div class="clear"></div>
-            </div>
-            <div class="facebook-like-box">
-                <fb:like href="{{page.ogmeta.url}}" layout="standard" show_faces="true" width="250" action="like" font="arial" colorscheme="light"></fb:like>
-            </div>
             <div class="product-buttons-box">
                 <div class="product-buttons">
                     {% if page.download %}
-                    <a href="{{page.download}}" class="product-button-download-a">
-                        <div class="product-button-download"><div>{{page.downloadtitle}}</div></div>
+                    <a href="{{page.download}}" class="button product-button-download">
+                        <div><div>{{page.downloadtitle}}</div></div>
                     </a>
-                    {% endif %}
-                    {% if page.buy %}
-                    <!-- <a href="{{page.buy}}" class="product-button-buy-a"> -->
-                        <div class="product-button-buy"><div>{{page.buytitle}}</div></div>
-                    <!-- </a> -->
                     {% endif %}
                     <div class="clear"></div>
                 </div>
@@ -78,6 +39,39 @@ satisfaction: 1
             {% endif %}
         </div>
         <div class="main-product-right span-12 last">
+            <div class="product-actions-box">
+                {% if page.retweet %}
+                <script type="text/javascript">tweetmeme_source = "binaryage";</script>
+                <div class="retweet">
+                </div>
+                <script>
+                    $(".retweet").html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></scr'+'ipt>'));
+                </script>
+                {% endif %}
+                {% if page.facebook and false %}
+                <div class="facebook">
+                    <fb:share-button class="url" href="{{page.ogmeta.url}}/" type="box_count"></fb:share-button>
+                </div>
+                {% endif %}
+                {% if page.buzz %}
+                <div class="buzz">
+                </div>
+                <script>
+                    $(".buzz").html(writeCapture.sanitize('<a title="Post on Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="normal-count" data-url="{{page.ogmeta.url}}" data-imageurl="{{page.ogmeta.image}}"></a><scr'+'ipt type="text/javascript" src="http://www.google.com/buzz/api/button.js"></scr'+'ipt>'));
+                </script>
+                {% endif %}
+                {% if page.usethis %}
+                <div class="usethis">
+                </div>
+                <script>
+                    $('.usethis').html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://osx.iusethis.com/app/include/{{page.usethis}}/8"></scr'+'ipt>'));
+                </script>
+                {% endif %}
+                <div class="clear"></div>
+            </div>
+            <div class="facebook-like-box" style="left:{{ page.likeshift }}">
+                <fb:like href="{{page.ogmeta.url}}" layout="standard" show_faces="false" action="like" font="arial" colorscheme="light"></fb:like>
+            </div>        
             <div class="main-screenshot">
                 {% for shot in page.shots %}
                 <div id="screenshot-box-{{forloop.index}}" class="screenshot-box" {% if forloop.index0 > 0 %}style="display:none"{% endif %}>
@@ -88,6 +82,7 @@ satisfaction: 1
                     {% endif %}
                 </div>
                 {% endfor %}
+                <div class="clear"></div>
             </div>
         </div>
     </div>
@@ -121,9 +116,9 @@ $(function() {
         if (el.hasClass('panes') || el.hasClass('tabs')) return;
         if (el.attr('tagName')=='H2') {
             var name = el.html();
-            var id = name.toLowerCase();
+            var id = name.toLowerCase().replace(/[^a-z0-9]/g, '-');
             var li = $('<li/>');
-            var a = $('<a class=\"tbx\"/>').attr('href', '#'+id).html(name.toUpperCase());
+            var a = $('<a class=\"tbx\"/>').attr('href', '#'+id).html(name);
             li.append(a);
             tabs.append(li);
             cur = $('<div/>').addClass('wikistyle').addClass(id);
@@ -179,8 +174,5 @@ $(function() {
         speed: 200, 
         template: '[${index}/${total}] ${title}'
     });
-    setTimeout(function() {
-        $('.usethis').fadeIn('slow');
-    }, 3000);
 })();
 </script>

@@ -19,9 +19,10 @@ products: [
                 {{content}}
             </div>
             <div class="span-6 last blog-side">
-                <div class="blog-side-box blog-side-about">
-                    <a href="http://binaryage.com/about"><div class="blog-side-icon blog-ba-icon"/></div></a>
-                    <div class="blog-side-praise">developers need<br/>better tools!</div>
+                <div class="blog-side-box blog-side-about" style="visibility:hidden">
+                    <div class="blog-side-about-left"><a href="http://www.binaryage.com/about"><img src="http://www.gravatar.com/avatar/79322c2ed80c2d722de8c9d0475198a0?s=64" width="64" height="64"></a></div>
+                    <div class="blog-side-about-right"><b>Antonin</b> is a developer from Prague in the Czech Republic. <a href="http://www.binaryage.com/about">read more&hellip;</a></div>
+                    <div class="clear"></div>
                 </div>
                 <div class="blog-side-box blog-side-subscribe">
                     <a href="http://feeds.feedburner.com/binaryage-blog" rel="alternate" type="application/rss+xml"><div class="blog-side-icon blog-rss-icon"/></div></a>
@@ -36,10 +37,6 @@ products: [
                         <a href="{{product.url}}"><img src="/shared/img/icons/{{product.title|downcase}}-64.png" width="32" height="32"/><div class="blog-side-product-title">{{product.title}}</div><div class="blog-side-product-info">{{product.info}}</div></a>
                     </div>
                     {% endfor %}
-                </div>
-
-                <div class="blog-side-box blog-side-archive">
-                    <a href="/">The list of all articles</a>
                 </div>
             </div>
         </div>
