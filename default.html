@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:og="http://opengraphprotocol.org/schema/"
-      xmlns:fb="http://developers.facebook.com/schema/">
+      xmlns:fb="http://developers.facebook.com/schema/"
+      {% if page.id %}class="{{page.id}}"{% endif %}
+>
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>{{page.title}}</title>
@@ -99,36 +101,38 @@
     </script>
   </head>
   <body>
-    <div id="header">
-        <div class="container header-bar">
-            <div class="span-7">
-                <a href="http://binaryage.com" title="Binary Age - software"><div class="header-logo"></div></a>
-                <div class="twitter-praise-wrapper">
-                    <div class="praise-button" title="Show Twitter praise about BinaryAge">Twitter Responses</div>
-                </div>
-                <div class="twitter-icon-wrapper">
-                    <a href="http://www.twitter.com/binaryage"><img src="http://twitter-badges.s3.amazonaws.com/follow_me-b.png" title="Follow binaryage on Twitter"/></a>
-                </div>
-                <div class="twitterbox">
-                    <div id="tweets-scrollable">
-                        <ol id="tweets" class="statuses">
-                        </ol>
+    <div id="header-wrapper">
+        <div id="header">
+            <div class="container header-bar">
+                <div class="span-7">
+                    <a href="http://binaryage.com" title="Binary Age - software"><div class="header-logo"></div></a>
+                    <div class="twitter-praise-wrapper">
+                        <div class="praise-button" title="Show Twitter praise about BinaryAge">Twitter Responses</div>
+                    </div>
+                    <div class="twitter-icon-wrapper">
+                        <a href="http://www.twitter.com/binaryage"><img src="http://twitter-badges.s3.amazonaws.com/follow_me-b.png" title="Follow binaryage on Twitter"/></a>
+                    </div>
+                    <div class="twitterbox">
+                        <div id="tweets-scrollable">
+                            <ol id="tweets" class="statuses">
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="lovebox" style="display:none">
+                        <div class="lovebox-arrow"></div>
+                        Yeah, it looks like people love this software :-)<br>
+                        Want to blog about it?
                     </div>
                 </div>
-                <div class="lovebox" style="display:none">
-                    <div class="lovebox-arrow"></div>
-                    Yeah, it looks like people love this software :-)<br>
-                    Want to blog about it?
+                <div class="span-17 last">
+                    <div class="item-store-badge">Opening soon</div>
+                    <ul class="header-menu {{page.menu}} segment">
+                        <li class="segment-1 menu-item-store"><a href=""><span>store</span></a></li>
+                        <li class="enabled segment-0 menu-item-products"><a href="http://binaryage.com"><span>products</span></a></li>
+                        <li class="enabled segment-0 menu-item-blog"><a href="http://blog.binaryage.com"><span>blog</span></a></li>
+                        <li class="enabled segment-2 menu-item-about"><a href="http://binaryage.com/about"><span>about</span></a></li>
+                    </ul>
                 </div>
-            </div>
-            <div class="span-17 last">
-                <div class="item-store-badge">Opening soon</div>
-                <ul class="header-menu {{page.menu}} segment">
-                    <li class="segment-1 menu-item-store"><a href=""><span>store</span></a></li>
-                    <li class="enabled segment-0 menu-item-products"><a href="http://binaryage.com"><span>products</span></a></li>
-                    <li class="enabled segment-0 menu-item-blog"><a href="http://blog.binaryage.com"><span>blog</span></a></li>
-                    <li class="enabled segment-2 menu-item-about"><a href="http://binaryage.com/about"><span>about</span></a></li>
-                </ul>
             </div>
         </div>
     </div>
