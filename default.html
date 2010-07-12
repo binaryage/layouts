@@ -50,10 +50,13 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/shared/css/site.css" type="text/css">
+
+    {% if page.xstatic != 1 %}
     {% if page.styles %}
         {% for s in page.styles %}
             <link rel="stylesheet" href="{{s}}.css" type="text/css">
         {% endfor %}
+    {% endif %}
     {% endif %}
     <script type="text/javascript" charset="utf-8">
     /*
@@ -65,6 +68,7 @@
     */
     function css_browser_selector(u){var ua = u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1;},g='gecko',w='webkit',s='safari',o='opera',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?'mobile':is('iphone')?'iphone':is('ipod')?'ipod':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win':is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);        
     </script>
+    {% if page.xstatic != 1 %}
     <script src="/shared/js/code.js"></script>
     {% if page.scripts %}
         {% for s in page.scripts %}
@@ -99,6 +103,7 @@
             s.parentNode.insertBefore(wf, s);
         })();
     </script>
+    {% endif %}
   </head>
   <body>
     <div id="header-wrapper">
@@ -128,9 +133,9 @@
                     </ul>
                     <ul class="top-menu {{page.menu}}">
                         <li class="enabled menu-item-twitter-praise praise-button" title="Show Twitter praise about BinaryAge"><span>Watch reactions from Twitter</span></li>
-                        <li class="menu-item-separator">|</li>
+                        <li class="menu-item-separator menu-item-separator-1">|</li>
                         <li class="enabled menu-item-twitter" title="Follow binaryage on Twitter"><a href="http://twitter.com/binaryage"><span>Follow me on Twitter</span></a></li>
-                        <li class="menu-item-separator">|</li>
+                        <li class="menu-item-separator menu-item-separator-2">|</li>
                         <li class="enabled menu-item-about"><a href="http://binaryage.com/about.html"><span>About BinaryAge</span></a></li>
                     </ul>
                 </div>
@@ -171,6 +176,8 @@
 {% if page.repo %}
     <a href="{{page.repo}}"><img style="z-index:1000; position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>    
 {% endif %}
+
+{% if page.xstatic != 1 %}
 
 {% if site.url contains ".org" %}
     <script type="text/javascript" charset="utf-8">
@@ -271,5 +278,6 @@
         }
     });
     </script>
+{% endif %}
   </body>
 </html>
