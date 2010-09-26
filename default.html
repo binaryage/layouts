@@ -105,7 +105,7 @@
     </script>
     {% endif %}
   </head>
-  <body>
+  <body id="page-{{ page.url | remove: '/' | remove: '.html' }}">
     <div id="header-wrapper">
         <div id="header">
             <div class="container header-bar">
@@ -124,9 +124,8 @@
                     </div>
                 </div>
                 <div class="span-17 last">
-                    <div class="item-store-badge">Opening soon</div>
                     <ul class="header-menu {{page.menu}} segment">
-                        <li class="segment-1 menu-item-store"><a href=""><span>store</span></a></li>
+                        <li class="enabled segment-1 menu-item-store"><a href="https://sites.fastspring.com/binaryage/instant/totalfinder"><span>store</span></a></li>
                         <li class="enabled segment-0 menu-item-products"><a href="http://binaryage.com"><span>products</span></a></li>
                         <li class="enabled segment-0 menu-item-blog"><a href="http://blog.binaryage.com"><span>blog</span></a></li>
                         <li class="enabled segment-2 menu-item-support"><a href="http://support.binaryage.com"><span>support</span></a></li>

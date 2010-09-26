@@ -1,0 +1,104 @@
+---
+layout: default
+satisfaction: 1
+---
+<div id="main-product">
+    <div class="container">
+        <div class="main-product-left span-12" style="padding-top:{{page.leftshift}}">
+            <div class="product-logo-box">
+                <img class="product-icon" src="/shared/img/icons/{{page.product_title|downcase}}-64.png">
+                <div class="product-tagline">
+                    <h1 class="product-title">{{page.product_title}}</h1>
+                    {% if page.product_badge %}
+                    <div class="product-badge badge-{{page.product_title|downcase}}">{{page.product_badge}}</div>
+                    {% endif %}
+                    <h2 class="product-subtitle">{{page.product_subtitle}}</h2>
+                </div>
+            </div>
+            <div class="product-buttons-box">
+                <div class="product-buttons">
+                    <a href="http://revision3.com/tzdaily/2010-02-16totalfinder" id="teaser-link" rel="#teaser" class="button button-300 product-button-play">
+                        <div><div>Watch Video</div></div>
+                    </a>
+                    <a href="{{page.download}}" class="button button-300 product-button-download">
+                        <div><div><div class="trial-note">14 days trial</div>{{page.downloadtitle}}<div class="product-specs">Requires OS X 10.6 (Snow Leopard)</div></div></div>
+                    </a>
+                    <a href="https://sites.fastspring.com/binaryage/instant/totalfinder" class="button button-300 product-button-buy">
+                        <div><div>Buy it for $15</div></div>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+                <div class="reasons-to-buy">
+                    <a href="/reasons-to-buy">Why should I buy?</a>
+                </div>
+            </div>
+            {% if false %}
+            <div class="product-advert-box">
+                {% if page.advert %}
+                    <div class="product-advert">{{page.advert}}</div>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+        <div class="main-product-right span-12 last">
+            <!-- <div class="product-actions-box">
+                {% if page.retweet %}
+                <script type="text/javascript">tweetmeme_source = "binaryage";</script>
+                <div class="retweet">
+                </div>
+                <script>
+                    $(".retweet").html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></scr'+'ipt>'));
+                </script>
+                {% endif %}
+                {% if page.facebook and false %}
+                <div class="facebook">
+                    <fb:share-button class="url" href="{{page.ogmeta.url}}/" type="box_count"></fb:share-button>
+                </div>
+                {% endif %}
+                {% if page.buzz %}
+                <div class="buzz">
+                </div>
+                <script>
+                    $(".buzz").html(writeCapture.sanitize('<a title="Post on Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="normal-count" data-url="{{page.ogmeta.url}}" data-imageurl="{{page.ogmeta.image}}"></a><scr'+'ipt type="text/javascript" src="http://www.google.com/buzz/api/button.js"></scr'+'ipt>'));
+                </script>
+                {% endif %}
+                {% if page.usethis %}
+                <div class="usethis">
+                </div>
+                <script>
+                    $('.usethis').html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://osx.iusethis.com/app/include/{{page.usethis}}/8"></scr'+'ipt>'));
+                </script>
+                {% endif %}
+                {% if page.flattr %}
+                <div class="flattr">
+                <script type="text/javascript">
+                    document.write('<iframe width="50" scrolling="no" height="60" frameborder="0" src="http://api.flattr.com/button/view/?uid=0&amp;url='+encodeURIComponent('{{page.flattr}}')+'&amp;language=&amp;hidden=0&amp;title=&amp;category=&amp;tags=&amp;description=" border="0" marginheight="0" marginwidth="0" allowtransparency="true"></iframe>')
+                </script>
+                </div>
+                {% endif %}
+                <div class="clear"></div>
+            </div> -->
+            <div class="facebook-like-box" style="left:{{ page.likeshift }};">
+                <fb:like href="{{page.ogmeta.url}}" layout="standard" show_faces="false" action="like" font="arial" colorscheme="light"></fb:like>
+            </div>        
+            <div class="main-screenshot" style="height: 325px;">
+                {% for shot in page.shots %}
+                <div id="screenshot-box-{{forloop.index}}" class="screenshot-box" {% if forloop.index0 > 0 %}style="display:none"{% endif %}>
+                    {% if shot.type == 'xxx' %}
+                    
+                    {% else %}
+                    <a href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}"><img src="{{site.url}}{{shot.full}}"/></a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="main-content tf-home">
+    <div class="container">
+        {{ content }}
+    </div>
+</div>
