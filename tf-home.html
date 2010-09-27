@@ -42,7 +42,22 @@ satisfaction: 1
             {% endif %}
         </div>
         <div class="main-product-right span-12 last">
-            <!-- <div class="product-actions-box">
+            <div class="facebook-like-box" style="left:{{ page.likeshift }};">
+                <fb:like href="{{page.ogmeta.url}}" layout="standard" show_faces="false" action="like" font="arial" colorscheme="light"></fb:like>
+            </div>        
+            <div class="main-screenshot" style="height: 325px;">
+                {% for shot in page.shots %}
+                <div id="screenshot-box-{{forloop.index}}" class="screenshot-box" {% if forloop.index0 > 0 %}style="display:none"{% endif %}>
+                    {% if shot.type == 'xxx' %}
+                    
+                    {% else %}
+                    <a href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}"><img src="{{site.url}}{{shot.full}}"/></a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <div class="clear"></div>
+            </div>
+            <div class="tf-product-actions-box">
                 {% if page.retweet %}
                 <script type="text/javascript">tweetmeme_source = "binaryage";</script>
                 <div class="retweet">
@@ -77,21 +92,6 @@ satisfaction: 1
                 </script>
                 </div>
                 {% endif %}
-                <div class="clear"></div>
-            </div> -->
-            <div class="facebook-like-box" style="left:{{ page.likeshift }};">
-                <fb:like href="{{page.ogmeta.url}}" layout="standard" show_faces="false" action="like" font="arial" colorscheme="light"></fb:like>
-            </div>        
-            <div class="main-screenshot" style="height: 325px;">
-                {% for shot in page.shots %}
-                <div id="screenshot-box-{{forloop.index}}" class="screenshot-box" {% if forloop.index0 > 0 %}style="display:none"{% endif %}>
-                    {% if shot.type == 'xxx' %}
-                    
-                    {% else %}
-                    <a href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}"><img src="{{site.url}}{{shot.full}}"/></a>
-                    {% endif %}
-                </div>
-                {% endfor %}
                 <div class="clear"></div>
             </div>
         </div>
