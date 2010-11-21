@@ -159,5 +159,16 @@ satisfaction: 1
     $(function() {
         $("#teaser-link").overlay({effect: 'apple'});
         $("#buy-link").overlay({effect: 'apple'});
+
+        // optimizely events
+        $("#teaser-link").bind("click", function() {
+            optimizely.trackEvent("VideoButtonClicked");
+        });
+        $("#buy-link").bind("click", function() {
+            optimizely.trackEvent("BuyButtonClicked");
+        });
+        $("#download-link").bind("click", function() {
+            optimizely.trackEvent("DownloadButtonClicked");
+        });
     });
 </script>
