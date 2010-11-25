@@ -60,12 +60,9 @@ satisfaction: 1
             <div class="tf-product-actions-box">
                 <div class="tf-product-actions-box-inner">
                 {% if page.retweet %}
-                <script type="text/javascript">tweetmeme_source = "binaryage";</script>
                 <div class="retweet">
+                <a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="binaryage">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>                
                 </div>
-                <script>
-                    $(".retweet").html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></scr'+'ipt>'));
-                </script>
                 {% endif %}
                 {% if page.facebook and false %}
                 <div class="facebook">
