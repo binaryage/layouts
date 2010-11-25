@@ -74,7 +74,6 @@
     <script src="//cdn.optimizely.com/js/3577014.js"></script>
     {% endif %}
     {% if page.xstatic != 1 %}
-    <script src="http://cdn.jquerytools.org/1.2.5/all/jquery.tools.min.js"></script>
     <script src="/shared/js/code.js"></script>
     {% if page.scripts %}
         {% for s in page.scripts %}
@@ -234,7 +233,6 @@
     <div class="chimp"><div class="chimp-quote">Don't worry, I'm a nice postman... MailChimp</div></div>
 
 <!-- Begin MailChimp Signup Form -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
 <script type="text/javascript" src="http://downloads.mailchimp.com/js/jquery.validate.js"></script>
 <script type="text/javascript" src="http://downloads.mailchimp.com/js/jquery.form.js"></script>
 <script type="text/javascript">
@@ -278,7 +276,7 @@ try{
 } catch(e){
     err_style = 'margin: 1em 0 0 0; padding: 1em 0.5em 0.5em 0.5em; background: ERROR_BGCOLOR none repeat scroll 0% 0%; font-weight: bold; float: left; z-index: 1; width: 80%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: ERROR_COLOR;';
 }
-var mce_jQuery = jQuery.noConflict();
+var mce_jQuery = jQuery;
 mce_jQuery(document).ready( function($) {
   var options = { errorClass: 'mce_inline_error', errorElement: 'div', errorStyle: err_style, onkeyup: function(){}, onfocusout:function(){}, onblur:function(){}  };
   var mce_validator = mce_jQuery("#mc-embedded-subscribe-form").validate(options);
