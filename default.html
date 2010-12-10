@@ -4,6 +4,23 @@
       {% if page.id %}class="{{page.id}}"{% endif %}
 >
   <head>
+      {% if page.gwo %}
+      <!-- Google Website Optimizer Control Script -->
+      <script>
+      _udn = ".binaryage.com";
+      function utmx_section(){}function utmx(){}
+      (function(){var k='{{page.gwo}}',d=document,l=d.location,c=d.cookie;function f(n){
+      if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.indexOf(';',i);return escape(c.substring(i+n.
+      length+1,j<0?c.length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;
+      d.write('<sc'+'ript src="'+
+      'http'+(l.protocol=='https:'?'s://ssl':'://www')+'.google-analytics.com'
+      +'/siteopt.js?v=1&utmxkey='+k+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='
+      +new Date().valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+      '" type="text/javascript" charset="utf-8"></sc'+'ript>')})();
+      </script>
+      <!-- End of Google Website Optimizer Control Script -->
+      {% endif %}
+      
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>{{page.title}}</title>
     {% if page.meta_title %}
@@ -147,7 +164,13 @@
         </div>
     </div>
     <div id="main">
+      {% if page.gwo %}
+      <script>utmx_section("content")</script>
+      {% endif %}
       {{content}}
+      {% if page.gwo %}
+      </noscript>
+      {% endif %}
       <div class="clear"></div>
     </div>
     <div id="footer">
@@ -486,5 +509,18 @@ function mce_success_cb(resp){
     });
     </script>
 {% endif %}
+
+<!-- Google Website Optimizer Tracking Script -->
+<script type="text/javascript">
+if(typeof(_gat)!='object')document.write('<sc'+'ript src="http'+
+(document.location.protocol=='https:'?'s://ssl':'://www')+
+'.google-analytics.com/ga.js"></sc'+'ript>')</script>
+<script type="text/javascript">
+try {
+var gwoTracker=_gat._getTracker("UA-9521789-1");
+gwoTracker._setDomainName(".binaryage.com");
+gwoTracker._trackPageview("/{{page.gwo}}/test");
+}catch(err){}</script>
+<!-- End of Google Website Optimizer Tracking Script -->
   </body>
 </html>
