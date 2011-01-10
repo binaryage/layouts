@@ -152,15 +152,6 @@
                         <li class="enabled segment-0 menu-item-blog"><a href="http://blog.binaryage.com"><span>blog</span></a></li>
                         <li class="enabled segment-2 menu-item-support"><a href="http://support.binaryage.com"><span>support</span></a></li>
                     </ul>
-                    <ul class="top-menu {{page.menu}}">
-                        <li class="enabled menu-item-twitter-praise praise-button" title="Show Twitter praise for BinaryAge"><span>Watch reactions from Twitter</span></li>
-                        <li class="menu-item-separator menu-item-separator-1">|</li>
-                        <li class="enabled menu-item-twitter" title="Follow binaryage on Twitter"><a href="http://twitter.com/binaryage"><span>Follow me on Twitter</span></a></li>
-                        <li class="menu-item-separator menu-item-separator-2">|</li>
-                        <li class="enabled menu-item-subscribe" title="Subscribe to the newsletter"><a class="subscribe-link" rel="#subscribe"><span>Subscribe to news from BinaryAge</span></a></li>
-                        <li class="menu-item-separator menu-item-separator-2">|</li>
-                        <li class="enabled menu-item-about"><a href="http://binaryage.com/about.html"><span>About BinaryAge</span></a></li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -190,14 +181,13 @@
              {% endif %}
              <div class="footer-links force-right">
                <a href="http://www.binaryage.com">products</a> | 
-               <!-- <a href="http://store.binaryage.com">store</a> |  -->
                <a href="http://blog.binaryage.com">blog</a> | 
-               <!-- <a href="http://binaryage.com/mediakit">mediakit</a> |  -->
                <a href="http://support.binaryage.com">support</a>
               {% if page.repo %}
                    | <a href="{{page.repo}}">source code</a>
               {% endif %}
-             </div>
+              | <a href="http://binaryage.com/about.html"><span>contact</span>
+                 </div>
           </div>
        </div>
     </div>
