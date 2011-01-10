@@ -20,7 +20,7 @@ satisfaction: 1
             </div>
             <div class="product-buttons-box">
                 <div class="product-buttons">
-                    <a href="http://revision3.com/tzdaily/2010-02-16totalfinder" id="teaser-link" rel="#teaser" class="button button-300 product-button-play">
+                    <a href="http://downloads.binaryage.com/totalfinder-teaser.mov" id="teaser-link" rel="#teaser" class="button button-300 product-button-play">
                         <div><div>Watch Video</div></div>
                     </a>
                     <a href="{{page.download}}" id="download-link" class="button button-300 product-button-download">
@@ -112,9 +112,15 @@ satisfaction: 1
 
 <div class="teaser-overlay" id="teaser" style="display:none;">
     <div class="overlay-content">
-    <embed class="rev3PlayerEmbed" type="application/x-shockwave-flash" src="http://revision3.com/player-v4346" allowFullScreen="true" quality="high" allowScriptAccess="always" width="590" height="450"/>
-    <div style="float: right; font-size: 9px; text-align: right; position:relative; top: -2px; line-height: 10px;">Footage courtesy of <a href="http://revision3.com/tzdaily/2010-02-16totalfinder">TekZilla Daily (Revision3 TV)</a></div>
-    <div style="float: left; font-size: 9px; text-align: left; position:relative; top: -2px; line-height: 10px;">Note: Not freeware. However, it was a free ALPHA for long time.</div>
+        <a  
+             href="http://downloads.binaryage.com/totalfinder-teaser.mov"  
+             style="display:block;width:640px;height:360px"  
+             id="player"> 
+        </a> 
+        <script>
+            flowplayer("player", "/shared/flowplayer/flowplayer-3.2.5.swf");
+        </script>        
+        <div style="float: left; font-size: 10px; text-align: left; position:relative; top: 5px; line-height: 12px;">Watch <a href="http://revision3.com/tzdaily/2010-02-16totalfinder">additional video on Revision3 TV (TekZilla Daily)</a>.</div>
     </div>
 </div>
 
@@ -150,7 +156,7 @@ satisfaction: 1
 
 <script type="text/javascript">
     $(function() {
-        $("#teaser-link").overlay({effect: 'apple'});
+        $("#teaser-link").overlay({top: 100, effect: 'apple'});
         $("#buy-link").overlay({effect: 'apple'});
     });
 </script>
