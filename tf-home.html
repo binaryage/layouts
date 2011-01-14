@@ -36,23 +36,12 @@ satisfaction: 1
                     <a href="/reasons-to-buy">why should you buy otherwise?</a><br>
                 </div>
             </div>
-            {% if false %}
-            <div class="product-advert-box">
-                {% if page.advert %}
-                    <div class="product-advert">{{page.advert}}</div>
-                {% endif %}
-            </div>
-            {% endif %}
         </div>
         <div class="main-product-right span-12 last">
             <div class="main-screenshot" style="height: 325px;">
                 {% for shot in page.shots %}
                 <div id="screenshot-box-{{forloop.index}}" class="screenshot-box" {% if forloop.index0 > 0 %}style="display:none"{% endif %}>
-                    {% if shot.type == 'xxx' %}
-                    
-                    {% else %}
                     <a href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}"><img src="{{site.url}}{{shot.full}}"/></a>
-                    {% endif %}
                 </div>
                 {% endfor %}
                 <div class="clear"></div>
