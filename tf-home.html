@@ -2,9 +2,9 @@
 layout: default
 satisfaction: 1
 ---
-<div id="main-product">
+<div id="main-product" class="product-totalfinder">
     <div class="container">
-        <div class="main-product-left span-12" style="padding-top:{{page.leftshift}}">
+        <div class="main-product-left span-12" style="padding-top:12px">
             <div class="product-logo-box">
                 <img class="product-icon" src="/shared/img/icons/{{page.product_title|downcase}}-64.png">
                 <div class="product-tagline">
@@ -13,7 +13,7 @@ satisfaction: 1
                     <div class="product-badge badge-{{page.product_title|downcase}}">{{page.product_badge}}</div>
                     {% endif %}
                     <h2 class="product-subtitle">{{page.product_subtitle}}</h2>
-                    <div class="facebook-like-box" style="left:{{ page.likeshift }};">
+                    <div class="facebook-like-box" style="left:-72px;">
                         <fb:like href="{{page.ogmeta.url}}" layout="standard" show_faces="false" action="like" font="arial" colorscheme="light"></fb:like>
                     </div>        
                 </div>
@@ -38,13 +38,25 @@ satisfaction: 1
             </div>
         </div>
         <div class="main-product-right span-12 last">
-            <div class="main-screenshot" style="height: 325px;">
+            <div class="main-screenshot">
                 {% for shot in page.shots %}
                 <div id="screenshot-box-{{forloop.index}}" class="screenshot-box" {% if forloop.index0 > 0 %}style="display:none"{% endif %}>
-                    <a href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}"><img src="{{site.url}}{{shot.full}}"/></a>
+                    <a href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}"><img src="{{site.url}}{{shot.thumb}}"/></a>
                 </div>
                 {% endfor %}
                 <div class="clear"></div>
+            </div>
+            <div class="navi"></div>
+            <div class="product-thumbs-box">
+                <a class="prevPage browse left"></a>
+                <div class="product-thumbs-scrollable"> 
+                    <div class="product-thumbs-items">
+                        {% for shot in page.shots %}
+                        <img src="{{site.url}}{{shot.thumb}}" rel="#screenshot-box-{{forloop.index}}"/>
+                        {% endfor %}
+                    </div>
+                </div>
+                <a class="nextPage browse right"></a>
             </div>
         </div>
     </div>
@@ -152,18 +164,43 @@ satisfaction: 1
 
 <script>
     $(function() {
+        var lastIndex = -1;
         $(".product-thumbs-scrollable").scrollable({
-            size: 5
+            speed: 0,
+            onSeek: function(e, index) {
+                if (index==lastIndex) return;
+                var img = $('.product-thumbs-items img').eq(index);
+                var visible = $('.screenshot-box:visible');
+                var box = $(img.attr('rel'));
+                if (box[0] === visible[0]) return; // optimization to not fade when clicked same image or during initial load
+                visible.fadeOut();
+                box.fadeIn();
+            }
+        }).navigator();
+        
+        var api = $(".product-thumbs-scrollable").data("scrollable");
+        var showcaseSwitchTimer;
+        
+        $('.tf-highlight').each(function() {
+            var el = $(this);
+            var showcaseIndex = el.attr('data-showcase');
+            if (!showcaseIndex) return;
+            showcaseIndex = parseInt(showcaseIndex, 10) - 1;
+            el.bind('mouseenter', function() {
+                if (showcaseSwitchTimer) {
+                    clearTimeout(showcaseSwitchTimer);
+                }
+                showcaseSwitchTimer = setTimeout(function() {
+                    api.seekTo(showcaseIndex, 0);
+                }, 1000);
+            });
+            el.bind('mouseleave', function() {
+                if (showcaseSwitchTimer) {
+                    clearTimeout(showcaseSwitchTimer);
+                    showcaseSwitchTimer = null;
+                }
+            });
         });
-
-        $(".product-thumbs-items img").click(function() {
-            var img = $(this);
-            var visible = $('.screenshot-box:visible');
-            var box = $(img.attr('rel'));
-            if (box[0] === visible[0]) return; // optimization to not fade when clicked same image or during initial load
-            visible.fadeOut();
-            box.fadeIn();
-        }).filter(":first").click(); // when page loads simulate a "click" on the first image
     });
 </script>
 
