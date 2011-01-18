@@ -68,47 +68,45 @@ satisfaction: 1
 
         <div class="tf-product-actions-box">
             <div class="tf-product-actions-box-inner">
-            {% if page.retweet %}
-            <div class="retweet">
-            <a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="binaryage">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>                
-            </div>
-            {% endif %}
-            {% if page.facebook and false %}
-            <div class="facebook">
-                <fb:share-button class="url" href="{{page.ogmeta.url}}/" type="box_count"></fb:share-button>
-            </div>
-            {% endif %}
-            {% if page.buzz %}
-            <div class="buzz">
-            </div>
-            <script>
-                $(".buzz").html(writeCapture.sanitize('<a title="Post on Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="normal-count" data-url="{{page.ogmeta.url}}" data-imageurl="{{page.ogmeta.image}}"></a><scr'+'ipt type="text/javascript" src="http://www.google.com/buzz/api/button.js"></scr'+'ipt>'));
-            </script>
-            {% endif %}
-            <a href="http://www.macupdate.com/info.php/id/33373/totalfinder">
-            <div class="macupdate">
-            </div>
-            </a>
-            <script>
-                $(".macupdate").html(writeCapture.sanitize('<scri'+'pt type="text/javascript" src="http://www.macupdate.com/developers/badge/33373"></scr'+'ipt>'));
-            </script>
-            {% if page.usethis %}
-            <div class="usethis">
-            </div>
-            <script>
-                $('.usethis').html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://osx.iusethis.com/app/include/{{page.usethis}}/8"></scr'+'ipt>'));
-            </script>
-            {% endif %}
-            {% if page.flattr %}
-            <div class="flattr">
-            <script type="text/javascript">
-                document.write('<iframe width="50" scrolling="no" height="60" frameborder="0" src="http://api.flattr.com/button/view/?uid=0&amp;url='+encodeURIComponent('{{page.flattr}}')+'&amp;language=&amp;hidden=0&amp;title=&amp;category=&amp;tags=&amp;description=" border="0" marginheight="0" marginwidth="0" allowtransparency="true"></iframe>')
-            </script>
-            </div>
-            {% endif %}
+                {% if page.retweet %}
+                <div class="retweet">
+                    <a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="binaryage">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>                
+                </div>
+                {% endif %}
+                {% if page.facebook and false %}
+                <div class="facebook">
+                    <fb:share-button class="url" href="{{page.ogmeta.url}}/" type="box_count"></fb:share-button>
+                </div>
+                {% endif %}
+                {% if page.buzz %}
+                <div class="buzz"></div>
+                <script>
+                    $(".buzz").html(writeCapture.sanitize('<a title="Post on Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="normal-count" data-url="{{page.ogmeta.url}}" data-imageurl="{{page.ogmeta.image}}"></a><scr'+'ipt type="text/javascript" src="http://www.google.com/buzz/api/button.js"></scr'+'ipt>'));
+                </script>
+                {% endif %}
+                <a href="http://www.macupdate.com/info.php/id/33373/totalfinder">
+                    <div class="macupdate"></div>
+                </a>
+                <script>
+                    $(".macupdate").html(writeCapture.sanitize('<scri'+'pt type="text/javascript" src="http://www.macupdate.com/developers/badge/33373"></scr'+'ipt>'));
+                </script>
+                {% if page.usethis %}
+                <div class="usethis"></div>
+                <script>
+                    $('.usethis').html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://osx.iusethis.com/app/include/{{page.usethis}}/8"></scr'+'ipt>'));
+                </script>
+                {% endif %}
+                {% if page.flattr %}
+                <div class="flattr">
+                <script type="text/javascript">
+                    document.write('<iframe width="50" scrolling="no" height="60" frameborder="0" src="http://api.flattr.com/button/view/?uid=0&amp;url='+encodeURIComponent('{{page.flattr}}')+'&amp;language=&amp;hidden=0&amp;title=&amp;category=&amp;tags=&amp;description=" border="0" marginheight="0" marginwidth="0" allowtransparency="true"></iframe>')
+                </script>
+                </div>
+                {% endif %}
             </div>
             <div class="clear"></div>
-        </div>    </div>
+        </div>    
+    </div>
 </div>
 
 <div class="teaser-overlay" id="teaser" style="display:none;">
