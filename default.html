@@ -149,6 +149,11 @@
                     </div>
                 </div>
                 {% endif %}
+                <div class="praise-section">
+                    <div class="praise-button">
+                        show what people are saying
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -161,6 +166,12 @@
       </noscript>
       {% endif %}
       <div class="clear"></div>
+    </div>
+    <div id="tweets-section">
+        <div class="container" style="position: relative">
+            <ol id="tweets" class="statuses">
+            </ol>
+        </div>
     </div>
     <div id="footer">
       <div class="container">
@@ -255,19 +266,8 @@
     <script type="text/javascript" charset="utf-8">
     $(function() {
         var initialized;
-        var header = $('#header');
         $('.praise-button').bind('click', function() {
-            $(this).toggleClass('pushed');
-            header.toggleClass('expanded-header');
-            if (!header.hasClass('expanded-header')) {
-                $("#tweets").data('sparams').autoscroll.pause();
-            } else {
-                if (initialized) {
-                    $("#tweets").data('sparams').autoscroll.play();
-                }
-            }
             if (!initialized) {
-                $('#tweet-loader .tweet-msg').html('Asking Twitter for some shouts about BinaryAge&hellip;');
                 $("#tweets").tweet({
                     user: "binaryage"
                 });
