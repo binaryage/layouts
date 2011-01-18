@@ -132,18 +132,7 @@
         <div id="header">
             <div class="container header-bar">
                 <div class="span-7">
-                    <a href="http://binaryage.com" title="Binary Age - software"><div class="header-logo"></div></a>
-                    <div class="twitterbox">
-                        <div id="tweets-scrollable">
-                            <ol id="tweets" class="statuses">
-                            </ol>
-                        </div>
-                    </div>
-                    <div class="lovebox" style="display:none">
-                        <div class="lovebox-arrow"></div>
-                        Yeah, it looks like people love this software :-)<br>
-                        Want to <a href="http://totalfinder.binaryage.com/free-licenses">blog about it</a>?
-                    </div>
+                    <a href="http://binaryage.com" title="BinaryAge Software"><div class="header-logo"></div></a>
                 </div>
                 <div class="span-17 last">
                     <ul class="header-menu {{page.menu}} segment">
@@ -187,14 +176,14 @@
              </div>
              {% endif %}
              <div class="footer-links force-right">
-               <a href="http://www.binaryage.com">products</a> | 
-               <a href="http://blog.binaryage.com">blog</a> | 
-               <a href="http://support.binaryage.com">support</a>
-              {% if page.repo %}
-                   | <a href="{{page.repo}}">source code</a>
-              {% endif %}
-              | <a href="http://binaryage.com/about.html">contact</a>
-                 </div>
+               {% if page.satisfaction %}
+               <a href="javascript:GSFNFeedbackWidget.show()">feedback</a> | 
+               {% endif %}
+               {% if page.repo %}
+               <a href="{{page.repo}}">source code</a> | 
+               {% endif %}
+               <a href="http://binaryage.com/about.html">contact</a>
+             </div>
           </div>
        </div>
     </div>
@@ -234,11 +223,11 @@
       $("#getsatifucktion").html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://s3.amazonaws.com/getsatisfaction.com/javascripts/feedback-v2.js"></scr'+'ipt>', {
           done: function() {
               if (typeof window.GSFN == "object") {
-                  var GSFNFeedbackWidget = new GSFN.feedback_widget({
+                  window.GSFNFeedbackWidget = new GSFN.feedback_widget({
                       container: "getsatifucktion2",
                       display: "overlay",
                       company: "binaryage",
-                      placement: "left",
+                      placement: "hidden",
                       color: "#656565",
                       style: "idea"
                   });
@@ -264,8 +253,6 @@
     </script>
 {% endif %}
     <script type="text/javascript" charset="utf-8">
-    $('#tweets').append(prepareTweetLoader('Waiting for page to fully load ...'));
-
     $(function() {
         var initialized;
         var header = $('#header');
