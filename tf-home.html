@@ -176,46 +176,47 @@ satisfaction: 1
 
 <script type="text/javascript">
     $(function() {
-        var firstClick = false;
+        var firstClick;
         $("#teaser-link").overlay({top: 100, effect: 'apple'});
         $("#buy-link").overlay({effect: 'apple'});
         $("#download-link2").overlay({effect: 'apple'}); // prevents default, see the trick below
         $("#download-link").click(function() {
-            if (!firstClick) {
-                firstClick = true;
-
-                new TWTR.Widget({
-                    id: 'twitter-box-placeholder',
-                  version: 2,
-                  type: 'profile',
-                  rpp: 1,
-                  interval: 6000,
-                  width: 190,
-                  height: 200,
-                  theme: {
-                    shell: {
-                      background: '#ccc',
-                      color: '#000'
-                    },
-                    tweets: {
-                        background: '#ddd',
-                      color: '#000',
-                      links: '#3A6394'
-                    }
-                  },
-                  features: {
-                    scrollbar: false,
-                    loop: false,
-                    live: false,
-                    hashtags: true,
-                    timestamp: true,
-                    avatars: false,
-                    behavior: 'all'
-                  }
-                }).render().setUser('binaryage').start();
-                $('.mailchimp-box').load('mailchimp.html?x='+((Math.random()+"").substring(2)));
-            }
-            $("#download-link2").trigger('click');
+            setTimeout(function() { // this is needed for webkit based browsers
+                if (!firstClick) {
+                    firstClick = true;
+                    new TWTR.Widget({
+                        id: 'twitter-box-placeholder',
+                      version: 2,
+                      type: 'profile',
+                      rpp: 1,
+                      interval: 6000,
+                      width: 190,
+                      height: 200,
+                      theme: {
+                        shell: {
+                          background: '#ccc',
+                          color: '#000'
+                        },
+                        tweets: {
+                            background: '#ddd',
+                          color: '#000',
+                          links: '#3A6394'
+                        }
+                      },
+                      features: {
+                        scrollbar: false,
+                        loop: false,
+                        live: false,
+                        hashtags: true,
+                        timestamp: true,
+                        avatars: false,
+                        behavior: 'all'
+                      }
+                    }).render().setUser('binaryage').start();
+                    $('.mailchimp-box').load('mailchimp.html?x='+((Math.random()+"").substring(2)));
+                }
+                $("#download-link2").trigger('click');
+            }, 500);
             // does not prevent default and triggers browser's download action
         });
     });
