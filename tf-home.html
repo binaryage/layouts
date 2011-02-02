@@ -23,7 +23,8 @@ satisfaction: 1
                     <a href="http://downloads.binaryage.com/totalfinder-teaser.mov" id="teaser-link" rel="#teaser" class="button button-300 product-button-play">
                         <div><div>Watch Video</div></div>
                     </a>
-                    <a href="{{page.download}}" id="download-link" class="button button-300 product-button-download">
+                    <div id="download-link2" rel="#dwn" style="position: absolute; top:240px; width:1px; height:1px"></div>
+                    <a href="{{page.download}}" id="download-link" rel="#dwn" class="button button-300 product-button-download">
                         <div><div><div class="trial-note">14-day trial</div>{{page.downloadtitle}}<div class="product-specs">Requires OS X 10.6 (Snow Leopard)</div></div></div>
                     </a>
                     <a href="https://sites.fastspring.com/binaryage/instant/totalfinder" id="buy-link" rel="#buy" class="button button-300 product-button-buy">
@@ -117,7 +118,28 @@ satisfaction: 1
             <EMBED SRC="http://downloads.binaryage.com/totalfinder-teaser.mov" width="640" height="375" AUTOPLAY="true" PLUGINSPAGE="http://www.apple.com/quicktime/download/"></EMBED>
         </OBJECT>
     </div>
-    <a class="close"></a>
+</div>
+
+<div class="dwn-overlay" id="dwn" style="display:none;">
+    <div class="overlay-content">
+        <div class="while-downloading">While you are downloading&hellip;</div>
+        <div class="stay-in-touch">you may want to do a few more clicks to stay in touch</div>
+        <div class="subscribe-twitter">
+            <div id="twitter-box-placeholder"></div>
+            <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+        </div>
+        <div class="subscribe-blog">
+                Subscribe to my blog<br/>
+                <a target="_blank" href="http://blog.binaryage.com">Ideas from BinaryAge</a>
+                <div class="subscribe-button2">
+                    <a href="http://feeds.feedburner.com/binaryage-blog"><img src="http://feeds.feedburner.com/~fc/binaryage-blog?bg=dddddd&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+                </div>
+                <a href="http://feeds.feedburner.com/binaryage-blog" target="_blank" style="display:block;margin-top:6px;" rel="alternate" type="application/rss+xml"><div class="blog-side-icon2 blog-rss-icon"/></div></a>
+        </div>
+        <div class="mailchimp-box">
+            <!-- deferred -->
+        </div>
+    </div>
 </div>
 
 <div class="buy-overlay" id="buy" style="display:none;">
@@ -152,8 +174,48 @@ satisfaction: 1
 
 <script type="text/javascript">
     $(function() {
+        var firstClick = false;
         $("#teaser-link").overlay({top: 100, effect: 'apple'});
         $("#buy-link").overlay({effect: 'apple'});
+        $("#download-link2").overlay({effect: 'apple'}); // prevents default, see the trick below
+        $("#download-link").click(function() {
+            if (!firstClick) {
+                firstClick = true;
+
+                new TWTR.Widget({
+                    id: 'twitter-box-placeholder',
+                  version: 2,
+                  type: 'profile',
+                  rpp: 1,
+                  interval: 6000,
+                  width: 190,
+                  height: 200,
+                  theme: {
+                    shell: {
+                      background: '#ccc',
+                      color: '#000'
+                    },
+                    tweets: {
+                        background: '#ddd',
+                      color: '#000',
+                      links: '#3A6394'
+                    }
+                  },
+                  features: {
+                    scrollbar: false,
+                    loop: false,
+                    live: false,
+                    hashtags: true,
+                    timestamp: true,
+                    avatars: false,
+                    behavior: 'all'
+                  }
+                }).render().setUser('binaryage').start();
+                $('.mailchimp-box').load('mailchimp.html?x='+((Math.random()+"").substring(2)));
+            }
+            $("#download-link2").trigger('click');
+            // does not prevent default and triggers browser's download action
+        });
     });
 </script>
 
