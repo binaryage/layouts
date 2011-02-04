@@ -264,7 +264,7 @@ satisfaction: 1
     });
 </script>
 
-<div class="simple_overlay" id="overlay-gallery"> 
+<div class="air-overlay" id="overlay-gallery"> 
     <a class="overlay-prev">prev</a> 
     <a class="overlay-next">next</a> 
     <div class="overlay-info"></div>
@@ -274,6 +274,7 @@ satisfaction: 1
 <script>
 (function() {
     $('.overlayable').overlay({
+        top: 'center',
         expose: '#f1f1f1',
         target: '#overlay-gallery'
     }).gallery({
