@@ -112,6 +112,77 @@
     {% endif %}
     
     <script type="text/javascript">
+    SSTracker = {};
+    SSTracker.track = function(env) {
+        if (!env) {
+            env = {};
+        }
+        
+        // https://github.com/carhartl/jquery-cookie
+        var cookie = function (key, value, options) {
+            // key and at least value given, set cookie...
+            if (arguments.length > 1 && String(value) !== "[object Object]") {
+                options = options || {};
+
+                if (value === null || value === undefined) {
+                    options.expires = -1;
+                }
+
+                if (typeof options.expires === 'number') {
+                    var days = options.expires, t = options.expires = new Date();
+                    t.setDate(t.getDate() + days);
+                }
+
+                value = String(value);
+
+                return (document.cookie = [
+                    encodeURIComponent(key), '=',
+                    options.raw ? value : encodeURIComponent(value),
+                    options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+                    options.path ? '; path=' + options.path : '',
+                    options.domain ? '; domain=' + options.domain : '',
+                    options.secure ? '; secure' : ''
+                ].join(''));
+            }
+
+            // key and possibly options given, get cookie...
+            options = value || {};
+            var result, decode = options.raw ? function (s) { return s; } : decodeURIComponent;
+            return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
+        };
+
+        env.u = document.location.href;
+        var w = $(window);
+        env.bw = w.width();
+        env.bh = w.height();
+        env.uid = cookie('ssuid');
+        if (!env.uid) {
+            env.uid = ((Math.random()+"").substring(2));
+            cookie('ssuid', env.uid, {
+                path: '/',
+                expires: 30 // TODO: configurable?
+            });
+        }
+
+        if (document.referrer && document.referrer != "") {
+            env.ref = document.referrer;
+        }
+        
+        var image = new Image();
+        image.src = "http://173.255.237.194:8000/tracking_pixel.gif?" + jQuery.param(env);
+    }
+    
+    $('html').bind('click', function(e) {
+        try {
+            SSTracker.track({e:'click', px:e.pageX, py:e.pageY});
+        } catch (ex) {
+            console.log('unable to process SS click');
+        }
+    });
+    SSTracker.track({e:'hit'});
+    </script>
+    
+    <script type="text/javascript">
         WebFontConfig = { 
             google: { families: [ 'Reenie Beanie' ] }
         };
