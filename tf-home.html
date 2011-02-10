@@ -20,14 +20,14 @@ satisfaction: 1
             </div>
             <div class="product-buttons-box">
                 <div class="product-buttons">
-                    <a href="http://downloads.binaryage.com/totalfinder-teaser.mov" id="teaser-link" rel="#teaser" class="button button-300 product-button-play">
+                    <a href="http://downloads.binaryage.com/totalfinder-teaser.mov" id="o-teaser" rel="#teaser" class="button button-300 product-button-play">
                         <div><div>Watch Video</div></div>
                     </a>
-                    <div id="download-link2" rel="#dwn" style="position: absolute; top:240px; width:1px; height:1px"></div>
-                    <a href="{{page.download}}" id="download-link" rel="#dwn" class="button button-300 product-button-download">
+                    <div id="o-download2" rel="#dwn" style="position: absolute; top:240px; width:1px; height:1px"></div>
+                    <a href="{{page.download}}" id="o-download" rel="#dwn" class="button button-300 product-button-download">
                         <div><div><div class="trial-note">14-day trial</div>{{page.downloadtitle}}<div class="product-specs">Requires OS X 10.6 (Snow Leopard)</div></div></div>
                     </a>
-                    <a href="https://sites.fastspring.com/binaryage/instant/totalfinder" id="buy-link" rel="#buy" class="button button-300 product-button-buy">
+                    <a href="https://sites.fastspring.com/binaryage/instant/totalfinder" id="o-buy" rel="#buy" class="button button-300 product-button-buy">
                         <div><div>Buy it for $15 or $10<span class="buy-asterix">*</span></div></div>
                     </a>
                     <div class="clear"></div>
@@ -42,7 +42,7 @@ satisfaction: 1
             <div class="main-screenshot">
                 {% for shot in page.shots %}
                 <div id="screenshot-box-{{forloop.index}}" class="screenshot-box" {% if forloop.index0 > 0 %}style="display:none"{% endif %}>
-                    <a href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}"><img src="{{site.url}}{{shot.thumb}}"/></a>
+                    <a id="o-shot{{forloop.index}}" href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}"><img src="{{site.url}}{{shot.thumb}}"/></a>
                 </div>
                 {% endfor %}
                 <div class="clear"></div>
@@ -177,10 +177,15 @@ satisfaction: 1
 <script type="text/javascript">
     $(function() {
         var firstClick;
-        $("#teaser-link").overlay({top: 100, effect: 'apple'});
-        $("#buy-link").overlay({effect: 'apple'});
-        $("#download-link2").overlay({effect: 'apple'}); // prevents default, see the trick below
-        $("#download-link").click(function() {
+        $("#o-teaser").overlay({top: 100, effect: 'apple'});
+        $("#o-buy").overlay({effect: 'apple'});
+        $("#o-download2").overlay({effect: 'apple'}); // prevents default, see the trick below
+        $("#o-download").click(function(e) {
+            var host = document.location.host;
+            if (host.substring(host.length-3)=='org') {
+                console.log('prevented download in debug mode');
+                e.preventDefault();
+            }
             setTimeout(function() { // this is needed for webkit based browsers
                 if (!firstClick) {
                     firstClick = true;
@@ -215,8 +220,9 @@ satisfaction: 1
                     }).render().setUser('binaryage').start();
                     $('.mailchimp-box').load('mailchimp.html?x='+((Math.random()+"").substring(2)));
                 }
-                $("#download-link2").trigger('click');
-            }, 500);
+                
+                $("#o-download2").trigger('click');
+            }, 1000);
             // does not prevent default and triggers browser's download action
         });
     });
@@ -279,6 +285,7 @@ satisfaction: 1
         expose: '#f1f1f1',
         target: '#overlay-gallery'
     }).gallery({
+        preventResize: true,
         disabledClass: 'disabled-overlay',
         prev: '.overlay-prev',
         next: '.overlay-next',

@@ -88,6 +88,30 @@
     */
     function css_browser_selector(u){var ua = u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1;},g='gecko',w='webkit',s='safari',o='opera',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?'mobile':is('iphone')?'iphone':is('ipod')?'ipod':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win':is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);        
     </script>
+    <script type="text/javascript" charset="utf-8">
+        // define dummy replacements for firebug functionality (needed for Opera)
+        if (!window.console) {
+            window.console = {};
+            function fn() {
+                opera.postError(arguments);
+            };
+            ['log', 'debug', 'info', 'warn', 'error', 'assert', 'dir', 'dirxml', 'group', 'groupEnd', 
+            'time', 'timeEnd', 'count', 'trace', 'profile', 'profileEnd'].forEach(function(name) {
+                window.console[name] = fn;
+            });
+        }            
+        (function() {
+                var names = ["log", "debug", "info", "warn", "error", "assert", "dir", "dirxml", "group", "groupEnd", "time", "timeEnd", "count", "trace", "profile", "profileEnd"];
+                if(!window.console){
+                    window.console = {};
+                }
+                for (var i in names) {
+                    window.console[names[i]] = window.console[names[i]] || function(){
+                        return;
+                    };
+                }
+        })();
+    </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
     {% if page.xstatic != 1 %}
     <script src="/shared/js/code.js"></script>
@@ -112,7 +136,30 @@
     {% endif %}
     
     <script type="text/javascript">
-    SSTracker = {};
+    SSTracker = { states: [] };
+    SSTracker.setState = function(state) {
+        var x = this;
+        setTimeout(function() {
+            if (x.states.length>1) {
+                console.error('SS: reset state while some on stack');
+            }
+            if (state) {
+                SSTracker.states = [state];
+            } else {
+                SSTracker.states = [];
+            }
+        }, 0);
+    };
+    SSTracker.pushState = function(state) {
+        setTimeout(function() {
+            SSTracker.states.push(state);
+        }, 0);
+    };
+    SSTracker.popState = function(state) {
+        setTimeout(function() {
+            SSTracker.states.pop();
+        }, 0);
+    };
     SSTracker.track = function(env) {
         if (!env) {
             env = {};
@@ -168,6 +215,11 @@
             env.ref = document.referrer;
         }
         
+        if (this.states.length) {
+            env.state = this.states[this.states.length-1];
+        }
+        
+        // console.warn("SS: tracking ", env);
         var image = new Image();
         image.src = "http://173.255.237.194:8000/tracking_pixel.gif?" + jQuery.param(env);
     }
@@ -338,6 +390,10 @@
     $(function() {
         var initialized;
         $('.praise-button').bind('click', function() {
+            if (window.SSTracker) {
+                SSTracker.pushState('praise');
+            }
+            
             if (!initialized) {
                 $("#tweets").tweet({
                     user: "binaryage"
@@ -345,6 +401,14 @@
                 initialized = true;
             }
         });
+        
+        // trigger page states
+        setTimeout(function() { // give other code some time to init
+            var hash = location.hash.substring(1);
+            if (hash.substring(0,2)=="o-") {
+                $('#'+hash).trigger('click');
+            }
+        }, 500);
     });
     
     // localhost debug

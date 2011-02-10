@@ -21,7 +21,7 @@ satisfaction: 1
             <div class="product-buttons-box">
                 <div class="product-buttons">
                     {% if page.download %}
-                    <a href="{{page.download}}" class="button product-button-download">
+                    <a id="o-download" href="{{page.download}}" class="button product-button-download">
                         <div><div>{{page.downloadtitle}}</div></div>
                     </a>
                     {% endif %}
@@ -48,7 +48,11 @@ satisfaction: 1
             <div class="product-actions-box">
                 <div class="product-actions-box-inner">
                 {% if page.retweet %}
-                <a href="http://twitter.com/share" class="twitter-share-button retweet" data-count="vertical" data-via="binaryage">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>                
+                <div class="retweet">
+                </div>
+                <script>
+                    $(".retweet").html(writeCapture.sanitize('<a href="http://twitter.com/share" class="twitter-share-button retweet" data-count="vertical" data-via="binaryage">Tweet</a><scr'+'ipt type="text/javascript" src="http://platform.twitter.com/widgets.js"></scr'+'ipt>'));
+                </script>
                 {% endif %}
                 {% if page.facebook and false %}
                 <div class="facebook">
@@ -71,10 +75,10 @@ satisfaction: 1
                 {% endif %}
                 {% if page.flattr %}
                 <div class="flattr">
-                <script type="text/javascript">
-                    document.write('<iframe width="50" scrolling="no" height="60" frameborder="0" src="http://api.flattr.com/button/view/?uid=0&amp;url='+encodeURIComponent('{{page.flattr}}')+'&amp;language=&amp;hidden=0&amp;title=&amp;category=&amp;tags=&amp;description=" border="0" marginheight="0" marginwidth="0" allowtransparency="true"></iframe>')
-                </script>
                 </div>
+                <script>
+                    $('.flattr').html(writeCapture.sanitize('<scr'+'ipt>document.write(\'<iframe width="50" scrolling="no" height="60" frameborder="0" src="http://api.flattr.com/button/view/?uid=0&amp;url=\'+encodeURIComponent(\'{{page.flattr}}\')+\'&amp;language=&amp;hidden=0&amp;title=&amp;category=&amp;tags=&amp;description=" border="0" marginheight="0" marginwidth="0" allowtransparency="true"></iframe>\')</scr'+'ipt>'));
+                </script>
                 {% endif %}
                 </div>
                 <div class="clear"></div>
@@ -82,7 +86,7 @@ satisfaction: 1
             <div class="main-screenshot">
                 {% for shot in page.shots %}
                 <div id="screenshot-box-{{forloop.index}}" class="screenshot-box" {% if forloop.index0 > 0 %}style="display:none"{% endif %}>
-                    <a href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}"><img src="{{site.url}}{{shot.full}}"/></a>
+                    <a id="o-shot{{forloop.index}}"  href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}"><img src="{{site.url}}{{shot.full}}"/></a>
                 </div>
                 {% endfor %}
                 <div class="clear"></div>
@@ -134,7 +138,8 @@ $(function() {
             }
         }
     });
-    $("ul.tabs").tabs("div.panes > div").history();
+    $("ul.tabs").tabs("div.panes > div");
+    $("ul.tabs a").history();
 });
 </script>
 
