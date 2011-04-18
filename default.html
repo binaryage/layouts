@@ -436,8 +436,10 @@
     // http://code.google.com/apis/analytics/docs/tracking/gaTrackingSite.html
     $('a').live('click', function() {
         var href = $(this).attr("href");
-        // just for binaryage.com, fastspring.com
-        if (href.match(/binaryage\.com/) || href.match(/fastspring\.com/)) {
+        var current = document.location.href;
+        // just for switching domains between binaryage.com <-> fastspring.com
+        if ((current.match(/fastspring\.com/) && href.match(/binaryage\.com/)) || 
+            (current.match(/binaryage\.com/) && href.match(/fastspring\.com/))) {
             _gaq.push(['_link', href]);
             return false;
         }
