@@ -435,8 +435,8 @@
     // cross-domain tracking
     // http://code.google.com/apis/analytics/docs/tracking/gaTrackingSite.html
     $('a').live('click', function() {
-        var href = $(this).attr("href");
-        var current = document.location.href;
+        var href = $(this).attr("href")+"";
+        var current = document.location+"";
         // just for switching domains between binaryage.com <-> fastspring.com
         if ((current.match(/fastspring\.com/) && href.match(/binaryage\.com/)) || 
             (current.match(/binaryage\.com/) && href.match(/fastspring\.com/))) {
