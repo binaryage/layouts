@@ -27,7 +27,7 @@ satisfaction: 1
                     <a href="{{page.download}}" id="o-download" rel="#dwn" class="button button-300 product-button-download">
                         <div><div><div class="trial-note">14-day trial</div>{{page.downloadtitle}}<div class="product-specs">Requires OS X 10.6 (Snow Leopard)</div></div></div>
                     </a>
-                    <a href="https://sites.fastspring.com/binaryage/instant/totalfinder" id="o-buy" rel="#buy" class="button button-300 product-button-buy">
+                    <a id="o-buy" rel="#buy" class="button button-300 product-button-buy">
                         <div><div>Buy it for $15 or $10<span class="buy-asterix">*</span></div></div>
                     </a>
                     <div class="clear"></div>
@@ -180,7 +180,7 @@ satisfaction: 1
         $("#o-teaser").overlay({top: 100, effect: 'apple'});
         $("#o-buy").overlay({effect: 'apple'});
         $("#o-download2").overlay({effect: 'apple'}); // prevents default, see the trick below
-        $("#o-download").click(function(e) {
+        $("#o-download").bind('click', function(e) {
             var host = document.location.host;
             if (host.substring(host.length-3)=='org') {
                 console.log('prevented download in debug mode');
