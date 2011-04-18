@@ -125,7 +125,10 @@
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-8404259-1']);
-      _gaq.push(['_setDomainName', '.binaryage.com']);
+      _gaq.push(['_addIgnoredRef', '.binaryage.com']); // do not count subdomains as referrer trafic
+      _gaq.push(['_setDomainName', '.binaryage.com']); // track all subdomains with shared cookie
+	  _gaq.push(['_setAllowLinker', true]); // important for cross domain user tracking (the session may be passed in URL params)
+	  _gaq.push(['_setAllowHash', false]); // do not use url-hash check
       _gaq.push(['_trackPageview']);
       (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -423,6 +426,17 @@
                     el.attr('href', href);
                 }
             });
+        }
+    });
+  
+    // cross-domain tracking
+    // http://code.google.com/apis/analytics/docs/tracking/gaTrackingSite.html
+    $('a').live('click', function() {
+        var href = $(this).attr("href");
+        // just for binaryage.com, fastspring.com
+        if (href.match(/binaryage\.com/) || href.match(/fastspring\.com/)) {
+            _gaq.push(['_link', href]);
+            return false;
         }
     });
     </script>
