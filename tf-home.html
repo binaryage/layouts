@@ -23,8 +23,8 @@ satisfaction: 1
                     <a href="http://downloads.binaryage.com/totalfinder-teaser.mov" id="o-teaser" rel="#teaser" class="button button-300 product-button-play">
                         <div><div>Watch Video</div></div>
                     </a>
-                    <div id="o-download2" rel="#dwn" style="position: absolute; top:240px; width:1px; height:1px"></div>
-                    <a href="{{page.download}}" id="o-download" rel="#dwn" class="button button-300 product-button-download">
+                    <div id="o-download" rel="#dwn" style="position: absolute; top:240px; width:1px; height:1px"></div>
+                    <a href="{{page.download}}" id="o-download-button" rel="#dwn" class="button button-300 product-button-download">
                         <div><div><div class="trial-note">14-day trial</div>{{page.downloadtitle}}<div class="product-specs">Requires OS X 10.6 (Snow Leopard)</div></div></div>
                     </a>
                     <a id="o-buy" rel="#buy" class="button button-300 product-button-buy">
@@ -179,8 +179,8 @@ satisfaction: 1
         var firstClick;
         $("#o-teaser").overlay({top: 100, effect: 'apple'});
         $("#o-buy").overlay({effect: 'apple'});
-        $("#o-download2").overlay({effect: 'apple'}); // prevents default, see the trick below
-        $("#o-download").bind('click', function(e) {
+        $("#o-download").overlay({effect: 'apple'}); // prevents default, see the trick below
+        $("#o-download-button").bind('click', function(e) {
             var host = document.location.host;
             if (host.substring(host.length-3)=='org') {
                 console.log('prevented download in debug mode');
@@ -221,7 +221,7 @@ satisfaction: 1
                     $('.mailchimp-box').load('mailchimp.html?x='+((Math.random()+"").substring(2)));
                 }
                 
-                $("#o-download2").trigger('click');
+                $("#o-download").trigger('click');
             }, 1000);
             // does not prevent default and triggers browser's download action
         });
