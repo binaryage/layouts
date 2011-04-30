@@ -424,8 +424,14 @@
             $('a').each(function() {
                 var el = $(this);
                 var href = el.attr('href');
-                if (href && href.match('binaryage.com')) {
-                    href = href.replace('binaryage.com', 'binaryage.org');
+                if (href) {
+                    if (href.match('binaryage.com')) {
+                        href = href.replace('binaryage.com', 'binaryage.org');
+                    }
+                    if (href.match(/\/[^.]+$/i)) { 
+                        // this is for local jekyll server inconsistency
+                        href += ".html";
+                    }
                     el.attr('href', href);
                 }
             });

@@ -1,0 +1,68 @@
+---
+layout: default
+satisfaction: 1
+product_title: TotalFinder
+---
+<div>
+    <div class="container" id="tf-header">
+        <div class="tf-header-nav span-24 last">
+            <div class="doc-back"><a class="tf-back-button" href="/">&larr; back to homepage</a></div>
+            <h1 class="doc-title">{{page.subtitle}}</h1>
+        </div>
+    </div>
+</div>
+
+<div id="main-content" class="tf-doc">
+    <div class="container">
+        <div class="sidebar">
+            <h2>Recent buzz</h2> 
+            <ul> 
+                <li><a href="/questions">Recent Questions</a></li> 
+                <li><a href="/problems">Recent Problems</a></li> 
+                <li><a href="/ideas">Recent Ideas</a></li> 
+            </ul> 
+            <h2>Before installing</h2> 
+            <ul> 
+                <li><a href="/about">About TotalFinder</a></li> 
+                <li><a href="/installation">Installation</a></li> 
+                <li><a href="/uninstallation">Uninstallation</a></li> 
+                <li><a href="/licensing">Licensing</a></li> 
+                <li><a href="/registration">Registration</a></li> 
+            </ul> 
+
+            <h2>Basic features</h2> 
+            <ul> 
+                <li><a href="/tabs">Tabs</a></li> 
+                <li><a href="/dual-mode">Dual Mode</a></li> 
+                <li><a href="/folders-on-top">Folders on Top</a></li> 
+                <li><a href="/show-system-files">Show System Files</a></li> 
+            </ul> 
+
+            <h2>Advanced features</h2> 
+            <ul> 
+                <li><a href="/visor">Visor</a></li> 
+                <li><a href="/asepsis">Asepsis</a></li> 
+                <li><a href="/tweaks">Tweaks</a></li> 
+            </ul> 
+
+            <h2>Articles</h2> 
+            <ul> 
+                <li><a href="/reasons-to-buy">Reasons to buy</a></li> 
+                <li><a href="/free-licenses">Free licenses</a></li> 
+                <li><a href="/licenses-for-friends">Discount for friends</a></li> 
+                <li><a href="/credits">Credits</a></li> 
+            </ul>
+        </div>
+        <div class="page-content doc-page">
+            {{ content }}
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        $(".hoverable-input").bind('click', function(e){
+            this.select();
+        });
+    });
+</script>
