@@ -327,6 +327,14 @@
           </div>
        </div>
     </div>
+
+    {% if page.pray %}
+    <div class="google-pray">
+        <div class="container">
+            <p>Hello Google Crawler, please index this page also for terms: {{page.pray}}. Thank you :-)</p>
+        </div>
+    </div>
+    {% endif %}
     
 {% if page.repo %}
     <a href="{{page.repo}}"><img style="z-index:1000; position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>    
