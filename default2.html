@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html xmlns:og="http://opengraphprotocol.org/schema/"
+      xmlns:fb="http://developers.facebook.com/schema/"
+      {% if page.id %}class="{{page.id}}"{% endif %}
+>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <title>{{page.title}}</title>
+        {% if page.meta_title %}
+        <meta name="title" content="{{page.title}}" />
+        {% endif %}
+        {% if page.meta_description %}
+        <meta name="description" content="{{page.meta_description}}" />
+        {% endif %}
+        {% if page.meta_keywords %}
+        <meta name="keywords" content="{{page.meta_keywords}}" />
+        {% endif %}
+        {% if page.meta_image %}
+        <link rel="image_src" href="{{page.meta_image}}" />
+        {% endif %}
+        <meta name="google-site-verification" content="N_xzdr6ymSUQFhAEvQg7f-sp1JAeJCdW2JuaRg-da0w" />
+        <meta property="fb:admins" content="antonin.hildebrand" />
+        {% if page.ogmeta %}
+            {% if page.ogmeta.email %}
+                <meta property="og:email" content="{{page.ogmeta.email}}" />
+            {% endif %}
+            {% if page.ogmeta.description %}
+                <meta property="og:description" content="{{page.ogmeta.description}}" />
+            {% endif %}
+            {% if page.ogmeta.site_name %}
+                <meta property="og:site_name" content="{{page.ogmeta.site_name}}" />
+            {% endif %}
+            {% if page.ogmeta.type %}
+                <meta property="og:type" content="{{page.ogmeta.type}}" />
+            {% endif %}
+            {% if page.ogmeta.title %}
+                <meta property="og:title" content="{{page.ogmeta.title}}" />
+            {% endif %}
+            {% if page.ogmeta.url %}
+                <meta property="og:url" content="{{page.ogmeta.url}}" />
+            {% endif %}
+            {% if page.ogmeta.image %}
+                <meta property="og:image" content="{{page.ogmeta.image}}" />
+            {% endif %}
+        {% endif %}
+
+        <link href="http://www.google.com/profiles/antonin.hildebrand" rel="me" type="text/html" />
+        <link href="http://feeds.feedburner.com/binaryage-blog" type="application/atom+xml" rel="alternate" title="Ideas from BinaryAge" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/shared/css/site.css" type="text/css">
+    
+        {% if page.xstatic != 1 %}
+        {% if page.styles %}
+            {% for s in page.styles %}
+                <link rel="stylesheet" href="{{s}}.css" type="text/css">
+            {% endfor %}
+        {% endif %}
+        {% endif %}
+        
+        <!-- SCRIPTS START -->
+        <script type="text/javascript" charset="utf-8">
+            /*
+            CSS Browser Selector v0.4.0 (Nov 02, 2010)
+            Rafael Lima (http://rafael.adm.br)
+            http://rafael.adm.br/css_browser_selector
+            License: http://creativecommons.org/licenses/by/2.5/
+            Contributors: http://rafael.adm.br/css_browser_selector#contributors
+            */
+            function css_browser_selector(u){var ua=u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?m+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);
+        </script>
+        <script type="text/javascript" charset="utf-8">
+            // define dummy replacements for firebug functionality (needed for Opera)
+            if (!window.console) {
+                window.console = {};
+                function fn() {
+                    opera.postError(arguments);
+                };
+                ['log', 'debug', 'info', 'warn', 'error', 'assert', 'dir', 'dirxml', 'group', 'groupEnd', 
+                'time', 'timeEnd', 'count', 'trace', 'profile', 'profileEnd'].forEach(function(name) {
+                    window.console[name] = fn;
+                });
+            }            
+            (function() {
+                    var names = ["log", "debug", "info", "warn", "error", "assert", "dir", "dirxml", "group", "groupEnd", "time", "timeEnd", "count", "trace", "profile", "profileEnd"];
+                    if(!window.console){
+                        window.console = {};
+                    }
+                    for (var i in names) {
+                        window.console[names[i]] = window.console[names[i]] || function(){
+                            return;
+                        };
+                    }
+            })();
+        </script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+
+        <script>
+            function utmx_section(){}function utmx(){};
+        </script>
+        {% if page.gwo %}
+        <script>
+        _udn = ".binaryage.com";
+        </script>
+        <!-- Google Website Optimizer Control Script -->
+        <script>
+        function utmx_section(){}function utmx(){}
+        (function(){var k='{{page.gwo}}',d=document,l=d.location,c=d.cookie;function f(n){
+        if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.indexOf(';',i);return escape(c.substring(i+n.
+        length+1,j<0?c.length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;
+        d.write('<sc'+'ript src="'+
+        'http'+(l.protocol=='https:'?'s://ssl':'://www')+'.google-analytics.com'
+        +'/siteopt.js?v=1&utmxkey='+k+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='
+        +new Date().valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+        '" type="text/javascript" charset="utf-8"></sc'+'ript>')})();
+        </script>
+        <!-- End of Google Website Optimizer Control Script -->
+        {% endif %}
+
+        {% if page.xstatic != 1 %}
+        <script src="/shared/js/code.js"></script>
+        {% if page.scripts %}
+        {% for s in page.scripts %}
+        <script src="{{s}}"></script>
+        {% endfor %}
+        {% endif %}
+    
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+        </script>
+        {% if site.url contains ".com" %}
+        <script type="text/javascript">
+            _gaq.push(['_setAccount', 'UA-8404259-1']);
+            _gaq.push(['_addIgnoredRef', '.binaryage.com']); // do not count subdomains as referrer trafic
+            _gaq.push(['_setDomainName', '.binaryage.com']); // track all subdomains with shared cookie
+            _gaq.push(['_setAllowLinker', true]); // important for cross domain user tracking (the session may be passed in URL params)
+            _gaq.push(['_setAllowHash', false]); // do not use url-hash check
+            _gaq.push(['_trackPageview']);
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+        {% endif %}
+    
+        <script type="text/javascript">
+            SSTracker = { states: [] };
+            SSTracker.setState = function(state) {
+                var x = this;
+                setTimeout(function() {
+                    if (x.states.length>1) {
+                        console.error('SS: reset state while some on stack');
+                    }
+                    if (state) {
+                        SSTracker.states = [state];
+                    } else {
+                        SSTracker.states = [];
+                    }
+                }, 0);
+            };
+            SSTracker.pushState = function(state) {
+                setTimeout(function() {
+                    SSTracker.states.push(state);
+                }, 0);
+            };
+            SSTracker.popState = function(state) {
+                setTimeout(function() {
+                    SSTracker.states.pop();
+                }, 0);
+            };
+            SSTracker.track = function(env) {
+                if (!env) {
+                    env = {};
+                }
+        
+                // https://github.com/carhartl/jquery-cookie
+                var cookie = function (key, value, options) {
+                    // key and at least value given, set cookie...
+                    if (arguments.length > 1 && String(value) !== "[object Object]") {
+                        options = options || {};
+
+                        if (value === null || value === undefined) {
+                            options.expires = -1;
+                        }
+
+                        if (typeof options.expires === 'number') {
+                            var days = options.expires, t = options.expires = new Date();
+                            t.setDate(t.getDate() + days);
+                        }
+
+                        value = String(value);
+
+                        return (document.cookie = [
+                            encodeURIComponent(key), '=',
+                            options.raw ? value : encodeURIComponent(value),
+                            options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+                            options.path ? '; path=' + options.path : '',
+                            options.domain ? '; domain=' + options.domain : '',
+                            options.secure ? '; secure' : ''
+                        ].join(''));
+                    }
+
+                    // key and possibly options given, get cookie...
+                    options = value || {};
+                    var result, decode = options.raw ? function (s) { return s; } : decodeURIComponent;
+                    return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
+                };
+
+                env.u = document.location.href;
+                var w = $(window);
+                env.bw = w.width();
+                env.bh = w.height();
+                env.uid = cookie('ssuid');
+                if (!env.uid) {
+                    env.uid = ((Math.random()+"").substring(2));
+                    cookie('ssuid', env.uid, {
+                        path: '/',
+                        expires: 30 // TODO: configurable?
+                    });
+                }
+
+                if (document.referrer && document.referrer != "") {
+                    env.ref = document.referrer;
+                }
+        
+                if (this.states.length) {
+                    env.state = this.states[this.states.length-1];
+                }
+        
+                // console.warn("SS: tracking ", env);
+                {% if site.url contains ".com" %}
+                var image = new Image();
+                image.src = "http://173.255.237.194:8000/tracking_pixel.gif?" + jQuery.param(env);
+                {% endif %}
+            };
+    
+            $('html').bind('click', function(e) {
+                try {
+                    SSTracker.track({e:'click', px:e.pageX, py:e.pageY});
+                } catch (ex) {
+                    console.log('unable to process SS click');
+                }
+            });
+            
+            SSTracker.track({e:'hit'});
+        </script>
+    
+        <script type="text/javascript">
+            WebFontConfig = { 
+                google: { families: [ 'Reenie Beanie' ] }
+            };
+            (function() {
+                var wf = document.createElement('script');
+                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+                wf.type = 'text/javascript';
+                wf.async = 'true';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        {% endif %}
+        <!-- SCRIPTS END -->
+    </head>
+    <body id="page-{{ page.url | remove: '/' | remove: '.html' }}">
+        <div id="header-wrapper">
+            <div id="header">
+                <div class="container header-bar">
+                    <div class="span-7">
+                        <a href="http://binaryage.com" title="BinaryAge Software"><div class="header-logo"></div></a>
+                    </div>
+                    <div class="span-17 last">
+                        <ul class="header-menu {{page.menu}} segment">
+                            <li class="enabled segment-1 menu-item-store"><a href="https://sites.fastspring.com/binaryage/instant/totalfinder"><span>store</span></a></li>
+                            <li class="enabled segment-0 menu-item-products"><a href="http://binaryage.com"><span>products</span></a></li>
+                            <li class="enabled segment-0 menu-item-blog"><a href="http://blog.binaryage.com"><span>blog</span></a></li>
+                            <li class="enabled segment-2 menu-item-support"><a href="http://support.binaryage.com"><span>support</span></a></li>
+                        </ul>
+                    </div>
+                    {% if page.beyellow %}
+                    <div class="beyellow">
+                        <div class="beyellow-box">
+                            Having troubles with TotalFinder? Call <a target="_blank" href="http://be-yellow.com/">Yellow Support</a> at <b>+1-855-5-BIN-AGE</b> - <a href="/yellow">read more</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <!-- <div class="praise-section">
+                        <div class="praise-button">
+                            show what people are saying
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            {% if page.gwo %}
+            <script>utmx_section("content")</script>
+            {% endif %}
+            {{content}}
+            {% if page.gwo %}
+            </noscript>
+            {% endif %}
+            <div class="clear"></div>
+        </div>
+        <div id="tweets-section">
+            <div class="container" style="position: relative">
+                <ol id="tweets" class="statuses"></ol>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="container">
+                <div class="footer-separator"></div>
+                <div class="footerbox">
+                    {% if page.fblikefooter %}
+                    <div class="facebook-like-button-wrapper">
+                        <fb:like width="650" href="http://www.binaryage.com" layout="standard" show_faces="false" font="lucida grande"></fb:like>
+                    </div>
+                    {% else %}
+                    <div class="copyright">
+                        <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/us/"><img title="Web site license" alt="Creative Commons License" style="border-width:0" src="/shared/img/byccnd.png" /></a>
+                    </div>
+                    {% endif %}
+                    <div class="footer-links force-right">
+                        {% if page.satisfaction %}
+                        <a href="javascript:GSFNFeedbackWidget.show()">feedback</a> | 
+                        {% endif %}
+                        {% if page.repo %}
+                        <a href="{{page.repo}}">source code</a> | 
+                        {% endif %}
+                        <a href="http://binaryage.com/about.html">contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if page.pray %}
+        <div class="google-pray">
+            <div class="container">
+                <p>Hello GoogleBot, please index this page also for terms: {{page.pray}}. Thank you :-)</p>
+            </div>
+        </div>
+        {% endif %}
+    
+        {% if page.repo %}
+        <a href="{{page.repo}}"><img style="z-index:1000; position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>    
+        {% endif %}
+
+        {% if page.xstatic != 1 %}
+
+        {% if site.url contains ".org" %}
+        <script type="text/javascript" charset="utf-8">
+            if ((document.location+"").match(/showgrid/)) {
+                $('.container').addClass('showgrid');
+            }
+        </script>
+        {% endif %}
+    
+        {% if page.fbsdk %}
+        <div id="fb-root"></div>
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({appId: '332451499524', status: true, cookie: true, xfbml: true});
+            };
+            (function() {
+                var e = document.createElement('script'); e.async = true;
+                e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+                document.getElementById('fb-root').appendChild(e);
+            }());
+        </script>
+        {% endif %}
+
+        {% if page.satisfaction %}
+        <div id="getsatifucktion"></div>
+        <div id="getsatifucktion2"></div>
+        <script type="text/javascript" charset="utf-8">
+            $("#getsatifucktion").html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://s3.amazonaws.com/getsatisfaction.com/javascripts/feedback-v2.js"></scr'+'ipt>', {
+                done: function() {
+                    if (typeof window.GSFN == "object") {
+                        window.GSFNFeedbackWidget = new GSFN.feedback_widget({
+                            container: "getsatifucktion2",
+                            display: "overlay",
+                            company: "binaryage",
+                            placement: "hidden",
+                            color: "#656565",
+                            style: "idea"
+                        });
+                    }
+                }
+            }));
+        </script>
+        {% endif %}
+
+        {% if page.disqus %}
+        <div id="disqus-wrapper"></div>
+        <script type="text/javascript">
+            (function() {
+                var links = document.getElementsByTagName('a');
+                var query = '?';
+                for(var i = 0; i < links.length; i++) {
+                    if(links[i].href.indexOf('#disqus_thread') >= 0) {
+                        query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+                    }
+                }
+                $('#disqus-wrapper').html('<scr'+'ipt charset="utf-8" type="text/javascript" src="http://disqus.com/forums/binaryage/get_num_replies.js' + query + '"></scr'+'ipt>');
+            })();
+        </script>
+        {% endif %}
+        
+        <script type="text/javascript" charset="utf-8">
+            $(function() {
+                var initialized;
+                $('.praise-button').bind('click', function() {
+                    if (window.SSTracker) {
+                        SSTracker.pushState('praise');
+                    }
+            
+                    if (!initialized) {
+                        $("#tweets").tweet({
+                            user: "binaryage"
+                        });
+                        initialized = true;
+                    }
+                });
+        
+                // trigger page states
+                setTimeout(function() { // give other code some time to init
+                    var hash = location.hash.substring(1);
+                    if (hash.substring(0,2)=="o-") {
+                        $('#'+hash).trigger('click');
+                    }
+                }, 500);
+            });
+    
+            // localhost debug
+            $(function() {
+                var host = document.location.host;
+                if (host.substring(host.length-3)=='org') {
+                    $('a').each(function() {
+                        var el = $(this);
+                        var href = el.attr('href');
+                        if (href) {
+                            if (href.match('binaryage.com')) {
+                                href = href.replace('binaryage.com', 'binaryage.org');
+                            }
+                            if (href.match(/\/[^.]+$/i)) { 
+                                // this is for local jekyll server inconsistency
+                                href += ".html";
+                            }
+                            el.attr('href', href);
+                        }
+                    });
+                }
+            });
+  
+            // cross-domain tracking
+            // http://code.google.com/apis/analytics/docs/tracking/gaTrackingSite.html
+            $('a').live('click', function() {
+                var href = $(this).attr("href")+"";
+                var current = document.location+"";
+                // just for switching domains between binaryage.com <-> fastspring.com
+                if ((current.match(/fastspring\.com/) && href.match(/binaryage\.com/)) || 
+                    (current.match(/binaryage\.com/) && href.match(/fastspring\.com/))) {
+                    _gaq.push(['_link', href]);
+                    return false;
+                }
+            });
+        </script>
+        {% endif %}
+
+        {% if page.gwo %}
+        <!-- Google Website Optimizer Tracking Script -->
+        <script type="text/javascript">
+            if(typeof(_gat)!='object')document.write('<sc'+'ript src="http'+
+            (document.location.protocol=='https:'?'s://ssl':'://www')+
+            '.google-analytics.com/ga.js"></sc'+'ript>')
+        </script>
+        <script type="text/javascript">
+            try {
+            var gwoTracker=_gat._getTracker("UA-9521789-1");
+            gwoTracker._setDomainName(".binaryage.com");
+            gwoTracker._trackPageview("/{{page.gwo}}/test");
+            }catch(err){}
+        </script>
+        <!-- End of Google Website Optimizer Tracking Script -->
+        {% endif %}
+    </body>
+</html>
