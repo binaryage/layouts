@@ -48,7 +48,7 @@
         <link href="http://feeds.feedburner.com/binaryage-blog" type="application/atom+xml" rel="alternate" title="Ideas from BinaryAge" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="/shared/css/site.css" type="text/css">
+        <link rel="stylesheet" href="/shared/css/site2.css" type="text/css">
     
         {% if page.xstatic != 1 %}
         {% if page.styles %}
@@ -104,15 +104,15 @@
         </script>
         <!-- Google Website Optimizer Control Script -->
         <script>
-        function utmx_section(){}function utmx(){}
-        (function(){var k='{{page.gwo}}',d=document,l=d.location,c=d.cookie;function f(n){
-        if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.indexOf(';',i);return escape(c.substring(i+n.
-        length+1,j<0?c.length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;
-        d.write('<sc'+'ript src="'+
-        'http'+(l.protocol=='https:'?'s://ssl':'://www')+'.google-analytics.com'
-        +'/siteopt.js?v=1&utmxkey='+k+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='
-        +new Date().valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
-        '" type="text/javascript" charset="utf-8"></sc'+'ript>')})();
+            function utmx_section(){}function utmx(){}
+            (function(){var k='{{page.gwo}}',d=document,l=d.location,c=d.cookie;function f(n){
+            if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.indexOf(';',i);return escape(c.substring(i+n.
+            length+1,j<0?c.length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;
+            d.write('<sc'+'ript src="'+
+            'http'+(l.protocol=='https:'?'s://ssl':'://www')+'.google-analytics.com'
+            +'/siteopt.js?v=1&utmxkey='+k+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='
+            +new Date().valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+            '" type="text/javascript" charset="utf-8"></sc'+'ript>')})();
         </script>
         <!-- End of Google Website Optimizer Control Script -->
         {% endif %}
@@ -248,7 +248,7 @@
     
         <script type="text/javascript">
             WebFontConfig = { 
-                google: { families: [ 'Reenie Beanie' ] }
+                google: { families: [ 'Reenie Beanie', 'Droid Sans:regular,bold' ] }
             };
             (function() {
                 var wf = document.createElement('script');
@@ -263,33 +263,29 @@
         <!-- SCRIPTS END -->
     </head>
     <body id="page-{{ page.url | remove: '/' | remove: '.html' }}">
-        <div id="header-wrapper">
-            <div id="header">
-                <div class="container header-bar">
-                    <div class="span-7">
-                        <a href="http://binaryage.com" title="BinaryAge Software"><div class="header-logo"></div></a>
+        <div id="topbar">
+            <div class="container topbar">
+                <div class="topbar-buttons">
+                    <div class="topbar-labs">
+                        labs
                     </div>
-                    <div class="span-17 last">
-                        <ul class="header-menu {{page.menu}} segment">
-                            <li class="enabled segment-1 menu-item-store"><a href="https://sites.fastspring.com/binaryage/instant/totalfinder"><span>store</span></a></li>
-                            <li class="enabled segment-0 menu-item-products"><a href="http://binaryage.com"><span>products</span></a></li>
-                            <li class="enabled segment-0 menu-item-blog"><a href="http://blog.binaryage.com"><span>blog</span></a></li>
-                            <li class="enabled segment-2 menu-item-support"><a href="http://support.binaryage.com"><span>support</span></a></li>
-                        </ul>
+                    <div class="topbar-testimonials">
+                        testimonials
                     </div>
-                    {% if page.beyellow %}
-                    <div class="beyellow">
-                        <div class="beyellow-box">
-                            Having troubles with TotalFinder? Call <a target="_blank" href="http://be-yellow.com/">Yellow Support</a> at <b>+1-855-5-BIN-AGE</b> - <a href="/yellow">read more</a>
-                        </div>
-                    </div>
-                    {% endif %}
-                    <!-- <div class="praise-section">
-                        <div class="praise-button">
-                            show what people are saying
-                        </div>
-                    </div> -->
                 </div>
+            </div>
+        </div>
+        <div id="header" class="menu-{{page.menu}}">
+            <div class="container header">
+                <a href="http://binaryage.com" title="BinaryAge Software"><div class="header-logo"></div></a>
+                <div class="header-motto"></div>
+                <div class="header-selector"></div>
+                <ul class="header-menu">
+                    <li class="menu-item-store"><a href="https://sites.fastspring.com/binaryage/instant/totalfinder"><span>store</span></a></li>
+                    <li class="menu-item-products"><a href="http://binaryage.com"><span>products</span></a></li>
+                    <li class="menu-item-blog"><a href="http://blog.binaryage.com"><span>blog</span></a></li>
+                    <li class="menu-item-support"><a href="http://support.binaryage.com"><span>support</span></a></li>
+                </ul>
             </div>
         </div>
         <div id="main">

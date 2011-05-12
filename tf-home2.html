@@ -4,7 +4,7 @@ satisfaction: 1
 ---
 <div id="main-product" class="product-totalfinder">
     <div class="container">
-        <div class="main-product-left span-12" style="padding-top:12px">
+        <div class="main-product-left span-12">
             <div class="product-logo-box">
                 <img class="product-icon" src="/shared/img/icons/{{page.product_title|downcase}}-64.png">
                 <div class="product-tagline">
@@ -13,28 +13,30 @@ satisfaction: 1
                     <div class="product-badge badge-{{page.product_title|downcase}}">{{page.product_badge}}</div>
                     {% endif %}
                     <h2 class="product-subtitle">{{page.product_subtitle}}</h2>
-                    <div class="facebook-like-box" style="left:-72px;">
-                        <fb:like href="{{page.ogmeta.url}}" layout="standard" show_faces="false" action="like" font="arial" colorscheme="light"></fb:like>
+                    <div class="facebook-like-box">
+                        <fb:like href="{{page.ogmeta.url}}" width="370" layout="standard" show_faces="false" action="like" font="arial" colorscheme="light"></fb:like>
                     </div>        
                 </div>
             </div>
             <div class="product-buttons-box">
+                <div class="product-click-here"></div>
                 <div class="product-buttons">
-                    <a href="http://downloads.binaryage.com/totalfinder-teaser.mov" id="o-teaser" rel="#teaser" class="button button-300 product-button-play">
+                    <a href="http://downloads.binaryage.com/totalfinder-teaser.mov" id="o-teaser" rel="#teaser" class="button product-button-play">
                         <div><div>Watch Video</div></div>
                     </a>
                     <div id="o-download" rel="#dwn" style="position: absolute; top:240px; width:1px; height:1px"></div>
-                    <a href="{{page.download}}" id="o-download-button" rel="#dwn" class="button button-300 product-button-download">
+                    <a href="{{page.download}}" id="o-download-button" rel="#dwn" class="button product-button-download">
                         <div><div><div class="trial-note">14-day trial</div>{{page.downloadtitle}}<div class="product-specs">Requires OS X 10.6 (Snow Leopard)</div></div></div>
                     </a>
-                    <a id="o-buy" rel="#buy" class="button button-300 product-button-buy">
-                        <div><div>Buy it for $15 or $10<span class="buy-asterix">*</span></div></div>
+                    <a id="o-buy" rel="#buy" class="button product-button-buy">
+                        <div class="product-price-tag"></div>
+                        <div><div>Buy TotalFinder</div></div>
                     </a>
+                    <div class="reasons-to-buy">
+                        <a href="/free-licenses">I'm also giving away free licenses!</a><br>
+                        <a href="/reasons-to-buy">why should you buy otherwise?</a><br>
+                    </div>
                     <div class="clear"></div>
-                </div>
-                <div class="reasons-to-buy">
-                    <a href="/free-licenses">I'm also giving away free licenses!</a><br>
-                    <a href="/reasons-to-buy">why should you buy otherwise?</a><br>
                 </div>
             </div>
         </div>
@@ -47,6 +49,7 @@ satisfaction: 1
                 {% endfor %}
                 <div class="clear"></div>
             </div>
+            <div class="navi-hint"></div>
             <div class="navi"></div>
             <div class="product-thumbs-box">
                 <a class="prevPage browse left"></a>
@@ -66,7 +69,6 @@ satisfaction: 1
 <div id="main-content tf-home">
     <div class="container">
         {{ content }}
-
         <div class="tf-product-actions-box">
             <div class="tf-product-actions-box-inner">
                 {% if page.retweet %}
