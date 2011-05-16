@@ -2,7 +2,7 @@
 layout: default2
 satisfaction: 1
 ---
-<div id="main-product" class="product-totalfinder">
+<div id="product-totalfinder" class="main-product">
     <div class="container">
         <div class="main-product-left span-12">
             <div class="product-logo-box">
@@ -21,33 +21,37 @@ satisfaction: 1
             <div class="product-buttons-box">
                 <div class="product-click-here"></div>
                 <div class="product-buttons">
-                    <a href="http://downloads.binaryage.com/totalfinder-teaser.mov" id="o-teaser" rel="#teaser" class="button product-button-play">
-                        <div><div>Watch Video</div></div>
-                    </a>
                     <div id="o-download" rel="#dwn" style="position: absolute; top:240px; width:1px; height:1px"></div>
                     <a href="{{page.download}}" id="o-download-button" rel="#dwn" class="button product-button-download">
                         <div><div><div class="trial-note">14-day trial</div>{{page.downloadtitle}}<div class="product-specs">Requires OS X 10.6 (Snow Leopard)</div></div></div>
                     </a>
                     <a id="o-buy" rel="#buy" class="button product-button-buy">
-                        <div class="product-price-tag"></div>
+                        <div class="price-tag"></div>
                         <div><div>Buy TotalFinder</div></div>
                     </a>
                     <div class="reasons-to-buy">
                         <a href="/free-licenses">I'm also giving away free licenses!</a><br>
                         <a href="/reasons-to-buy">why should you buy otherwise?</a><br>
                     </div>
-                    <div class="clear"></div>
                 </div>
             </div>
         </div>
         <div class="main-product-right span-12 last">
             <div class="main-screenshot">
                 {% for shot in page.shots %}
-                <div id="screenshot-box-{{forloop.index}}" class="screenshot-box" {% if forloop.index0 > 0 %}style="display:none"{% endif %}>
-                    <a id="o-shot{{forloop.index}}" href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}"><img src="{{site.url}}{{shot.thumb}}"/></a>
+                <div id="screenshot-box-{{forloop.index}}" class="screenshot-box {{shot.klass}}" {% if forloop.index0 > 0 %}style="display:none"{% endif %}>
+                    <a id="o-shot{{forloop.index}}" href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}">
+                        <img src="{{site.url}}{{shot.thumb}}"/>
+                        <div class="zoom-icon"></div>
+                    </a>
                 </div>
                 {% endfor %}
                 <div class="clear"></div>
+            </div>
+            <div class="teaser-button">
+                <a href="http://downloads.binaryage.com/totalfinder-teaser.mov" id="o-teaser" rel="#teaser" class="teaser-play">
+                    <div></div>
+                </a>
             </div>
             <div class="navi-hint"></div>
             <div class="navi"></div>
@@ -66,11 +70,10 @@ satisfaction: 1
     </div>
 </div>
 
-<div id="main-content tf-home">
+<div class="main-content">
     <div class="container">
-        {{ content }}
-        <div class="tf-product-actions-box">
-            <div class="tf-product-actions-box-inner">
+        <div class="product-actions-box">
+            <div class="product-actions-box-inner">
                 {% if page.retweet %}
                 <div class="retweet">
                     <a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="binaryage">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>                
@@ -109,79 +112,97 @@ satisfaction: 1
             </div>
             <div class="clear"></div>
         </div>    
+        {{ content }}
     </div>
 </div>
 
-<div class="teaser-overlay" id="teaser" style="display:none;">
+<div id="teaser" class="overlay" style="display:none">
     <div class="overlay-content">
         <OBJECT CLASSID="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" width="640" height="375" CODEBASE="http://www.apple.com/qtactivex/qtplugin.cab">
             <PARAM name="SRC" VALUE="http://downloads.binaryage.com/totalfinder-teaser.mov">
             <PARAM name="AUTOPLAY" VALUE="true">
             <EMBED SRC="http://downloads.binaryage.com/totalfinder-teaser.mov" width="640" height="375" AUTOPLAY="true" PLUGINSPAGE="http://www.apple.com/quicktime/download/">
-                
+            
             </EMBED>
         </OBJECT>
     </div>
 </div>
 
-<div class="dwn-overlay" id="dwn" style="display:none;">
+<div id="dwn" class="overlay" style="display:none">
     <div class="overlay-content">
         <div class="while-downloading">While you are downloading&hellip;</div>
         <div class="stay-in-touch">you may want to do a few more clicks to stay in touch</div>
-        <div class="subscribe-twitter">
-            <div id="twitter-box-placeholder"></div>
-            <script src="http://widgets.twimg.com/j/2/widget.js"></script>
-        </div>
-        <div class="subscribe-blog">
-                Subscribe to my blog<br/>
+        <div class="viral-boxes">
+            <div class="viral-box twitter-box">
+                <div id="twitter-box-placeholder"></div>
+                <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+            </div>
+            <div class="viral-box blog-box">
+                <div class="title">Subscribe to My Blog</div>
                 <a target="_blank" href="http://blog.binaryage.com">Ideas from BinaryAge</a>
-                <div class="subscribe-button2">
-                    <a href="http://feeds.feedburner.com/binaryage-blog"><img src="http://feeds.feedburner.com/~fc/binaryage-blog?bg=dddddd&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
-                </div>
-                <a href="http://feeds.feedburner.com/binaryage-blog" target="_blank" style="display:block;margin-top:6px;" rel="alternate" type="application/rss+xml"><div class="blog-side-icon2 blog-rss-icon"></div></a>
-        </div>
-        <div class="mailchimp-box">
-            <!-- deferred -->
+                <a href="http://feeds.feedburner.com/binaryage-blog">
+                    <div class="rss-button">
+                        <div class="rss-icon"></div>
+                        <img src="http://feeds.feedburner.com/~fc/binaryage-blog?bg=dddddd&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" />
+                    </div>
+                </a>
+            </div>
+            <div class="viral-box mailchimp-box">
+                <!-- deferred -->
+            </div>
         </div>
     </div>
 </div>
 
-<div class="buy-overlay" id="buy" style="display:none;">
+<div id="buy" class="overlay" style="display:none">
     <div class="overlay-content">
-        <div class="buy-options">You have two options&hellip;</div>
+        <div class="options"></div>
         <a href="https://sites.fastspring.com/binaryage/instant/totalfinder">
-            <div class="buy-15-box buy-explanation-box">
-                <div class="exp-title">single license</div>
-                <div class="exp-subtitle">&nbsp;</div>
-                <div class="exp-image"></div>
-                <div class="exp-deal">Happy to pay the standard price?<br/>This is the way to go.</div>
-                <div class="exp-link">Buy it for $15</div>
+            <div class="buy-single explanation-box">
+                <div class="title">Single License</div>
+                <div class="image"></div>
+                <div class="deal">Happy to pay the standard price?<br/>This is the way to go.</div>
+                <div class="button">
+                    <div class="price-tag"></div>
+                    <div><div>Buy one</div></div>
+                </div>
             </div>
         </a>
         <a href="https://sites.fastspring.com/binaryage/instant/totalfinder-friends">
-            <div class="buy-30-box buy-explanation-box">
-                <div class="exp-title">3-license pack</div>
-                <div class="exp-subtitle">&nbsp;</div>
-                <div class="exp-image"></div>
-                <div class="exp-deal">Want a discount? How about 3 licenses for $30? That's over 30% off the regular price!
-                Keep one license for yourself, and give the other two away to your family members. Or find two friends
-                and then all three of you can share in the savings of only $10 per license!
+            <div class="buy-pack explanation-box">
+                <div class="title">3-License Pack</div>
+                <div class="image"></div>
+                <div class="deal">Want a discount? How about 3 licenses for $30?<br/>
+                Keep one license for yourself, and give two links to your friends or family members.
+                Then all three of you can share in the savings of only $10 per license!
                 </div>
-                <div class="exp-link">Buy it for $30</div>
+                <div class="button">
+                    <div class="price-tag"></div>
+                    <div><div>Buy three</div></div>
+                </div>
             </div>
         </a>
-        <div class="exp-info">
-            More info in the article <a href="http://blog.binaryage.com/totalfinder-discount-coupon-with-friends">TotalFinder discount for friends</a><br>
-        </div>
     </div>
+</div>
+
+<div id="gallery" class="overlay" style="display:none"> 
+    <img class="overlay-lesk" src="{{site.url}}/shared/img/nbair1-lesk.png" /> 
+    <a class="overlay-prev">prev</a> 
+    <a class="overlay-next">next</a> 
+    <div class="overlay-info"></div>
+    <img class="overlay-progress" src="{{site.url}}/shared/img/twitter-loader.gif" /> 
 </div>
 
 <script type="text/javascript">
     $(function() {
         var firstClick;
-        $("#o-teaser").overlay({top: 100, effect: 'apple'});
-        $("#o-buy").overlay({effect: 'apple'});
-        $("#o-download").overlay({effect: 'apple'}); // prevents default, see the trick below
+        var exposeEffect = {
+            opacity: 0.3,
+            color: '#000'
+        };
+        $("#o-teaser").overlay({top: 110, effect: 'apple', expose: exposeEffect});
+        $("#o-buy").overlay({top: 110, effect: 'apple', expose: exposeEffect});
+        $("#o-download").overlay({top: 110, effect: 'apple', expose: exposeEffect}); // prevents default, see the trick below
         $("#o-download-button").bind('click', function(e) {
             var host = document.location.host;
             if (host.substring(host.length-3)=='org') {
@@ -197,16 +218,15 @@ satisfaction: 1
                       type: 'profile',
                       rpp: 1,
                       interval: 6000,
-                      width: 190,
-                      height: 200,
+                      width: 'auto',
                       theme: {
                         shell: {
-                          background: '#ccc',
-                          color: '#000'
+                          background: '#f1f1f1',
+                          color: '#393d44'
                         },
                         tweets: {
-                            background: '#ddd',
-                          color: '#000',
+                            background: '#fafafa',
+                          color: '#8d9198',
                           links: '#3A6394'
                         }
                       },
@@ -228,9 +248,7 @@ satisfaction: 1
             // does not prevent default and triggers browser's download action
         });
     });
-</script>
 
-<script>
     $(function() {
         var lastIndex = -1;
         $(".product-thumbs-scrollable").scrollable({
@@ -249,7 +267,7 @@ satisfaction: 1
         var api = $(".product-thumbs-scrollable").data("scrollable");
         var showcaseSwitchTimer;
         
-        $('.tf-highlight').each(function() {
+        $('.highlight').each(function() {
             var el = $(this);
             var showcaseIndex = el.attr('data-showcase');
             if (!showcaseIndex) return;
@@ -270,32 +288,22 @@ satisfaction: 1
             });
         });
     });
-</script>
-
-<div class="air-overlay" id="overlay-gallery"> 
-    <img class="overlay-lesk" src="{{site.url}}/shared/img/nbair1-lesk.png" /> 
-    <a class="overlay-prev">prev</a> 
-    <a class="overlay-next">next</a> 
-    <div class="overlay-info"></div>
-    <img class="overlay-progress" src="{{site.url}}/shared/img/twitter-loader.gif" /> 
-</div>
-
-<script>
-(function() {
-    $('.overlayable').overlay({
-        top: 'center',
-        expose: '#f1f1f1',
-        target: '#overlay-gallery'
-    }).gallery({
-        preventResize: true,
-        disabledClass: 'disabled-overlay',
-        prev: '.overlay-prev',
-        next: '.overlay-next',
-        info: '.overlay-info',
-        progress: '.overlay-progress',
-        opacity: 1,
-        speed: 200, 
-        template: '[${index}/${total}] ${title}'
+    
+    $(function() {
+        $('.overlayable').overlay({
+            top: 'center',
+            expose: '#f1f1f1',
+            target: '#gallery'
+        }).gallery({
+            preventResize: true,
+            disabledClass: 'disabled-overlay',
+            prev: '.overlay-prev',
+            next: '.overlay-next',
+            info: '.overlay-info',
+            progress: '.overlay-progress',
+            opacity: 1,
+            speed: 200, 
+            template: '[${index}/${total}] ${title}'
+        });
     });
-})();
 </script>
