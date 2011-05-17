@@ -21,8 +21,8 @@ satisfaction: 1
             <div class="product-buttons-box">
                 <div class="product-click-here"></div>
                 <div class="product-buttons">
-                    <div id="o-download" rel="#dwn" style="position: absolute; top:240px; width:1px; height:1px"></div>
-                    <a href="{{page.download}}" id="o-download-button" rel="#dwn" class="button product-button-download">
+                    <div id="o-download" rel="#download" style="position: absolute; top:240px; width:1px; height:1px"></div>
+                    <a href="{{page.download}}" id="o-download-button" rel="#download" class="button product-button-download">
                         <div><div><div class="trial-note">14-day trial</div>{{page.downloadtitle}}<div class="product-specs">Requires OS X 10.6 (Snow Leopard)</div></div></div>
                     </a>
                     <a id="o-buy" rel="#buy" class="button product-button-buy">
@@ -48,13 +48,21 @@ satisfaction: 1
                 {% endfor %}
                 <div class="clear"></div>
             </div>
-            <div class="teaser-button">
-                <a href="http://downloads.binaryage.com/totalfinder-teaser.mov" id="o-teaser" rel="#teaser" class="teaser-play">
-                    <div></div>
-                </a>
+            <div class="screenshot-controls">
+                <div class="teaser-box">
+                    <div class="teaser-hint"></div>
+                    <div class="teaser-button">
+                        <a href="http://downloads.binaryage.com/totalfinder-teaser.mov" id="o-teaser" rel="#teaser" class="teaser-play">
+                            <div></div>
+                        </a>
+                    </div>
+                    <div class="teaser-separator"></div>
+                </div>
+                <div class="navi-box">
+                    <div class="navi-hint"></div>
+                    <div class="navi"></div>
+                </div>
             </div>
-            <div class="navi-hint"></div>
-            <div class="navi"></div>
             <div class="product-thumbs-box">
                 <a class="prevPage browse left"></a>
                 <div class="product-thumbs-scrollable"> 
@@ -70,10 +78,11 @@ satisfaction: 1
     </div>
 </div>
 
-<div class="main-content">
+<div id="content-totalfinder" class="main-content">
     <div class="container">
-        <div class="product-actions-box">
-            <div class="product-actions-box-inner">
+        {{ content }}
+        <div class="social-box">
+            <div class="social-box-inner">
                 {% if page.retweet %}
                 <div class="retweet">
                     <a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="binaryage">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>                
@@ -112,7 +121,6 @@ satisfaction: 1
             </div>
             <div class="clear"></div>
         </div>    
-        {{ content }}
     </div>
 </div>
 
@@ -128,7 +136,7 @@ satisfaction: 1
     </div>
 </div>
 
-<div id="dwn" class="overlay" style="display:none">
+<div id="download" class="overlay" style="display:none">
     <div class="overlay-content">
         <div class="while-downloading">While you are downloading&hellip;</div>
         <div class="stay-in-touch">you may want to do a few more clicks to stay in touch</div>
@@ -214,31 +222,31 @@ satisfaction: 1
                     firstClick = true;
                     new TWTR.Widget({
                         id: 'twitter-box-placeholder',
-                      version: 2,
-                      type: 'profile',
-                      rpp: 1,
-                      interval: 6000,
-                      width: 'auto',
-                      theme: {
-                        shell: {
-                          background: '#f1f1f1',
-                          color: '#393d44'
+                        version: 2,
+                        type: 'profile',
+                        rpp: 1,
+                        interval: 6000,
+                        width: 'auto',
+                        theme: {
+                            shell: {
+                                background: '#f1f1f1',
+                                color: '#393d44'
+                            },
+                            tweets: {
+                                background: '#fafafa',
+                                color: '#8d9198',
+                                links: '#3A6394'
+                            }
                         },
-                        tweets: {
-                            background: '#fafafa',
-                          color: '#8d9198',
-                          links: '#3A6394'
+                        features: {
+                            scrollbar: false,
+                            loop: false,
+                            live: false,
+                            hashtags: true,
+                            timestamp: false,
+                            avatars: false,
+                            behavior: 'all'
                         }
-                      },
-                      features: {
-                        scrollbar: false,
-                        loop: false,
-                        live: false,
-                        hashtags: true,
-                        timestamp: true,
-                        avatars: false,
-                        behavior: 'all'
-                      }
                     }).render().setUser('binaryage').start();
                     $('.mailchimp-box').load('mailchimp.html?x='+((Math.random()+"").substring(2)));
                 }

@@ -248,7 +248,7 @@
     
         <script type="text/javascript">
             WebFontConfig = { 
-                google: { families: [ 'Reenie Beanie', 'Droid Sans:regular,bold' ] }
+                google: { families: [ 'Droid Sans:regular,bold' ] }
             };
             (function() {
                 var wf = document.createElement('script');
@@ -277,7 +277,11 @@
         </div>
         <div id="header" class="menu-{{page.menu}}">
             <div class="container header">
-                <a href="http://binaryage.com" title="BinaryAge Software"><div class="header-logo"></div></a>
+                <a href="http://binaryage.com" title="BinaryAge Software">
+                    <div class="header-logo">
+                        <div class="header-logo-hover"></div>
+                    </div>
+                </a>
                 <div class="header-motto"></div>
                 <div class="header-selector"></div>
                 <ul class="header-menu">
@@ -313,7 +317,7 @@
                     </div>
                     {% else %}
                     <div class="copyright">
-                        <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0"><img title="Web site license" alt="Creative Commons License" style="border-width:0" src="/shared/img/byccnd.png" /></a>
+                        <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0"><img title="the website license" alt="Creative Commons License" style="border-width:0" src="/shared/img/byccnd.png" /></a>
                     </div>
                     {% endif %}
                     <div class="footer-links force-right">
@@ -332,7 +336,7 @@
         {% if page.pray %}
         <div class="google-pray">
             <div class="container">
-                <p>Hello GoogleBot, please index this page also for terms: {{page.pray}}. Thank you :-)</p>
+                <p>Hello GoogleBot, please index this page also for the terms: {{page.pray}}. Thank you :-)</p>
             </div>
         </div>
         {% endif %}
