@@ -8,11 +8,11 @@ satisfaction: 1
             <div class="product-logo-box">
                 <img class="product-icon" src="/shared/img/icons/{{page.product_title|downcase}}-64.png">
                 <div class="product-tagline">
-                    <h1 class="product-title">{{page.product_title}}</h1>
+                    <h1 class="product-title wf">{{page.product_title}}</h1>
                     {% if page.product_badge %}
-                    <div class="product-badge badge-{{page.product_title|downcase}}">{{page.product_badge}}</div>
+                    <div class="product-badge badge-{{page.product_title|downcase}} wf">{{page.product_badge}}</div>
                     {% endif %}
-                    <h2 class="product-subtitle">{{page.product_subtitle}}</h2>
+                    <h2 class="product-subtitle wf">{{page.product_subtitle}}</h2>
                     <div class="facebook-like-box">
                         <fb:like href="{{page.ogmeta.url}}" width="370" layout="standard" show_faces="false" action="like" font="arial" colorscheme="light"></fb:like>
                     </div>        
@@ -21,15 +21,15 @@ satisfaction: 1
             <div class="product-buttons-box">
                 <div class="product-click-here"></div>
                 <div class="product-buttons">
-                    <div id="o-download" rel="#download" style="position: absolute; top:240px; width:1px; height:1px"></div>
-                    <a href="{{page.download}}" id="o-download-button" rel="#download" class="button product-button-download">
+                    <div id="o-download" rel="#download"></div>
+                    <a href="{{page.download}}" id="o-download-button" rel="#download" class="button product-button-download wf">
                         <div><div><div class="trial-note">14-day trial</div>{{page.downloadtitle}}<div class="product-specs">Requires OS X 10.6 (Snow Leopard)</div></div></div>
                     </a>
-                    <a id="o-buy" rel="#buy" class="button product-button-buy">
+                    <a id="o-buy" rel="#buy" class="button product-button-buy wf">
                         <div class="price-tag"></div>
                         <div><div>Buy TotalFinder</div></div>
                     </a>
-                    <div class="reasons-to-buy">
+                    <div class="reasons-to-buy wf">
                         <a href="/free-licenses">I'm also giving away free licenses!</a><br>
                         <a href="/reasons-to-buy">why should you buy otherwise?</a><br>
                     </div>

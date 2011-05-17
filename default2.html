@@ -48,6 +48,23 @@
         <link href="http://feeds.feedburner.com/binaryage-blog" type="application/atom+xml" rel="alternate" title="Ideas from BinaryAge" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <style type="text/css">
+            /* prevent visible font switching */
+            .wf {
+                opacity: 0 !important;
+                filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0) !important;
+                -webkit-transition: opacity 1s ease 0s;
+                -moz-transition: opacity 1s ease 0s;
+                -o-transition: opacity 1s ease 0s;
+                transition: opacity 1s ease 0s;
+            }
+            .wf-active .wf,
+            .wf-fake-active .wf {
+                opacity: 1 !important;
+                filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100) !important;
+            }
+
+        </style>
         <link rel="stylesheet" href="/shared/css/site2.css" type="text/css">
     
         {% if page.xstatic != 1 %}
@@ -266,10 +283,10 @@
         <div id="topbar">
             <div class="container topbar">
                 <div class="topbar-buttons">
-                    <div class="topbar-labs">
+                    <div class="topbar-labs wf">
                         labs
                     </div>
-                    <div class="topbar-testimonials">
+                    <div class="topbar-testimonials wf">
                         testimonials
                     </div>
                 </div>
@@ -285,10 +302,10 @@
                 <div class="header-motto"></div>
                 <div class="header-selector"></div>
                 <ul class="header-menu">
-                    <li class="menu-item-store"><a href="https://sites.fastspring.com/binaryage/instant/totalfinder"><span>store</span></a></li>
-                    <li class="menu-item-products"><a href="http://binaryage.com"><span>products</span></a></li>
-                    <li class="menu-item-blog"><a href="http://blog.binaryage.com"><span>blog</span></a></li>
-                    <li class="menu-item-support"><a href="http://support.binaryage.com"><span>support</span></a></li>
+                    <li class="menu-item-store wf"><a href="https://sites.fastspring.com/binaryage/instant/totalfinder"><span>store</span></a></li>
+                    <li class="menu-item-products wf"><a href="http://binaryage.com"><span>products</span></a></li>
+                    <li class="menu-item-blog wf"><a href="http://blog.binaryage.com"><span>blog</span></a></li>
+                    <li class="menu-item-support wf"><a href="http://support.binaryage.com"><span>support</span></a></li>
                 </ul>
             </div>
         </div>
@@ -320,7 +337,7 @@
                         <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0"><img title="the website license" alt="Creative Commons License" style="border-width:0" src="/shared/img/byccnd.png" /></a>
                     </div>
                     {% endif %}
-                    <div class="footer-links force-right">
+                    <div class="footer-links wf">
                         {% if page.satisfaction %}
                         <a href="javascript:GSFNFeedbackWidget.show()">feedback</a> | 
                         {% endif %}
@@ -429,6 +446,11 @@
                         $('#'+hash).trigger('click');
                     }
                 }, 500);
+                
+                // give the custom font 5s to load, otherwise enable simple font visibility
+                setTimeout(function() {
+                    $('html').addClass('wf-fake-active');
+                }, 5000);
             });
     
             // localhost debug
@@ -442,8 +464,17 @@
                             if (href.match('binaryage.com')) {
                                 href = href.replace('binaryage.com', 'binaryage.org');
                             }
-                            if (href.match(/\/[^.]+$/i)) { 
+                            var loc = document.location+"";
+                            if (href.substring(0, 4)!="http" && href.match(/\/[^.]+$/i)) { 
                                 // this is for local jekyll server inconsistency
+                                if (host.substring(loc.length-1)=="2") { 
+                                    // next website version
+                                    href += "2";
+                                }
+                                if (loc.substring(loc.length-6)=="2.html") { 
+                                    // next website version
+                                    href += "2";
+                                }
                                 href += ".html";
                             }
                             el.attr('href', href);
