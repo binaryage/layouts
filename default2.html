@@ -279,7 +279,7 @@
         {% endif %}
         <!-- SCRIPTS END -->
     </head>
-    <body id="page-{{ page.url | remove: '/' | remove: '.html' }}">
+    <body id="page-{{ site.url | remove: 'https' | remove: 'http' | remove: ':' | remove: '/' | remove: '.com' | remove: '.org' | remove: '.binaryage' }}-{{ page.url | remove: '/' | remove: '.html' }}">
         <div id="topbar">
             <div class="container topbar">
                 <div class="topbar-buttons">
