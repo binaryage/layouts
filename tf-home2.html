@@ -8,11 +8,11 @@ satisfaction: 1
             <div class="product-logo-box">
                 <img class="product-icon" src="/shared/img/icons/{{page.product_title|downcase}}-64.png">
                 <div class="product-tagline">
-                    <h1 class="product-title wf">{{page.product_title}}</h1>
+                    <h1 class="product-title">{{page.product_title}}</h1>
                     {% if page.product_badge %}
-                    <div class="product-badge badge-{{page.product_title|downcase}} wf">{{page.product_badge}}</div>
+                    <div class="product-badge badge-{{page.product_title|downcase}}">{{page.product_badge}}</div>
                     {% endif %}
-                    <h2 class="product-subtitle wf">{{page.product_subtitle}}</h2>
+                    <h2 class="product-subtitle">{{page.product_subtitle}}</h2>
                     <div class="facebook-like-box">
                         <fb:like href="{{page.ogmeta.url}}" width="370" layout="standard" show_faces="false" action="like" font="arial" colorscheme="light"></fb:like>
                     </div>        
@@ -22,14 +22,14 @@ satisfaction: 1
                 <div class="product-click-here"></div>
                 <div class="product-buttons">
                     <div id="o-download" rel="#download"></div>
-                    <a href="{{page.download}}" id="o-download-button" rel="#download" class="button product-button-download wf">
+                    <a href="{{page.download}}" id="o-download-button" rel="#download" class="button product-button-download">
                         <div><div><div class="trial-note">14-day trial</div>{{page.downloadtitle}}<div class="product-specs">Requires OS X 10.6 (Snow Leopard)</div></div></div>
                     </a>
-                    <a id="o-buy" rel="#buy" class="button product-button-buy wf">
+                    <a id="o-buy" rel="#buy" class="button product-button-buy">
                         <div class="price-tag"></div>
                         <div><div>Buy TotalFinder</div></div>
                     </a>
-                    <div class="reasons-to-buy wf">
+                    <div class="reasons-to-buy">
                         <a href="/free-licenses">I'm also giving away free licenses!</a><br>
                         <a href="/reasons-to-buy">why should you buy otherwise?</a><br>
                     </div>
@@ -143,6 +143,7 @@ satisfaction: 1
         <div class="viral-boxes">
             <div class="viral-box twitter-box">
                 <div id="twitter-box-placeholder"></div>
+                <!-- <script src="http://twitter.com/javascripts/widgets/widget.js"></script> -->
                 <script src="http://widgets.twimg.com/j/2/widget.js"></script>
             </div>
             <div class="viral-box blog-box">
@@ -220,11 +221,12 @@ satisfaction: 1
             setTimeout(function() { // this is needed for webkit based browsers
                 if (!firstClick) {
                     firstClick = true;
+                    TWTR.Widget.hasLoadedStyleSheet = true; // let's do all styles ourselves
                     new TWTR.Widget({
                         id: 'twitter-box-placeholder',
                         version: 2,
                         type: 'profile',
-                        rpp: 1,
+                        rpp: 10,
                         interval: 6000,
                         width: 'auto',
                         theme: {
@@ -299,7 +301,6 @@ satisfaction: 1
     
     $(function() {
         $('.overlayable').overlay({
-            top: 'center',
             expose: '#f1f1f1',
             target: '#gallery'
         }).gallery({

@@ -1,10 +1,9 @@
 ---
-layout: blog
-page_name: blog
+layout: blog2
 ---
 
 <div class="blog-articles">
-    <a href="/">Read more articles</a>
+    <a href="/">« Read more articles</a>
 </div>
 <div id="post">
     <div class="post-titlebar">
@@ -19,7 +18,7 @@ page_name: blog
     <div class="post-content">{{ content }}</div>
 </div>
 
-<div class="simple_overlay" id="overlay-gallery"> 
+<div class="simple_overlay" id="overlay-gallery" style="display:none"> 
     <a class="overlay-prev">prev</a> 
     <a class="overlay-next">next</a> 
     <div class="overlay-info"></div>
@@ -58,8 +57,7 @@ page_name: blog
 })();
 </script>
 
-<div class="master-separator">
-</div>
+<div class="master-separator"></div>
 <div id="comments">
     <div id="disqus_thread"></div>
     <div id="disqus_script"></div>

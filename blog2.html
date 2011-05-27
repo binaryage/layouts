@@ -1,0 +1,55 @@
+---
+layout: default2
+menu: blog
+meta_title: The blog from BinaryAge
+meta_keywords: blog,ideas,antonin hildebrand,binaryage,productivity,software,web,development
+meta_description: Sharing ideas about software, products and cool stuff from BinaryAge
+meta_image: http://www.binaryage.com/shared/img/icons/binaryage-badge-256.png
+products: [
+{title: "TotalFinder", url: "http://totalfinder.binaryage.com", info: "Better Finder.app"},
+{title: "Visor", url: "http://visor.binaryage.com", info: "System-wide Terminal.app"},
+{title: "FireQuery", url: "http://firequery.binaryage.com", info: "jQuery development in Firebug"},
+{title: "FireLogger", url: "http://firelogger.binaryage.com", info: "Realtime logging into Firebug"},
+{title: "FireRainbow", url: "http://firerainbow.binaryage.com", info: "Syntax highlighting for Firebug"},
+{title: "XRefresh", url: "http://xrefresh.binaryage.com", info: "Refresh a browser on save"}
+]
+---
+<div id="blog">
+    <div class="container">
+        <div class="blog-body">
+            <div class="blog-content">
+                {{content}}
+            </div>
+            <div class="blog-side">
+                <div class="vseparator-top"></div>
+                <div class="vseparator-body"></div>
+                <div class="vseparator-bottom"></div>
+                <div class="blog-side-box blog-side-about">
+                    <div class="blog-side-about-left"><a href="http://www.binaryage.com/about"><img src="http://www.gravatar.com/avatar/79322c2ed80c2d722de8c9d0475198a0?s=76" width="76" height="76"></a></div>
+                    <div class="blog-side-about-right"><h4>About Antonin</h4>I'm a software developer passionate about the Mac, the web, 3d graphics and software tools.<br/><a href="http://www.binaryage.com/about.html">Read More »</a></div>
+                    <div class="thats-me"></div>
+                </div>
+                <div class="blog-side-box blog-side-subscribe">
+                    <a href="http://feeds.feedburner.com/binaryage-blog" rel="alternate" type="application/rss+xml"><div class="blog-side-icon blog-rss-icon"/></div></a>
+                    <a href="http://feeds.feedburner.com/binaryage-blog" rel="alternate" type="application/rss+xml">Subscribe</a>
+                    <div class="subscribe-button">
+                        <a href="http://feeds.feedburner.com/binaryage-blog"><img src="http://feeds.feedburner.com/~fc/binaryage-blog?bg=dddddd&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+                    </div>
+                </div>
+                <div class="blog-side-box blog-side-products">
+                    {% for product in page.products %}
+                    <div class="blog-side-separator-top {{product.title|downcase}}"></div>
+                    <div class="blog-side-product">
+                        <a href="{{product.url}}">
+                            <img src="/shared/img/icons/{{product.title|downcase}}-64.png" width="38" height="38"/>
+                            <div class="title">{{product.title}}</div>
+                            <div class="info">{{product.info}}</div>
+                        </a>
+                    </div>
+                    <div class="blog-side-separator-bottom {{product.title|downcase}}"></div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

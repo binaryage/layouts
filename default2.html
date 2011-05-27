@@ -53,10 +53,10 @@
             .wf {
                 opacity: 0 !important;
                 filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0) !important;
-                -webkit-transition: opacity 1s ease 0s;
-                -moz-transition: opacity 1s ease 0s;
-                -o-transition: opacity 1s ease 0s;
-                transition: opacity 1s ease 0s;
+                -webkit-transition: opacity 0.5s ease 0s;
+                -moz-transition: opacity 0.5s ease 0s;
+                -o-transition: opacity 0.5s ease 0s;
+                transition: opacity 0.5s ease 0s;
             }
             .wf-active .wf,
             .wf-fake-active .wf {
@@ -309,7 +309,7 @@
                 </ul>
             </div>
         </div>
-        <div id="main">
+        <div id="main" class="wf">
             {% if page.gwo %}
             <script>utmx_section("content")</script>
             {% endif %}
