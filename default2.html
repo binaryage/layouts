@@ -65,6 +65,11 @@
             }
 
         </style>
+        {% if page.xstatic == 1 %}
+        <link type="text/css" media="all" href="//resource.fastspring.com/app/store/style/base.css?v=1305862826942&amp;region=eu" rel="stylesheet" title="main">        
+        <link type="text/css" media="all" href="//dcnz2rrcot657.cloudfront.net/_gz/country/fam/decorate.css" rel="stylesheet" title="main">
+        {% endif %}
+
         <link rel="stylesheet" href="/shared/css/site2.css" type="text/css">
     
         {% if page.xstatic != 1 %}
@@ -135,7 +140,7 @@
         {% endif %}
 
         {% if page.xstatic != 1 %}
-        <script src="/shared/js/code.js"></script>
+        <script src="/shared/js/code2.js"></script>
         {% if page.scripts %}
         {% for s in page.scripts %}
         <script src="{{s}}"></script>
@@ -263,6 +268,8 @@
             SSTracker.track({e:'hit'});
         </script>
     
+        {% endif %}
+        
         <script type="text/javascript">
             WebFontConfig = { 
                 google: { families: [ 'Droid Sans:regular,bold' ] }
@@ -276,7 +283,6 @@
                 s.parentNode.insertBefore(wf, s);
             })();
         </script>
-        {% endif %}
         <!-- SCRIPTS END -->
     </head>
     <body id="page-{{ site.url | remove: 'https' | remove: 'http' | remove: ':' | remove: '/' | remove: '.com' | remove: '.org' | remove: '.binaryage' }}-{{ page.url | remove: '/' | remove: '.html' }}">
@@ -386,27 +392,6 @@
         </script>
         {% endif %}
 
-        {% if page.satisfaction %}
-        <div id="getsatifucktion"></div>
-        <div id="getsatifucktion2"></div>
-        <script type="text/javascript" charset="utf-8">
-            $("#getsatifucktion").html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://s3.amazonaws.com/getsatisfaction.com/javascripts/feedback-v2.js"></scr'+'ipt>', {
-                done: function() {
-                    if (typeof window.GSFN == "object") {
-                        window.GSFNFeedbackWidget = new GSFN.feedback_widget({
-                            container: "getsatifucktion2",
-                            display: "overlay",
-                            company: "binaryage",
-                            placement: "hidden",
-                            color: "#656565",
-                            style: "idea"
-                        });
-                    }
-                }
-            }));
-        </script>
-        {% endif %}
-
         {% if page.disqus %}
         <div id="disqus-wrapper"></div>
         <script type="text/javascript">
@@ -495,6 +480,27 @@
                     return false;
                 }
             });
+        </script>
+        {% endif %}
+
+        {% if page.satisfaction %}
+        <div id="getsatifucktion"></div>
+        <div id="getsatifucktion2"></div>
+        <script type="text/javascript" charset="utf-8">
+            $("#getsatifucktion").html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://s3.amazonaws.com/getsatisfaction.com/javascripts/feedback-v2.js"></scr'+'ipt>', {
+                done: function() {
+                    if (typeof window.GSFN == "object") {
+                        window.GSFNFeedbackWidget = new GSFN.feedback_widget({
+                            container: "getsatifucktion2",
+                            display: "overlay",
+                            company: "binaryage",
+                            placement: "hidden",
+                            color: "#656565",
+                            style: "idea"
+                        });
+                    }
+                }
+            }));
         </script>
         {% endif %}
 
