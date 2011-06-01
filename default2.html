@@ -51,7 +51,14 @@
         <link href="http://feeds.feedburner.com/binaryage-blog" type="application/atom+xml" rel="alternate" title="Ideas from BinaryAge" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <style type="text/css" torbitnoexternal="torbitnoexternal">
+        
+        <script type="text/javascript" charset="utf-8">
+            // give the custom font 5s to load, otherwise enable simple font visibility
+            setTimeout(function() {
+                $('html').addClass('wf-fake-active');
+            }, 2000);
+        </script>
+        <style type="text/css">
             /* prevent visible font switching - this is also repeated in global.styl for fastspring compatibility!  */
             .js .wf {
                 opacity: 0 !important;
@@ -469,11 +476,6 @@
                         $('#'+hash).trigger('click');
                     }
                 }, 500);
-                
-                // give the custom font 5s to load, otherwise enable simple font visibility
-                setTimeout(function() {
-                    $('html').addClass('wf-fake-active');
-                }, 5000);
             });
     
             // localhost debug
