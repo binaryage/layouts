@@ -1,6 +1,7 @@
 ---
 layout: default2
 satisfaction: 1
+plusone: 1
 menu: products
 ---
 <div class="main-product" id="product-{{page.product}}">
@@ -9,10 +10,7 @@ menu: products
             <div class="product-logo-box">
                 <img class="product-icon" src="/shared/img/icons/{{page.product_title|downcase}}-64.png">
                 <div class="product-tagline">
-                    <h1 class="product-title">{{page.product_title}}</h1>
-                    {% if page.product_badge %}
-                    <div class="product-badge badge-{{page.product_title|downcase}}">{{page.product_badge}}</div>
-                    {% endif %}
+                    <h1 class="product-title">{{page.product_title}}</h1><div class="plusone-wrapper"><g:plusone size="medium"></g:plusone></div>
                     <h2 class="product-subtitle">{{page.product_subtitle}}</h2>
                     <div class="facebook-like-box">
                         <fb:like href="{{page.ogmeta.url}}" layout="standard" show_faces="false" action="like" font="arial" colorscheme="light"></fb:like>

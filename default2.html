@@ -142,6 +142,20 @@
         <!-- End of Google Website Optimizer Control Script -->
         {% endif %}
 
+        <script type="text/javascript">
+            WebFontConfig = { 
+                google: { families: [ 'Play:regular,bold' ] }
+            };
+            (function() {
+                var wf = document.createElement('script');
+                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+                wf.type = 'text/javascript';
+                wf.async = 'true';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        
         {% if page.xstatic != 1 %}
         <script src="/shared/js/code2.js"></script>
         {% if page.scripts %}
@@ -270,22 +284,10 @@
             
             SSTracker.track({e:'hit'});
         </script>
-    
+        {% if page.plusone %}
+        <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
         {% endif %}
-        
-        <script type="text/javascript">
-            WebFontConfig = { 
-                google: { families: [ 'Play:regular,bold' ] }
-            };
-            (function() {
-                var wf = document.createElement('script');
-                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-                wf.type = 'text/javascript';
-                wf.async = 'true';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(wf, s);
-            })();
-        </script>
+        {% endif %}
         <!-- SCRIPTS END -->
     </head>
     <body id="page-{{ site.url | remove: 'https' | remove: 'http' | remove: ':' | remove: '/' | remove: '.com' | remove: '.org' | remove: '.binaryage' }}-{{ page.url | remove: '/' | remove: '.html' }}">
