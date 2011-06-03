@@ -6,6 +6,9 @@
     <head>
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
         <title>{{page.title}}</title>
+        {% if page.no_canonical != 1 %}
+        <link rel="canonical" href="{{site.url}}">
+        {% endif %}
         {% if page.meta_title %}
         <meta name="title" content="{{page.title}}" />
         {% endif %}
