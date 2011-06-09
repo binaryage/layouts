@@ -512,7 +512,7 @@
                 var parts = parseUri(document.location+"");
                 var referrer = parts.queryKey["referrer"];
                 if (referrer) {
-                    bacookie("bareferrer", referrer, {path: '/', expires: 7});
+                    bacookie("bareferrer", referrer, {path: '/', expires: 14});
                 }
             })();
   
