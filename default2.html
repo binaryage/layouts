@@ -118,6 +118,72 @@
             })();
         </script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            // https://github.com/carhartl/jquery-cookie
+            function bacookie(key, value, options) {
+                // key and at least value given, set cookie...
+                if (arguments.length > 1 && String(value) !== "[object Object]") {
+                    options = options || {};
+
+                    if (value === null || value === undefined) {
+                        options.expires = -1;
+                    }
+
+                    if (typeof options.expires === 'number') {
+                        var days = options.expires, t = options.expires = new Date();
+                        t.setDate(t.getDate() + days);
+                    }
+
+                    value = String(value);
+
+                    return (document.cookie = [
+                        encodeURIComponent(key), '=',
+                        options.raw ? value : encodeURIComponent(value),
+                        options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+                        options.path ? '; path=' + options.path : '',
+                        options.domain ? '; domain=' + options.domain : '',
+                        options.secure ? '; secure' : ''
+                    ].join(''));
+                }
+
+                // key and possibly options given, get cookie...
+                options = value || {};
+                var result, decode = options.raw ? function (s) { return s; } : decodeURIComponent;
+                return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
+            };
+            // parseUri 1.2.2
+            // (c) Steven Levithan <stevenlevithan.com>
+            // MIT License
+
+            function parseUri (str) {
+                var o   = parseUri.options,
+                    m   = o.parser[o.strictMode ? "strict" : "loose"].exec(str),
+                    uri = {},
+                    i   = 14;
+
+                while (i--) uri[o.key[i]] = m[i] || "";
+
+                uri[o.q.name] = {};
+                uri[o.key[12]].replace(o.q.parser, function ($0, $1, $2) {
+                    if ($1) uri[o.q.name][$1] = $2;
+                });
+
+                return uri;
+            };
+
+            parseUri.options = {
+                strictMode: false,
+                key: ["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],
+                q:   {
+                    name:   "queryKey",
+                    parser: /(?:^|&)([^&=]*)=?([^&]*)/g
+                },
+                parser: {
+                    strict: /^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,
+                    loose:  /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/
+                }
+            };            
+        </script>
 
         <script>
             function utmx_section(){}function utmx(){};
@@ -212,47 +278,14 @@
                     env = {};
                 }
         
-                // https://github.com/carhartl/jquery-cookie
-                var cookie = function (key, value, options) {
-                    // key and at least value given, set cookie...
-                    if (arguments.length > 1 && String(value) !== "[object Object]") {
-                        options = options || {};
-
-                        if (value === null || value === undefined) {
-                            options.expires = -1;
-                        }
-
-                        if (typeof options.expires === 'number') {
-                            var days = options.expires, t = options.expires = new Date();
-                            t.setDate(t.getDate() + days);
-                        }
-
-                        value = String(value);
-
-                        return (document.cookie = [
-                            encodeURIComponent(key), '=',
-                            options.raw ? value : encodeURIComponent(value),
-                            options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
-                            options.path ? '; path=' + options.path : '',
-                            options.domain ? '; domain=' + options.domain : '',
-                            options.secure ? '; secure' : ''
-                        ].join(''));
-                    }
-
-                    // key and possibly options given, get cookie...
-                    options = value || {};
-                    var result, decode = options.raw ? function (s) { return s; } : decodeURIComponent;
-                    return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
-                };
-
                 env.u = document.location.href;
                 var w = $(window);
                 env.bw = w.width();
                 env.bh = w.height();
-                env.uid = cookie('ssuid');
+                env.uid = bacookie('ssuid');
                 if (!env.uid) {
                     env.uid = ((Math.random()+"").substring(2));
-                    cookie('ssuid', env.uid, {
+                    bacookie('ssuid', env.uid, {
                         path: '/',
                         expires: 30 // TODO: configurable?
                     });
@@ -386,7 +419,7 @@
     
         {% if page.fbsdk %}
         <div id="fb-root"></div>
-        <script>
+        <script type="text/javascript">
             window.fbAsyncInit = function() {
                 FB.init({appId: '332451499524', status: true, cookie: true, xfbml: true});
             };
@@ -473,11 +506,25 @@
                     });
                 }
             });
+            
+            (function(){
+                // store the referrer in cookie for later reuse
+                var parts = parseUri(document.location+"");
+                var referrer = parts.queryKey["referrer"];
+                if (referrer) {
+                    bacookie("bareferrer", referrer, {path: '/', expires: 7});
+                }
+            })();
   
             // cross-domain tracking
             // http://code.google.com/apis/analytics/docs/tracking/gaTrackingSite.html
             $('a').live('click', function() {
                 var href = $(this).attr("href")+"";
+                // pass referrer if available, FastSpring will report it on final order
+                var referrer = bacookie("bareferrer");
+                if (referrer) {
+                    href += (href.indexOf("?")==-1?"?":"&")+"referrer="+encodeURIComponent(referrer);
+                }
                 var current = document.location+"";
                 // just for switching domains between binaryage.com <-> fastspring.com
                 if ((current.match(/fastspring\.com/) && href.match(/binaryage\.com/)) || 
@@ -533,61 +580,29 @@
                 <div class="fixed-wrapper">
                     <div class="suck-dialog suck-ie5" style="display:none">
                         This page is using the latest HTML5 techniques. You are using old Internet Explorer 5. Please <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">upgrade to Internet Explorer 9</a> for pixel-perfect experience. Thanks!
-                        <div class="suck-close" onclick="$(this).parent().addClass('suck-closed'); suckCookie('suck-closed', '1', {path: '/'})"></div>
+                        <div class="suck-close" onclick="$(this).parent().addClass('suck-closed'); bacookie('suck-closed', '1', {path: '/'})"></div>
                         <div class="suck-icon"></div>
                     </div>
                     <div class="suck-dialog suck-ie6" style="display:none">
                         This page is using the latest HTML5 techniques. You are using old Internet Explorer 6. Please <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">upgrade to Internet Explorer 9</a> for pixel-perfect experience. Thanks!
-                        <div class="suck-close" onclick="$(this).parent().addClass('suck-closed'); suckCookie('suck-closed', '1', {path: '/'})"></div>
+                        <div class="suck-close" onclick="$(this).parent().addClass('suck-closed'); bacookie('suck-closed', '1', {path: '/'})"></div>
                         <div class="suck-icon"></div>
                     </div>
                     <div class="suck-dialog suck-ie7" style="display:none">
                         This page is using the latest HTML5 techniques. You are using old Internet Explorer 7. Please <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">upgrade to Internet Explorer 9</a> for pixel-perfect experience. Thanks!
-                        <div class="suck-close" onclick="$(this).parent().addClass('suck-closed'); suckCookie('suck-closed', '1', {path: '/'})"></div>
+                        <div class="suck-close" onclick="$(this).parent().addClass('suck-closed'); bacookie('suck-closed', '1', {path: '/'})"></div>
                         <div class="suck-icon"></div>
                     </div>
                     <div class="suck-dialog suck-ie8" style="display:none">
                         This page is using the latest HTML5 techniques. You are using old Internet Explorer 8. Please <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">upgrade to Internet Explorer 9</a> for pixel-perfect experience. Thanks!
-                        <div class="suck-close" onclick="$(this).parent().addClass('suck-closed'); suckCookie('suck-closed', '1', {path: '/'})"></div>
+                        <div class="suck-close" onclick="$(this).parent().addClass('suck-closed'); bacookie('suck-closed', '1', {path: '/'})"></div>
                         <div class="suck-icon"></div>
                     </div>
                 </div>
             </div>
         </div>
         <script type="text/javascript" charset="utf-8">
-            // https://github.com/carhartl/jquery-cookie
-            var suckCookie = function (key, value, options) {
-                // key and at least value given, set cookie...
-                if (arguments.length > 1 && String(value) !== "[object Object]") {
-                    options = options || {};
-
-                    if (value === null || value === undefined) {
-                        options.expires = -1;
-                    }
-
-                    if (typeof options.expires === 'number') {
-                        var days = options.expires, t = options.expires = new Date();
-                        t.setDate(t.getDate() + days);
-                    }
-
-                    value = String(value);
-
-                    return (document.cookie = [
-                        encodeURIComponent(key), '=',
-                        options.raw ? value : encodeURIComponent(value),
-                        options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
-                        options.path ? '; path=' + options.path : '',
-                        options.domain ? '; domain=' + options.domain : '',
-                        options.secure ? '; secure' : ''
-                    ].join(''));
-                }
-
-                // key and possibly options given, get cookie...
-                options = value || {};
-                var result, decode = options.raw ? function (s) { return s; } : decodeURIComponent;
-                return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
-            };
-            if (suckCookie('suck-closed')) {
+            if (bacookie('suck-closed')) {
                 $('.suck-dialog').addClass('suck-closed');
             }
         </script>
