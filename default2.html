@@ -248,6 +248,7 @@
         </script>
         {% endif %}
     
+        {% if false %}
         <script type="text/javascript">
             SSTracker = { states: [] };
             SSTracker.setState = function(state) {
@@ -316,6 +317,8 @@
             
             SSTracker.track({e:'hit'});
         </script>
+        {% endif %}
+        
         {% if page.plusone %}
         <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
         {% endif %}
