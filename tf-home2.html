@@ -41,6 +41,7 @@ menu: products
                 <div id="screenshot-box-{{forloop.index}}" class="screenshot-box {{shot.klass}}" {% if forloop.index0 > 0 %}style="display:none"{% endif %}>
                     <a id="o-shot{{forloop.index}}" href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}">
                         <img src="{{site.url}}{{shot.thumb}}"/>
+                        <div class="video-icon">Watch the Video</div>
                         <div class="zoom-icon"></div>
                     </a>
                 </div>
@@ -55,7 +56,6 @@ menu: products
                             <div></div>
                         </a>
                     </div>
-                    <div class="teaser-separator"></div>
                 </div>
                 <div class="navi-box">
                     <div class="navi-hint arrow"></div>
@@ -255,6 +255,10 @@ menu: products
                 $("#o-download").trigger('click');
             }, 1000);
             // does not prevent default and triggers browser's download action
+        });
+        $('.video-icon').bind('click', function(e) {
+            $("#o-teaser").trigger('click');
+            return false;
         });
     });
 
