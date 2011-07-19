@@ -2,6 +2,7 @@
 layout: default2
 satisfaction: 1
 plusone: 1
+fblikefooter: 1
 menu: products
 ---
 <div class="main-product" id="product-{{page.product}}">
@@ -12,16 +13,13 @@ menu: products
                 <div class="product-tagline">
                     <h1 class="product-title">{{page.product_title}}</h1><div class="plusone-wrapper"><g:plusone size="medium"></g:plusone></div>
                     <h2 class="product-subtitle">{{page.product_subtitle}}</h2>
-                    <div class="facebook-like-box">
-                        <fb:like href="{{page.ogmeta.url}}" layout="standard" show_faces="false" action="like" font="arial" colorscheme="light"></fb:like>
-                    </div>        
                 </div>
             </div>
             <div class="product-buttons-box">
                 <div class="product-buttons">
                     {% if page.download %}
                     <a id="o-download" href="{{page.download}}" class="button product-button-download">
-                        <div><div>{{page.downloadtitle}}</div></div>
+                        <div><div>{{page.downloadtitle}}{% if page.downloadsubtitle %}<div class="product-specs">{{page.downloadsubtitle}}</div>{% endif %}</div></div>
                     </a>
                     {% endif %}
                     {% if page.buttons %}
@@ -67,7 +65,7 @@ menu: products
                     <div class="flattr">
                     </div>
                     <script>
-                        $('.flattr').html(writeCapture.sanitize('<scr'+'ipt>document.write(\'<iframe width="50" scrolling="no" height="60" frameborder="0" src="http://api.flattr.com/button/view/?uid=0&amp;url=\'+encodeURIComponent(\'{{page.flattr}}\')+\'&amp;language=&amp;hidden=0&amp;title=&amp;category=&amp;tags=&amp;description=" border="0" marginheight="0" marginwidth="0" allowtransparency="true"></iframe>\')</scr'+'ipt>'));
+                        $('.flattr').html(writeCapture.sanitize('<scr'+'ipt>document.write(\'<iframe width="55" scrolling="no" height="62" frameborder="0" src="http://api.flattr.com/button/view/?uid=0&amp;url=\'+encodeURIComponent(\'{{page.flattr}}\')+\'&amp;language=&amp;hidden=0&amp;title=&amp;category=&amp;tags=&amp;description=" border="0" marginheight="0" marginwidth="0" allowtransparency="true"></iframe>\')</scr'+'ipt>'));
                     </script>
                     {% endif %}
                 </div>

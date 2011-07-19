@@ -2,6 +2,7 @@
 layout: default2
 satisfaction: 1
 plusone: 1
+fblikefooter: 1
 menu: products
 ---
 <div id="product-totalfinder" class="main-product">
@@ -12,26 +13,25 @@ menu: products
                 <div class="product-tagline">
                     <h1 class="product-title">{{page.product_title}}</h1><div class="plusone-wrapper"><g:plusone size="medium"></g:plusone></div>
                     <h2 class="product-subtitle">{{page.product_subtitle}}</h2>
-                    <div class="facebook-like-box">
-                        <fb:like href="{{page.ogmeta.url}}" width="370" layout="standard" show_faces="false" action="like" font="arial" colorscheme="light"></fb:like>
-                    </div>        
                 </div>
             </div>
             <div class="product-buttons-box">
                 <div class="product-click-here arrow"></div>
                 <div class="product-buttons">
+                    <a href="http://downloads.binaryage.com/totalfinder-teaser.mov" id="o-teaser" rel="#teaser" class="button product-button-thumbup">
+                        <div><div>Watch Video<div class="product-specs">See major features in action</div></div></div>
+                    </a>
                     <div id="o-download" rel="#download"></div>
                     <a href="{{page.download}}" id="o-download-button" rel="#download" class="button product-button-download">
-                        <div><div><div class="trial-note">14-day trial</div>{{page.downloadtitle}}<div class="product-specs">Requires OS X 10.6 (Snow Leopard)<br>Runs also under OS X 10.7 (Lion)</div></div></div>
+                        <div><div><div class="trial-note">14-day trial</div>{{page.downloadtitle}}<div class="product-specs">Requires OS X 10.6 or 10.7 (Lion)</div></div></div>
                     </a>
                     <a id="o-buy" rel="#buy" class="button product-button-buy">
                         <div class="price-tag"></div>
-                        <div><div>Buy TotalFinder<div class="product-specs">OS X 10.7 (Lion) upgrade will be free</div></div></div>
+                        <div><div>Buy TotalFinder<div class="product-specs">Lion upgrade will be free</div></div></div>
                     </a>
                     <div class="reasons-to-buy">
-                        <a href="http://blog.binaryage.com/free-totalfinder-lion-upgrade">» the price will increase soon - read more</a><br>
-                        <a href="/free-licenses">» I'm also giving away free licenses!</a><br>
-                        <a href="/reasons-to-buy">» why should you buy otherwise?</a><br>
+                        <a href="/free-licenses">I'm also giving away free licenses!</a><br>
+                        <a href="/reasons-to-buy">why should you buy otherwise?</a><br>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,6 @@ menu: products
                 <div id="screenshot-box-{{forloop.index}}" class="screenshot-box {{shot.klass}}" {% if forloop.index0 > 0 %}style="display:none"{% endif %}>
                     <a id="o-shot{{forloop.index}}" href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}">
                         <img src="{{site.url}}{{shot.thumb}}"/>
-                        <div class="video-icon">Watch the Video</div>
                         <div class="zoom-icon"></div>
                     </a>
                 </div>
