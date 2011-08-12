@@ -58,6 +58,7 @@
                 $('html').addClass('wf-fake-active');
             }, 2000);
         </script>
+        {% if page.xstatic != 1 %}
         <style type="text/css">
             /* prevent visible font switching - this is also repeated in global.styl for fastspring compatibility!  */
             .js .wf {
@@ -74,6 +75,7 @@
                 filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100) !important;
             }
         </style>
+        {% endif %}
         {% if page.xstatic == 1 %}
         <link type="text/css" media="all" href="//resource.fastspring.com/app/store/style/base.css?v=1305862826942&amp;region=eu" rel="stylesheet" title="main">        
         <link type="text/css" media="all" href="//dcnz2rrcot657.cloudfront.net/_gz/country/fam/decorate.css" rel="stylesheet" title="main">
