@@ -18,7 +18,7 @@ menu: products
             <div class="product-buttons-box">
                 <div class="product-buttons">
                     {% if page.download %}
-                    <a id="o-download" href="{{page.download}}" class="button product-button-download">
+                    <a id="o-download" href="{{page.download}}" class="button product-button-{% if page.buttonicon %}{{page.buttonicon}}{% else %}download{% endif %}">
                         <div><div>{{page.downloadtitle}}{% if page.downloadsubtitle %}<div class="product-specs">{{page.downloadsubtitle}}</div>{% endif %}</div></div>
                     </a>
                     {% endif %}
