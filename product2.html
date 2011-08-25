@@ -76,10 +76,16 @@ menu: products
             <div class="main-screenshot">
                 {% for shot in page.shots %}
                 <div id="screenshot-box-{{forloop.index}}" class="screenshot-box no-shadow" {% if forloop.index0 > 0 %}style="display:none"{% endif %}>
+                    {% if shot.full %}
                     <a id="o-shot{{forloop.index}}" href="{{site.url}}{{shot.full}}" class="overlayable" title="{{shot.title}}">
+                    {% endif %}
                         <img src="{{site.url}}{{shot.thumb}}"/>
+                        {% if shot.full %}
                         <div class="zoom-icon"></div>
+                        {% endif %}
+                    {% if shot.full %}
                     </a>
+                    {% endif %}
                 </div>
                 {% endfor %}
                 <div class="clear"></div>
