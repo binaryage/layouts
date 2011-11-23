@@ -92,7 +92,7 @@ menu: products
                     <fb:share-button class="url" href="{{page.ogmeta.url}}/" type="box_count"></fb:share-button>
                 </div>
                 {% endif %}
-                {% if page.buzz %}
+                {% if page.buzz and false %}
                 <div class="buzz"></div>
                 <script>
                     $(".buzz").html(writeCapture.sanitize('<a title="Post on Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="normal-count" data-url="{{page.ogmeta.url}}" data-imageurl="{{page.ogmeta.image}}"></a><scr'+'ipt type="text/javascript" src="http://www.google.com/buzz/api/button.js"></scr'+'ipt>'));
