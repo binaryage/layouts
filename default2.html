@@ -243,7 +243,7 @@
         </script>
         {% if site.url contains ".com" %}
         <script type="text/javascript">
-            _gaq.push(['_setAccount', 'UA-8404259-1']);
+            _gaq.push(['_setAccount', '{% if page.ga %}{{page.ga}}{% else %}UA-8404259-1{% endif %}']);
             _gaq.push(['_addIgnoredRef', '.binaryage.com']); // do not count subdomains as referrer trafic
             _gaq.push(['_setDomainName', '.binaryage.com']); // track all subdomains with shared cookie
             _gaq.push(['_setAllowLinker', true]); // important for cross domain user tracking (the session may be passed in URL params)
