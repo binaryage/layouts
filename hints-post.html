@@ -1,0 +1,69 @@
+---
+layout: blog2
+---
+
+<div class="blog-articles">
+    <a href="/">« Read more articles</a>
+</div>
+<div id="post">
+    <div class="post-titlebar">
+        <div class="calendar">
+            <div class="month">{{ page.date | date:"%b" }}</div>
+            <div class="day">{{ page.date | date:"%d" }}</div>
+            <div class="year">{{ page.date | date:"%Y" }}</div>
+        </div>
+        <h1 class="post-title">{{ page.title }}</h1>
+        <div class="clear"></div>
+    </div>
+    <div class="post-content">{{ content }}</div>
+</div>
+
+<div class="simple_overlay" id="overlay-gallery" style="display:none"> 
+    <a class="overlay-prev">prev</a> 
+    <a class="overlay-next">next</a> 
+    <div class="overlay-info"></div>
+    <img class="overlay-progress" src="{{site.url}}/shared/img/twitter-loader.gif" /> 
+</div>
+
+<script>
+(function() {
+    var postContent = $('.post-content');
+    var images = $('.blog-image', postContent).add('.blog-image-full', postContent).add('.blog-image-border', postContent).add('.blog-image-full-border', postContent);
+    if (!images.length) return;
+    
+    var anchors = [];
+    images.each(function() {
+        var el = $(this);
+        var wrapper = $('<a/>').attr('href', el.attr('src'));
+        var origTitle = el.attr('title');
+        if (origTitle) wrapper.attr('title', origTitle);
+        el.wrap(wrapper);
+    });
+
+    images.parent().overlay({
+        effect: 'apple',
+        expose: '#f1f1f1',
+        target: '#overlay-gallery'
+    }).gallery({
+        disabledClass: 'disabled-overlay',
+        prev: '.overlay-prev',
+        next: '.overlay-next',
+        info: '.overlay-info',
+        progress: '.overlay-progress',
+        opacity: 1,
+        speed: 200, 
+        template: '[${index}/${total}] ${title}'
+    });
+})();
+</script>
+
+<div class="master-separator"></div>
+<div id="comments">
+    <div id="disqus_thread"></div>
+    <div id="disqus_script"></div>
+    <script type="text/javascript" charset="utf-8">
+      var disqus_url = "http://hints.binaryage.com{{page.url}}/";
+      $("#disqus_script").html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://disqus.com/forums/binaryage/embed.js"></sc'+'ript>')); // async
+    </script>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
