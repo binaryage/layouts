@@ -26,6 +26,7 @@ layout: hints
 </div>
 
 <script>
+// this code is responsible for turning image links into lightbox
 (function() {
     var postContent = $('.post-content');
     var images = $('.blog-image', postContent).add('.blog-image-full', postContent).add('.blog-image-border', postContent).add('.blog-image-full-border', postContent);
@@ -59,11 +60,16 @@ layout: hints
 
 <div class="master-separator"></div>
 <div id="comments">
-    <div id="disqus_thread"></div>
-    <div id="disqus_script"></div>
-    <script type="text/javascript" charset="utf-8">
-      var disqus_url = "http://hints.binaryage.com{{page.url}}/";
-      $("#disqus_script").html(writeCapture.sanitize('<scr'+'ipt type="text/javascript" src="http://disqus.com/forums/binaryage/embed.js"></sc'+'ript>')); // async
-    </script>
-    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'binaryage-hints';
+	var disqus_url = "http://hints.binaryage.com{{page.url}}/";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
