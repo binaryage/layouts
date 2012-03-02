@@ -1,0 +1,14 @@
+---
+layout: hints
+meta-robots: "noodp, noydir, noindex, noarchive, follow"
+---
+
+<h3> Posts archive: {{ page.period["month"] }} - {{page.period["year"]}} </h3><br>
+<ul>
+{% for post in page.period_posts %}
+<li> 
+    <a href="">{{ post.title }}</a><br>
+    <span class="entry-meta"> &nbsp; Published: {{ post.date | date: "%B %d, %Y" }}</span>
+</li>
+{% endfor %}
+</ul>
