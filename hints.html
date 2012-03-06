@@ -9,6 +9,14 @@ meta_title: Mac Hints from BinaryAge
 meta_keywords: blog,tips,hints,binaryage,productivity,software,mark miyashita
 meta_description: Sharing tips about software, products and cool stuff from BinaryAge
 meta_image: http://www.binaryage.com/shared/img/icons/binaryage-badge-256.png
+products: [
+{title: "TotalFinder", url: "http://totalfinder.binaryage.com", info: "Get tabs in Finder.app!"},
+{title: "TotalTerminal", url: "http://totalterminal.binaryage.com", info: "A system-wide Terminal window"},
+{title: "FireQuery", url: "http://firequery.binaryage.com", info: "jQuery development in Firebug"},
+{title: "FireLogger", url: "http://firelogger.binaryage.com", info: "Realtime logging into Firebug"},
+{title: "FireRainbow", url: "http://firerainbow.binaryage.com", info: "A syntax highlighting for Firebug"},
+{title: "XRefresh", url: "http://xrefresh.binaryage.com", info: "Reload your browsers after save"}
+]
 ---
 
 <div id="blog">
@@ -42,8 +50,21 @@ meta_image: http://www.binaryage.com/shared/img/icons/binaryage-badge-256.png
                     <div class="subscribe-button">
                         <a href="http://feeds.feedburner.com/binaryage-hints"><img src="http://feeds.feedburner.com/~fc/binaryage-hints?bg=dddddd&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
                     </div>
+                <div class="blog-side-box blog-side-products">
+                    {% for product in page.products %}
+                    <div class="blog-side-separator-top {{product.title|downcase}}"></div>
+                    <div class="blog-side-product">
+                        <a href="{{product.url}}">
+                            <img src="/shared/img/icons/{{product.title|downcase}}-64.png" width="38" height="38"/>
+                            <div class="title">{{product.title}}</div>
+                            <div class="info">{{product.info}}</div>
+                        </a>
+                    </div>
+                    <div class="blog-side-separator-bottom {{product.title|downcase}}"></div>
+                    {% endfor %}
+                </div>
                 <div class="blog-archive">
-                    <a href="{{site.url}}/archive"><h3>Archive</h3></a>
+                    <center><a href="{{site.url}}/archive"><h2>Archive</h2></a></center>
                 </div>
             </div>
         </div>
