@@ -10,12 +10,12 @@ meta_keywords: blog,tips,hints,binaryage,productivity,software,mark miyashita
 meta_description: Sharing tips about software, products and cool stuff from BinaryAge
 meta_image: http://www.binaryage.com/shared/img/icons/binaryage-badge-256.png
 products: [
-{title: "TotalFinder", url: "http://totalfinder.binaryage.com", info: "Get tabs in Finder.app!"},
-{title: "TotalTerminal", url: "http://totalterminal.binaryage.com", info: "A system-wide Terminal window"}]
+{title: "TotalFinder", url: "http://totalfinder.binaryage.com", info: "Adds tabs to your Finder.app!"},
+{title: "TotalTerminal", url: "http://totalterminal.binaryage.com", info: "A Quake-style Terminal window"}]
 ---
 
 <div id="blog">
-    <div class="container">
+    <div id="hints" class="container">
         <div class="blog-body">
             <div class="blog-content">
                 {{content}}
@@ -27,17 +27,12 @@ products: [
                 <div class="blog-side-box blog-side-about">
                     <div class="blog-side-about-left"><a href="http://markmiyashita.com"><img src="http://www.gravatar.com/avatar/dca8ea2ef85135aca16bf2457cdee3eb?s=76" width="76" height="76"></a></div>
                     <div class="blog-side-about-right"><h4>About Mark</h4>I am currently a student at the University of California, Berkeley. I am passionate about the Mac and computers in general.<br/>
-                    <div class="blog-side-about-right"><a href="https://plus.google.com/101180624276428786239?rel=author">Profile »</a></div>
                     <a href="http://markmiyashita.com">Read More »</a></div>
                     <div class="thats-me arrow"></div>                    
                 </div>
                 <div class="blog-side-box blog-side-follow">
                     <a href="https://twitter.com/negativetwelve" class="twitter-follow-button" data-show-count="true" data-show-screen-name="false">Follow @negativetwelve</a>
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                </div>
-                <div class="blog-side-box blog-side-follow">
-                    <a href="http://twitter.com/binaryage" class="twitter-follow-button" data-show-count="true">Follow @binaryage</a>
-                    <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
                 </div>
                 <div class="blog-side-box blog-side-subscribe">
                     <a href="http://feeds.feedburner.com/binaryage-hints" rel="alternate" type="application/rss+xml"><div class="blog-side-icon blog-rss-icon"/></div></a>
@@ -46,6 +41,7 @@ products: [
                         <a href="http://feeds.feedburner.com/binaryage-hints"><img src="http://feeds.feedburner.com/~fc/binaryage-hints?bg=dddddd&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
                     </div>
                 <div class="blog-side-box blog-side-products">
+					<br>
                     {% for product in page.products %}
                     <div class="blog-side-separator-top {{product.title|downcase}}"></div>
                     <div class="blog-side-product">
@@ -59,10 +55,10 @@ products: [
                     {% endfor %}
                 </div>
                 <div class="blog-featured">
-                    <center><a href="{{site.url}}/new-features-of-ios-5-1/"><h2>Featured Article</h2></a></center>
+                    <center><h2><a href="{{site.url}}/new-features-of-ios-5-1/">Featured Article</a></h2></center>
                 </div>
                 <div class="blog-archive">
-                    <center><a href="{{site.url}}/archive"><h2>Archive</h2></a></center>
+                    <center><h2><a href="{{site.url}}/archive">Archive</a></h2></center>
                 </div>
             </div>
         </div>
