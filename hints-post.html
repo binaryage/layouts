@@ -84,3 +84,15 @@ layout: hints
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
+
+<h2>Recent Posts</h2>
+
+<div id="post_links">
+    <ul>
+        {% for post in site.posts limit:12 %}
+    	    <li><span>{{ post.date | date_to_string }}</span>  <a href="{{ post.url }}">{{ post.title }}</a></li>
+    	{% endfor %}
+    	<br/>
+    	For more posts, visit the full archive <a href="{{site.url}}/archive">here.</a>
+    </ul>
+</div>
