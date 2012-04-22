@@ -1,18 +1,18 @@
 ---
 layout: default
 satisfaction: 1
-product_title: TotalFinder
+product_title: TotalSpaces
 product_subtitle: documentation
 ---
 <div>
-    <div class="container" id="tf-header">
-        <div class="tf-header-nav span-24 last">
-            <a class="tf-back-button" href="/">&larr; back to homepage</a>
+    <div class="container" id="ts-header">
+        <div class="ts-header-nav span-24 last">
+            <a class="ts-back-button" href="/">&larr; back to homepage</a>
         </div>
-        <div class="tf-header-left span-19">
+        <div class="ts-header-left span-19">
             <h1 class="doc-title">{{page.subtitle}}</h1>
         </div>
-        <div class="tf-header-right span-5 last">
+        <div class="ts-header-right span-5 last">
             <div class="product-logo-box">
                 <img class="product-icon" src="/shared/img/icons/{{page.product_title|downcase}}-64.png">
                 <div class="product-tagline">
@@ -22,15 +22,15 @@ product_subtitle: documentation
             </div>
         </div>
     </div>
-    <div class="container" id="tf-nav">
-        <div class="tf-header-left span-12">
+    <div class="container" id="ts-nav">
+        <div class="ts-header-left span-12">
             {% if page.prev_link %}
             <h3 class="page-prev"><a href="{{page.prev_link}}">&larr; {{page.prev}}</a></h3>
             {% else %}
             &nbsp;
             {% endif %}
         </div>
-        <div class="tf-header-right span-12 last">
+        <div class="ts-header-right span-12 last">
             {% if page.next_link %}
             <h3 class="page-next"><a href="{{page.next_link}}">{{page.next}} &rarr;</a></h3>
             {% else %}
@@ -40,7 +40,7 @@ product_subtitle: documentation
     </div>
 </div>
 
-<div id="main-content" class="tf-page">
+<div id="main-content" class="ts-page">
     <div class="container">
         <div class="page-content">
             {{ content }}
