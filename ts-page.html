@@ -1,0 +1,57 @@
+---
+layout: default
+satisfaction: 1
+product_title: TotalFinder
+product_subtitle: documentation
+---
+<div>
+    <div class="container" id="tf-header">
+        <div class="tf-header-nav span-24 last">
+            <a class="tf-back-button" href="/">&larr; back to homepage</a>
+        </div>
+        <div class="tf-header-left span-19">
+            <h1 class="doc-title">{{page.subtitle}}</h1>
+        </div>
+        <div class="tf-header-right span-5 last">
+            <div class="product-logo-box">
+                <img class="product-icon" src="/shared/img/icons/{{page.product_title|downcase}}-64.png">
+                <div class="product-tagline">
+                    <h2 class="product-title">{{page.product_title}}</h2>
+                    <h3 class="product-subtitle"><a href="/documentation">{{page.product_subtitle}}</a></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="tf-nav">
+        <div class="tf-header-left span-12">
+            {% if page.prev_link %}
+            <h3 class="page-prev"><a href="{{page.prev_link}}">&larr; {{page.prev}}</a></h3>
+            {% else %}
+            &nbsp;
+            {% endif %}
+        </div>
+        <div class="tf-header-right span-12 last">
+            {% if page.next_link %}
+            <h3 class="page-next"><a href="{{page.next_link}}">{{page.next}} &rarr;</a></h3>
+            {% else %}
+            &nbsp;
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div id="main-content" class="tf-page">
+    <div class="container">
+        <div class="page-content">
+            {{ content }}
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        $(".hoverable-input").bind('click', function(e){
+            this.select();
+        });
+    });
+</script>
