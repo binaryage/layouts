@@ -13,6 +13,11 @@ products: [
 {title: "TotalFinder", url: "http://totalfinder.binaryage.com", info: "Adds tabs to your Finder.app!"},
 {title: "TotalSpaces", url: "http://totalspaces.binaryage.com", info: "Brings grid spaces to Lion and more!"},
 {title: "TotalTerminal", url: "http://totalterminal.binaryage.com", info: "A Quake-style Terminal window"}]
+articles: [{title: "Dropbox Referrals!", url: "http://hints.binaryage.com/spread-your-dropbox-storage-link/", info: "Get more storage on Dropbox!"},
+{title: "Mountain Lion", url: "http://hints.binaryage.com/get-your-mac-ready-for-mountain-lion/", info: "Get your Mac ready to update."},
+{title: "Python", url: "http://hints.binaryage.com/how-to-install-python-3-2-3-on-mac-os-x/", info: "Install the latest Python."},
+{title: "iOS 5.1.1 Jailbreak", url: "http://hints.binaryage.com/ios-5-1-1-jailbreak-released-download-here/", info: "Jailbreak your iPhone."},
+{title: "Archive", url: "http://hints.binaryage.com/archive", info: "Read most posts"}]
 ---
 
 <div id="blog">
@@ -54,16 +59,17 @@ products: [
                     </div>
                     <div class="blog-side-separator-bottom {{product.title|downcase}}"></div>
                     {% endfor %}
-                </div>
-                <div class="blog-dropbox">
-                    <center><h2><a href="{{site.url}}/spread-your-dropbox-storage-link/">Dropbox Referrals!</a></h2></center>
-                </div>
-                <div class="blog-featured">
-                    <center><h2><a href="{{site.url}}/ios-5-1-1-jailbreak-released-download-here/">iOS 5.1.1 Jailbreak!</a></h2></center>
-                </div>
-                <div class="blog-archive">
-                    <center><h2><a href="{{site.url}}/archive">Archive</a></h2></center>
-                </div>
+					{% for article in page.articles %}
+                    <div class="blog-side-separator-top"></div>
+                    <div class="blog-side-product">
+                        <a href={{article.url}}>
+                            <div class="title">{{article.title}}</div>
+                            <div class="info">{{article.info}}</div>
+                        </a>
+                    </div>
+                    <div class="blog-side-separator-bottom"></div>
+					{% endfor %}
+                </div>					
             </div>
         </div>
     </div>
